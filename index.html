@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>The ninja blog system</title>
+</head>
+<body>
+	<h1 id="test">Some test</h1>
+	<script src="bower_components/system.js/dist/system.js"></script>
+	<script src="config.js"></script>
+	<script>
+	// Custom modules -> look at config.js for the mappings
+	System.import('test')
+		.then(function (test) {
+			console.log(test.fib(20));
+		});
+	System.import('jquery')
+		.then(function ($) {
+			$('#test').html('jQuery loaded..');
+		});
+	</script>
+</body>
+</html>
