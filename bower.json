@@ -1,0 +1,18 @@
+{
+  "name": "blog-system",
+  "version": "0.0.1",
+  "description": "A blog system for the JavaScript Applications coursework.",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "system.js": "~0.18.14"
+  }
+}
