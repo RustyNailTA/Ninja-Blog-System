@@ -30,3 +30,11 @@ node_modules
 # Bower package files (components)
 
 bower_components
+.idea/.name
+.idea/encodings.xml
+.idea/Ninja-Blog-System.iml
+.idea/misc.xml
+.idea/scopes/scope_settings.xml
+.idea/workspace.xml
+.idea/modules.xml
+.idea/vcs.xml
