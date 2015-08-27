@@ -1,0 +1,18 @@
+.navbar-default, .nav .navbar-nav {
+    background-color: #464545; /* semi transparent for testing purposes*/
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+
+.navbar-cleaner{
+    content: "wdwdf "; /* Older browser do not support empty content */
+    visibility: hidden;
+    display: block;
+    height: 82px;
+}
+
+.breadcrumb{
+    opacity: 0.8;
+}

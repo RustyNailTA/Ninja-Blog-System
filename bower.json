@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "system.js": "~0.18.14"
+    "system.js": "~0.18.14",
+    "express": "~4.13.3"
   }
 }
