@@ -1,5 +1,7 @@
+import {templateHandler} from 'templateHandler'
+
 function aboutController(){
-    $('#template-container').load('templates/about.html');
+    templateHandler.loadStaticTemplate('templates/about.html', '#template-container')
 }
 
 export {aboutController}

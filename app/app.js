@@ -1,4 +1,5 @@
 import {controller} from 'controller';
+import {templateHandler} from 'templateHandler'
 //import 'handlebars';
 //import 'sammy';
 //import 'handlebars';
@@ -11,6 +12,8 @@ function app() {
     //console.log(Sammy);
 
     var app = $.sammy('#main-content', function () {
+
+        console.log('After Sammy');
 
         this.get('/', function () {
             controller.homeController();

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>The ninja blog system</title>
+    <meta charset="UTF-8">
+    <title>The ninja blog system</title>
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/bootstrap-theme.min.css">
     <link rel="stylesheet" href="styles/app.css">
@@ -25,7 +25,7 @@
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#/" >HOME </a>
+                        <a href="#/">HOME </a>
                     </li>
                     <li>
                         <a href="#/top">TOP</a>
@@ -39,12 +39,12 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                     <li>
-                         <a href="#/login">Login</a>
-                     </li>
-                     <li>
-                         <a href="#/register">Register</a>
-                     </li>
+                    <li>
+                        <a href="#/login">Login</a>
+                    </li>
+                    <li>
+                        <a href="#/register">Register</a>
+                    </li>
                     <li>
                         <form class="nav navbar-form" role="search">
                             <div class="form-group">
@@ -64,42 +64,46 @@
     <div class="container">
 
 
-    <ul class="breadcrumb">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Library</a></li>
-        <li class="active">Data</li>
-    </ul>
+        <ul class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ul>
 
-    <div id="template-container"></div>
+        <div id="template-container"></div>
 
+        <div class="navbar-cleaner"></div>
 
-    <footer class="text-center panel-footer navbar-fixed-bottom">
-        <small><strong>Created by:</strong> <a href="https://github.com/RustyNailTA" target="_blank">Rusty Nail Team</a></small>
-        <small><strong>as </strong> <a href="https://github.com/TelerikAcademy/JavaScript-Applications/tree/master/Teamwork" target="_blank">Telerik Academy JavaScript-Applications 2015 course Teamwork</a></small>
-        <br />
-        <small><strong><a href="https://github.com/RustyNailTA/Ninja-Blog-System" target="_blank">Open Source Project</a> powered by:</strong>
-            <a href="https://jquery.com/" target="_blank"> jQuery </a>
-            <a href="https://nodejs.org/" target="_blank"> Node.js® </a>
-            <a href="http://getbootstrap.com/" target="_blank"> Twitter Bootstrap </a></small>
-        <br />
-    </footer>
-
-
+        <footer class="text-center panel-footer navbar-fixed-bottom">
+            <small><strong>Created by:</strong> <a href="https://github.com/RustyNailTA" target="_blank">Rusty Nail
+                Team</a></small>
+            <small><strong>as </strong> <a
+                    href="https://github.com/TelerikAcademy/JavaScript-Applications/tree/master/Teamwork"
+                    target="_blank">Telerik Academy JavaScript-Applications 2015 course Teamwork</a></small>
+            <br/>
+            <small><strong><a href="https://github.com/RustyNailTA/Ninja-Blog-System" target="_blank">Open Source
+                Project</a> powered by:</strong>
+                <a href="https://jquery.com/" target="_blank"> jQuery </a>
+                <a href="https://nodejs.org/" target="_blank"> Node.js® </a>
+                <a href="http://getbootstrap.com/" target="_blank"> Twitter Bootstrap </a></small>
+            <br/>
+        </footer>
 
 
     </div>
 
 </div>
-	<script src="bower_components/system.js/dist/system.js"></script>
-	<script src="config.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-	<script src="bower_components/sammy/lib/sammy.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script>
-	System.import('app')
-			.then(function(app){
-				app.app();
-			})
-	</script>
+<script src="bower_components/system.js/dist/system.js"></script>
+<script src="config.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/sammy/lib/sammy.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/handlebars/handlebars.js"></script>
+<script>
+    System.import('app')
+            .then(function (app) {
+                app.app();
+            })
+</script>
 </body>
 </html>

@@ -1,5 +1,9 @@
+import {templateHandler} from 'templateHandler'
+
 function allController(){
-    $('#template-container').load('templates/all.html');
+    // TODO: Use loadDataTemplate
+    templateHandler.loadStaticTemplate('templates/all.html', '#template-container')
+
 }
 
 export {allController}

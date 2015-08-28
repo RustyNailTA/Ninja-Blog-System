@@ -1,5 +1,8 @@
+import {templateHandler} from 'templateHandler'
+
 function registerController(){
-    $('#template-container').load('templates/register.html');
+    // TODO: Use loadDataTemplate
+    templateHandler.loadStaticTemplate('templates/register.html', '#template-container')
 
 }
 

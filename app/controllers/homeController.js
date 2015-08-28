@@ -1,5 +1,8 @@
+import {templateHandler} from 'templateHandler'
+
 function homeController(){
-    $('#template-container').load('templates/home.html');
+    // TODO: Use loadDataTemplate
+    templateHandler.loadStaticTemplate('templates/home.html', '#template-container')
 
 }
 

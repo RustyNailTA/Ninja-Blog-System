@@ -9,6 +9,7 @@ import {userNewBlogController} from './controllers/userNewBlogController.js';
 import {userSettingsController} from './controllers/userSettingsController.js';
 import {userSettingsPersonalController} from './controllers/userSettingsPersonalController.js';
 import {userSettingsBlogController} from './controllers/userSettingsBlogController.js';
+import {templateHandler} from 'templateHandler'
 
 
 

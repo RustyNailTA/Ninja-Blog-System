@@ -1,5 +1,8 @@
+import {templateHandler} from 'templateHandler'
+
 function loginController(){
-    $('#template-container').load('templates/login.html');
+    // TODO: Use loadDataTemplate
+    templateHandler.loadStaticTemplate('templates/login.html', '#template-container')
 
 }
 
