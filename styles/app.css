@@ -16,3 +16,8 @@
 .breadcrumb{
     opacity: 0.8;
 }
+
+.blog-post img, .carousel-caption img{
+    max-width: 50%;
+    margin: 20px 0;
+}

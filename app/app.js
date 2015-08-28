@@ -15,6 +15,18 @@ function app() {
 
         console.log('After Sammy');
 
+        this.notFound = function(){
+            console.log('not found')
+            controller.notFoundController();
+        }
+
+
+
+        this.get('#/registerryy', function () {
+            controller.homeController();
+        });
+
+
         this.get('/', function () {
             controller.homeController();
         });
@@ -46,6 +58,10 @@ function app() {
         this.get('#/:user', function () {
             $('#template-container').load('templates/home.html');
             // TODO: create page controller
+
+           this.notFound();
+
+            //this.partial('templates/item_detail.template');
         });
 
         this.get('#/:user/home', function () {
@@ -63,28 +79,32 @@ function app() {
             // TODO: create page controller
         });
 
-        this.get('#//:user/about', function () {
+        this.get('#/:user/about', function () {
             controller.userAboutController();
         });
 
-        this.get('#//:user/new-blog', function () {
+        this.get('#/:user/new-blog', function () {
             controller.userNewBlogController();
         });
 
-        this.get('#//:user/settings', function () {
+        this.get('#/:user/settings', function () {
            controller.userSettingsController();
         });
 
-        this.get('#//:user/settings-blog', function () {
+        this.get('#/:user/settings-blog', function () {
            controller.userSettingsBlogController();
         });
 
-        this.get('#//:user/settings-personal', function () {
+        this.get('#/:user/settings-personal', function () {
           controller.userSettingsPersonalController();
         });
+
+
     });
 
     app.run('/#')
+
+    return app;
 }
 
 export {app};
