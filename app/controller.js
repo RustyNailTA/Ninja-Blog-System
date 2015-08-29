@@ -10,6 +10,8 @@ import {userSettingsController} from './controllers/userSettingsController.js';
 import {userSettingsPersonalController} from './controllers/userSettingsPersonalController.js';
 import {userSettingsBlogController} from './controllers/userSettingsBlogController.js';
 import {notFoundController} from './controllers/notFoundController.js';
+import {userHomeController} from './controllers/userHomeController.js';
+import {allocatorController} from './controllers/allocatorController.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -26,5 +28,7 @@ export var controller = {
     userSettingsController: userSettingsController,
     userSettingsPersonalController: userSettingsPersonalController,
     userSettingsBlogController: userSettingsBlogController,
-    notFoundController:notFoundController
+    notFoundController:notFoundController,
+    userHomeController: userHomeController,
+    allocatorController:allocatorController
 };

@@ -55,11 +55,15 @@ function app() {
             controller.registerController();
         });
 
-        this.get('#/:user', function () {
-            $('#template-container').load('templates/home.html');
-            // TODO: create page controller
+        this.get('#/:id', function () {
 
-           this.notFound();
+
+
+           var selector = this.params['id'];
+
+            controller.allocatorController(selector, this);
+            console.log(selector)
+         // this.notFound();
 
             //this.partial('templates/item_detail.template');
         });

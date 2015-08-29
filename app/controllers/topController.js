@@ -3,14 +3,14 @@ import {templateHandler} from 'templateHandler'
 function topController() {
     var testPostOne = {
             title: 'TitleOne',
-            creator: 'Goshko Ubavets Be',
+            author: 'Goshko',
             content: "<p>I'm ninja and so on..</p>",
             createdAt: 'December 14, 2013',
             tags: []
         },
         testPostTwo = {
             title: 'TitleTwo',
-            creator: 'Pesho Ubavets Be',
+            author: 'Pesho',
             content:
             "<h4>Heading 2</h4>"+
                 '<img src="assets/imgs/ninjalogo.png">' +
@@ -28,7 +28,7 @@ function topController() {
         },
         testPostThree = {
             title: 'TitleThree',
-            creator: 'Pesho Ubavets Be',
+            author: 'Pesho',
             content:
             "<h4>Heading 3</h4>"+
             '<img src="https://scontent-fra3-1.xx.fbcdn.net/hphotos-xpf1/t31.0-8/11930775_10205857250769504_3791102953115589_o.jpg">' +
