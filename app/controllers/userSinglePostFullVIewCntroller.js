@@ -12,17 +12,13 @@ function userSinglePostFullVIewCntroller(userName, postIdd, app) {
         return post.id == postIdd
     })
 
-
     if (selectedUser && selectedPost) {
         var userPosts = selectedPost;
         templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', userPosts)
-
     } else {
-        console.log('error')
+       // console.log('error')
         app.notFound()
     }
-
-    templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', post)
 }
 
 export {userSinglePostFullVIewCntroller}

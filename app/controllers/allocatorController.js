@@ -5,7 +5,7 @@ import {controller} from 'controller';
 
 function allocatorController(selector, app) {
 
-    console.log('Allocator')
+    //console.log('Allocator')
 
 
     var selectedUser = _.find(testDB.users, function (user) {
@@ -28,7 +28,7 @@ function allocatorController(selector, app) {
         controller.singlePostFullVIewController(selectedPost)
     }
     else {
-        console.log('error')
+        //console.log('error')
         app.notFound()
     }
 }

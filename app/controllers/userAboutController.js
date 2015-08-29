@@ -3,21 +3,21 @@ import {testDB} from 'testDB'
 
 function userAboutController(userName, app){
 
-    console.log('userAboutController');
+    //console.log('userAboutController');
 
     var selectedUser = _.find(testDB.users, function (user) {
         // console.log(user.posts);
         return user.username === userName;
     });
 
-    console.log(selectedUser)
+  //  console.log(selectedUser)
 
     if (selectedUser) {
 
         templateHandler.loadDataTemplate('templates/user-about.html', '#template-container', selectedUser)
 
     } else {
-        console.log('error')
+       // console.log('error')
         app.notFound()
     }
 

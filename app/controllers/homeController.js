@@ -2,8 +2,8 @@ import {templateHandler} from 'templateHandler'
 import {testDB} from 'testDB'
 
 function homeController(){
-    console.log('enter home')
-    console.log(testDB)
+   // console.log('enter home')
+   // console.log(testDB)
 
     var db = testDB;
     db.posts[0].active = true;

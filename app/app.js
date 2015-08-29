@@ -16,7 +16,7 @@ function app() {
         //console.log('After Sammy');
 
         this.notFound = function(){
-            console.log('not found')
+           // console.log('not found')
             controller.notFoundController();
         };
 
@@ -37,6 +37,7 @@ function app() {
         });
 
         this.get('#/about', function () {
+           // alert('about')
            controller.aboutController();
         });
 
@@ -49,6 +50,7 @@ function app() {
         });
 
         this.get('#/:param', function () {
+           // alert('param')
            var selector = this.params['param'];
             controller.allocatorController(selector, this);
            // console.log(selector)
@@ -58,24 +60,32 @@ function app() {
         });
 
         this.get('#/:user/home', function () {
+            var selector = this.params['user'];
+           // console.log(selector)
+           // alert(selector + this.params['home'])
+
             controller.userHomeController(selector, this);
         });
-
-        this.get('#/:user/top', function () {
-            $('#template-container').load('templates/top.html');
-            // TODO: create page controller
-        });
-
-        this.get('#/:user/all', function () {
-            $('#template-container').load('templates/all.html');
-            // TODO: create page controller
-        });
-
-        this.get('#/about/:user', function () {
+        this.get('#/:user/about', function () {
+           // alert('About user')
 
             var userName = this.params['user']
             controller.userAboutController(userName, this);
         });
+
+        this.get('#/:user/top', function () {
+            //alert('top')
+            $('#template-container').load('templates/top.html');
+            // TODO: create page controller
+
+        });
+
+        this.get('/:user/#all', function () {
+            $('#template-container').load('templates/all.html');
+            // TODO: create page controller
+        });
+
+
 
         this.get('#/:user/new-blog', function () {
             controller.userNewBlogController();
@@ -91,6 +101,15 @@ function app() {
 
         this.get('#/:user/settings-personal', function () {
           controller.userSettingsPersonalController();
+        });
+
+        this.get('#/:user/:postId', function () {
+            var user = this.params['user'],
+                postID = this.params['postId'];
+            // console.log(selector)
+           // alert(selector + this.params['home'])
+
+            controller.userSinglePostFullVIewCntroller(user, postID, this);
         });
 
 
