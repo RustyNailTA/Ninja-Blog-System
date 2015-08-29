@@ -3,6 +3,8 @@ function sum(a, b) {
 }
 
 function fib(n) {
+
+    //console.log('fibonachi')
    if (n < 2) {
      return 1;
    } else {
@@ -11,3 +13,4 @@ function fib(n) {
 }
 
 export { sum, fib };
+

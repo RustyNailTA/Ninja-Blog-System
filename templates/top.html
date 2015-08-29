@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 blog-main">
+            {{#posts}}
+            <article class="blog-post">
+                <h2 class="blog-post-title">{{this.title}}</h2>
+
+                <p class="blog-post-meta">{{this.createdAt}} by: <a href="#/about/{{author}}">{{this.author}}</a></p>
+
+                <div style="text-overflow: ellipsis; height: 300px;   white-space: nowrap;   overflow: hidden;">
+                    {{{this.content}}}
+                </div>
+            </article>
+            <br/>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <span>Tags:&nbsp;&nbsp;</span>
+                    {{#tags}}
+                    <small>
+                        <strong>
+                            <a target="_blank" href="https://www.google.bg/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#safe=off&q={{this}}">
+                                {{this}}
+                            </a>
+                            <span>&nbsp;</span>
+                        </strong>
+                    </small>
+                    {{/tags}}
+                </div>
+            </div>
+            <hr/>
+            <br/>
+            {{/posts}}
+        </div>
+        <br/>
+        <div class="container-fluid">
+            <a href="#/all" class="btn btn-success text-center">Discover more</a>
+        </div>
+    </div>
+</div>
+
+
