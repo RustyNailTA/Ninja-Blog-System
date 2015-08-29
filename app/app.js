@@ -69,8 +69,7 @@ function app() {
         });
 
         this.get('#/:user/home', function () {
-            $('#template-container').load('templates/home.html');
-            // TODO: create page controller
+            controller.userHomeController(selector, this);
         });
 
         this.get('#/:user/top', function () {

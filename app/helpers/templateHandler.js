@@ -19,6 +19,8 @@ function loadDataTemplate(templatePath, containerSelector, dataObject) {
             var handlebarsTemplate = Handlebars.compile(template),
                 resultHtml = handlebarsTemplate(dataObject);
 
+            console.log(resultHtml)
+
             $(containerSelector).html(resultHtml)
         },
         dataType: 'html'

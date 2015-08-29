@@ -15,6 +15,7 @@ System.config({
 		test: '/scripts/test.js',
 		app: 'app/app.js',
 		controller: 'app/controller.js',
-		templateHandler: 'app/helpers/templateHandler.js'
+		templateHandler: 'app/helpers/templateHandler.js',
+		testDB: 'app/helpers/testDB.js'
 	}
 });

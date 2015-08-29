@@ -2,13 +2,15 @@
     <div id="carousel-generic" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             {{#posts}}
-            <li data-target="#carousel-generic" data-slide-to="{{@index}}" class=""></li>
+            <li data-target="#carousel-generic" data-slide-to="{{@index}}" class="{{#if active}}active{{/if}}"></li>
             {{/posts}}
 
         </ol>
+        <!--<h1>TEST DEIBA</h1>-->
         <div class="carousel-inner" role="listbox">
             <img style="position: absolute; width: 100%; height: 100%" alt="First slide [1140x500]"
                  src="assets/imgs/carousel-background.png">
+
             {{#posts}}
             <div class="item {{#if active}}active{{/if}}">
                 <img src="assets/imgs/carousel-background-transparent.png" data-holder-rendered="true">
@@ -17,7 +19,7 @@
                     <div class="carousel-caption">
 
                             <h2>{{title}}</h2>
-                        <p class="blog-post-meta">by: <a href="#">{{this.author}}</a></p>
+                        <p class="blog-post-meta">by: <a href="#/{{author}}/about">{{this.author}}</a></p>
                         <div>
                             <a href="/#{{#if author}}/{{author}}{{/if}}{{#if id}}/{{id}}{{/if}}" class="btn btn-link">Read more</a>
                         </div>

@@ -12,6 +12,9 @@ import {userSettingsBlogController} from './controllers/userSettingsBlogControll
 import {notFoundController} from './controllers/notFoundController.js';
 import {userHomeController} from './controllers/userHomeController.js';
 import {allocatorController} from './controllers/allocatorController.js';
+import {userTopController} from './controllers/userTopController.js';
+import {userAllController} from './controllers/userAllController.js';
+import {singlePostFullVIewController} from './controllers/singlePostFullVIewController.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -30,5 +33,8 @@ export var controller = {
     userSettingsBlogController: userSettingsBlogController,
     notFoundController:notFoundController,
     userHomeController: userHomeController,
-    allocatorController:allocatorController
+    allocatorController:allocatorController,
+    userTopController: userTopController,
+    userAllController: userAllController,
+    singlePostFullVIewController: singlePostFullVIewController
 };
