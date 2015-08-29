@@ -5,9 +5,9 @@
             <article class="blog-post">
                 <h2 class="blog-post-title">{{this.title}}</h2>
 
-                <p class="blog-post-meta">{{this.createdAt}} by: <a href="#/{{author}}/about">{{this.author}}</a></p>
+                <p class="blog-post-meta">{{this.createdAt}} by: <a href="#/about/{{author}}">{{this.author}}</a></p>
 
-                <div>
+                <div style="text-overflow: ellipsis; height: 300px;   white-space: nowrap;   overflow: hidden;">
                     {{{this.content}}}
                 </div>
             </article>

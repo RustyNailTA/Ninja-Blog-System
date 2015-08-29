@@ -8,24 +8,17 @@ import {templateHandler} from 'templateHandler'
 
 
 function app() {
-    console.log('Enter app');
+    //console.log('Enter app');
     //console.log(Sammy);
 
     var app = $.sammy('#main-content', function () {
 
-        console.log('After Sammy');
+        //console.log('After Sammy');
 
         this.notFound = function(){
             console.log('not found')
             controller.notFoundController();
-        }
-
-
-
-        this.get('#/registerryy', function () {
-            controller.homeController();
-        });
-
+        };
 
         this.get('/', function () {
             controller.homeController();
@@ -55,14 +48,10 @@ function app() {
             controller.registerController();
         });
 
-        this.get('#/:id', function () {
-
-
-
-           var selector = this.params['id'];
-
+        this.get('#/:param', function () {
+           var selector = this.params['param'];
             controller.allocatorController(selector, this);
-            console.log(selector)
+           // console.log(selector)
          // this.notFound();
 
             //this.partial('templates/item_detail.template');
@@ -82,8 +71,10 @@ function app() {
             // TODO: create page controller
         });
 
-        this.get('#/:user/about', function () {
-            controller.userAboutController();
+        this.get('#/about/:user', function () {
+
+            var userName = this.params['user']
+            controller.userAboutController(userName, this);
         });
 
         this.get('#/:user/new-blog', function () {

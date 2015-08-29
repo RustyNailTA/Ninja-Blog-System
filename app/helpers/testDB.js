@@ -44,12 +44,24 @@ var testPostOne = {
     },
     userOne = {
         username: 'Goshko',
-        posts: [testPostOne]
+        posts: [testPostOne],
+        email: 'goshko.ubavetsa@goshko.bg',
+        name: 'Georgi Georgiev',
+        aboutText: 'I am Gosko the handsome',
+        avatar: 'https://svejo.net/system/stories-photos/000/452/874/az-sam-goshko-hubavetsa-l.jpg',
+        links: []
+
+
 
     },
     userTwo = {
         username: 'Pesho',
-        posts: [testPostTwo, testPostThree]
+        posts: [testPostTwo, testPostThree],
+        email: 'pesho.ubavetsa@goshko.bg',
+        name: 'Pesho Petrov',
+        aboutText: 'Pesho me bitch',
+        avatar: null,
+        links: []
     };
 
 export var testDB = {

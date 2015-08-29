@@ -15,6 +15,7 @@ import {allocatorController} from './controllers/allocatorController.js';
 import {userTopController} from './controllers/userTopController.js';
 import {userAllController} from './controllers/userAllController.js';
 import {singlePostFullVIewController} from './controllers/singlePostFullVIewController.js';
+import {userSinglePostFullVIewCntroller} from './controllers/userSinglePostFullVIewCntroller.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -36,5 +37,6 @@ export var controller = {
     allocatorController:allocatorController,
     userTopController: userTopController,
     userAllController: userAllController,
-    singlePostFullVIewController: singlePostFullVIewController
+    singlePostFullVIewController: singlePostFullVIewController,
+    userSinglePostFullVIewCntroller: userSinglePostFullVIewCntroller
 };

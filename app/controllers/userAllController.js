@@ -1,7 +1,9 @@
 import {templateHandler} from 'templateHandler'
 import {testDB} from 'testDB'
 
-function userAllController(){
+function userAllController(userName, app){
+
+
     $('#template-container').load('templates/all.html');
 }
 

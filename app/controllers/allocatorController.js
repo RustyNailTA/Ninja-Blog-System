@@ -9,7 +9,7 @@ function allocatorController(selector, app) {
 
 
     var selectedUser = _.find(testDB.users, function (user) {
-        console.log(user.posts);
+       // console.log(user.posts);
         return user.username === selector;
     });
 
@@ -21,10 +21,10 @@ function allocatorController(selector, app) {
         var userPosts = {
             posts: selectedUser.posts
         };
-        templateHandler.loadDataTemplate('templates/all.html', '#template-container', userPosts)
+        templateHandler.loadDataTemplate('templates/user-about.html', '#template-container', userPosts)
 
     } else if (selectedPost) {
-        console.log(selectedPost)
+        //console.log(selectedPost)
         controller.singlePostFullVIewController(selectedPost)
     }
     else {
