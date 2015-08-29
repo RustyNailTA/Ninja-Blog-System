@@ -1,5 +1,9 @@
 import {controller} from 'controller';
 import {templateHandler} from 'templateHandler'
+import db from 'db'
+import User from 'user'
+import Post from 'post'
+
 //import 'handlebars';
 //import 'sammy';
 //import 'handlebars';
@@ -10,6 +14,17 @@ import {templateHandler} from 'templateHandler'
 function app() {
     //console.log('Enter app');
     //console.log(Sammy);
+
+    db.init();
+
+    User.create('ivo', 'ivoivo', 'ivo@ivoivo.com');
+
+    var currentUser = User.current();
+
+    var post = Post.create('hello world', 'Hello guys. Some post here.',
+    ['tag1', 'tag2', 'tag3'], currentUser.get('username'));
+
+    console.log(currentUser.getPostCount());
 
     var app = $.sammy('#main-content', function () {
 
@@ -102,8 +117,3 @@ function app() {
 }
 
 export {app};
-
-
-
-
-
