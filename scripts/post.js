@@ -1,10 +1,6 @@
 import { Parse as Parse } from 'parse';
 
-var Post = Parse.Object.extend('Post', {
-    someMethod: function () {
-        return 42;
-    }
-}, {
+var Post = Parse.Object.extend('Post', {}, {
     create: function (title, content, tags, author) {
         tags = tags || [];
 
@@ -29,6 +25,20 @@ var Post = Parse.Object.extend('Post', {
         });
 
         return post;
+    },
+    getAllPosts: function () {
+        var queryObject = new Parse.Query(Post);
+        return new Promise(function (resolve, reject) {
+            queryObject.find().then(function (results) {
+                var posts = results.map(function (item) {
+                    return item.attributes;
+                });
+
+                resolve(posts);
+            }, function (error) {
+                reject(error);
+            });
+        });
     }
 });
 
