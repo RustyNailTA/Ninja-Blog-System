@@ -35,6 +35,7 @@ function app() {
             controller.notFoundController();
         };
 
+
         this.get('#/', function () {
             controller.homeController();
         });
@@ -58,6 +59,10 @@ function app() {
 
         this.get('#/login', function () {
             controller.loginController();
+        });
+
+        this.get('#/login-please', function () {
+            controller.notLoggedController();
         });
 
         this.get('#/register', function () {
@@ -109,7 +114,8 @@ function app() {
         });
 
         this.get('#/:user/settings', function () {
-           controller.userSettingsController();
+            var userName = this.params['user']
+           controller.userSettingsController(userName, this);
         });
 
         this.get('#/:user/settings-blog', function () {

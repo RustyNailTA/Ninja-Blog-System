@@ -17,6 +17,7 @@ import {userAllController} from './controllers/userAllController.js';
 import {singlePostFullVIewController} from './controllers/singlePostFullVIewController.js';
 import {userSinglePostFullVIewCntroller} from './controllers/userSinglePostFullVIewCntroller.js';
 import {registrationSuccessfulControllers} from './controllers/registrationSuccessfulControllers.js';
+import {notLoggedController} from './controllers/notLoggedController.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -40,5 +41,6 @@ export var controller = {
     userAllController: userAllController,
     singlePostFullVIewController: singlePostFullVIewController,
     userSinglePostFullVIewCntroller: userSinglePostFullVIewCntroller,
-    registrationSuccessfulControllers: registrationSuccessfulControllers
+    registrationSuccessfulControllers: registrationSuccessfulControllers,
+    notLoggedController: notLoggedController
 };
