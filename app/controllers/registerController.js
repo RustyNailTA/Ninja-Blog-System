@@ -2,119 +2,107 @@ import {templateHandler} from 'templateHandler'
 import db from 'db'
 import User from 'user'
 import Post from 'post'
+import {CONSTRAINTS} from 'CONSTRAINTS'
+import {validator} from 'validator'
 
 function registerController() {
 
-
     function dataVerification() {
+        var $userName = $('#inputUserName'),
+            $email = $('#inputEmail'),
+            $password = $('#inputPassword'),
+            $passwordConfirmed = $('#inputConfirmPassword'),
+            $terms = $('#termsAccepted'),
+            $submitButton = $('#btn-registration-submit'),
+            $submitTooltipContainer = $('#btn-registration-submit-tooltip-container'),
+            $registrationForm = $('#registration-form');
 
-        var CONSTRAINTS = {
-            USER_NAME_PATTERN: /^[.a-zA-Z0-9_-]{5,25}$/,
-            EMAIL_PATTERN: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
-            PASSWORD_PATTERN: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
-        };
+        $registrationForm.on('mouseover', function () {
+            var termsAccepted = $terms.prop('checked'),
+                correctUserName = $userName.hasClass('input-correct'),
+                correctEmail = $email.hasClass('input-correct'),
+                correctPassword = $password.hasClass('input-correct'),
+                correctPasswordConfirmed = $password.val() === $passwordConfirmed.val();
 
+            if (termsAccepted &&
+                correctUserName &&
+                correctEmail &&
+                correctPassword &&
+                correctPasswordConfirmed) {
+                $submitButton.removeClass('disabled')
+                    .prop('disabled', false);
 
-        function validateInput(element, pattern) {
-            element.on('focusout', function () {
-                var $this = $(this);
+                $submitTooltipContainer.attr({
+                    'data-original-title': 'Ready to go!'
+                });
+            } else {
+                $submitButton.addClass('disabled')
+                    .prop('disabled', true);
 
-                var isCorrect = pattern.test($this.val());
+                $submitTooltipContainer.attr({
+                    'data-original-title': 'All fields are required!'
+                });
+            }
+        });
 
-                if (isCorrect) {
-                    $this.removeClass('input-incorrect');
-                    $this.addClass('input-correct');
-                } else {
-                    $this.addClass('input-incorrect');
-                    $this.removeClass('input-correct');
-                }
-            })
-                .on('focus', function () {
-                    var $this = $(this);
-                    $this.removeClass('input-correct');
-                    $this.removeClass('input-incorrect');
-                })
-        }
-
-        function validateAllImputs() {
-            $('#registration-form').on('mouseover', function () {
-
-                //console.log('input')
-                var userName = $('#inputUserName'),
-                    email = $('#inputEmail'),
-                    password = $('#inputPassword'),
-                    passwordConfirmed = $('#inputConfirmPassword'),
-                    termsAccepted = $('#termsAccepted').prop('checked');
-
-                if (termsAccepted &&
-                    ((!userName.hasClass('input-incorrect') && userName.val() != '') &&
-                    (!email.hasClass('input-incorrect') && userName.val() != '') &&
-                    (!userName.hasClass('input-incorrect') && userName.val() != '') &&
-                    (!userName.hasClass('input-incorrect') && userName.val() != '') &&
-                    (password.val() != '') && (password.val() === passwordConfirmed.val()))) {
-
-                    $('#btn-registration-submit').prop('disabled', false).removeClass('disabled');
-                } else {
-                    $('#btn-registration-submit').prop('disabled', true).addClass('disabled');
-                }
-            })
-        }
-
-        $('#inputUserName').attr({
+        validator.registrationValidator.validateInput($userName, CONSTRAINTS.USER_NAME_PATTERN);
+        $userName.attr({
             'data-toggle': 'tooltip',
             title: 'User name must between 5 and 25 characters long and contain only a-z A-Z 0-9 and _ and . (no empty spaces)!'
         });
-        validateInput($('#inputUserName'), CONSTRAINTS.USER_NAME_PATTERN);
 
-        $('#inputEmail').attr({
+        validator.registrationValidator.validateInput($email, CONSTRAINTS.EMAIL_PATTERN);
+        $email.attr({
             'data-toggle': 'tooltip',
             title: 'Email must be valid!'
         });
-        validateInput($('#inputEmail'), CONSTRAINTS.EMAIL_PATTERN);
 
-        $('#inputPassword').attr({
+        validator.registrationValidator.validateInput($password, CONSTRAINTS.PASSWORD_PATTERN);
+        $password.attr({
             'data-toggle': 'tooltip',
             title: 'Password must contain minimum 8 characters at least 1 Alphabet and 1 Number!'
         });
-        validateInput($('#inputPassword'), CONSTRAINTS.PASSWORD_PATTERN);
 
-        $('#btn-registration-submit').attr({
+        validator.registrationValidator.validatePasswordConfirmed($passwordConfirmed, $password);
+        $passwordConfirmed.attr({
             'data-toggle': 'tooltip',
-            title: 'All fields are required!'
+            title: 'This field must match the password above!'
         });
 
+        $submitButton.prop('disabled', true);
+
+        $submitTooltipContainer.attr({
+            'data-toggle': 'tooltip',
+            'data-original-title': 'All fields are required!'
+        });
 
         $('[data-toggle="tooltip"]').tooltip();
-
-        validateAllImputs();
     }
 
     function registrationHandler() {
+        var $submitButton = $('#btn-registration-submit');
 
         dataVerification();
-        $('#btn-registration-submit').on('click', function () {
+
+        $submitButton.on('click', function () {
             var userName = $('#inputUserName').val(),
                 email = $('#inputEmail').val(),
-                password = $('#inputPassword').val(),
-                passwordConfirmesion = $('#inputConfirmPassword').val();
+                password = $('#inputPassword').val();
 
+            console.log(userName + ' registered');
 
-            User.create(userName,password, email);
+            User.create(userName, password, email);
 
             var data = {
                 username: userName,
                 email: email
             };
 
-           // alert(email)
-
-
             templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', data)
         })
     }
 
-    templateHandler.loadStaticTemplate('templates/register.html', '#template-container', registrationHandler)
-
+    templateHandler.loadStaticTemplate('templates/register.html', '#template-container', registrationHandler);
 }
 
 export {registerController}

@@ -35,7 +35,7 @@ function app() {
             controller.notFoundController();
         };
 
-        this.get('/', function () {
+        this.get('#/', function () {
             controller.homeController();
         });
 
@@ -104,8 +104,6 @@ function app() {
             // TODO: create page controller
         });
 
-
-
         this.get('#/:user/new-blog', function () {
             controller.userNewBlogController();
         });
@@ -130,11 +128,9 @@ function app() {
 
             controller.userSinglePostFullVIewCntroller(user, postID, this);
         });
-
-
     });
 
-    app.run('/#')
+    app.run('#/')
 
     return app;
 }
