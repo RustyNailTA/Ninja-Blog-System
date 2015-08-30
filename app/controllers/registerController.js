@@ -24,11 +24,13 @@ function registerController() {
                 correctPassword = $password.hasClass('input-correct'),
                 correctPasswordConfirmed = $password.val() === $passwordConfirmed.val();
 
-            if (termsAccepted &&
+            if (
+                termsAccepted &&
                 correctUserName &&
                 correctEmail &&
                 correctPassword &&
-                correctPasswordConfirmed) {
+                correctPasswordConfirmed
+            ) {
                 $submitButton.removeClass('disabled')
                     .prop('disabled', false);
 
