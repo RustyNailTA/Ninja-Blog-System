@@ -26,14 +26,13 @@ var User = Parse.User.extend({
         user.set('email', email);
         user.set('links', []);
 
-        user.signUp(null, {
-            error: function (user, error) {
-                throw new Error(`Could not create user: ${error.message}` +
-                ` (${error.code}).`);
-            }
-        })
-
-        return user;
+        return new Promise(function (resolve, reject) {
+            user.signUp().then(function (user) {
+                resolve(user);
+            }, function (error) {
+                reject(error);
+            });
+        });
     }
 });
 

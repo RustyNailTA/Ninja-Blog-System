@@ -91,9 +91,11 @@ function registerController() {
                 email = $('#inputEmail').val(),
                 password = $('#inputPassword').val();
 
-            console.log(userName + ' registered');
-
-            User.create(userName, password, email);
+            User.create(userName, password, email).then(function (user) {
+                console.log(user.get('username') + ' registered!');
+            }, function (error) {
+                console.log(error.message);
+            });
 
             var data = {
                 username: userName,
