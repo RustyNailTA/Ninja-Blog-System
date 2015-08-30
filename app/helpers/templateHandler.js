@@ -1,16 +1,20 @@
-function loadStaticTemplate(templatePath, containerSelector) {
+function loadStaticTemplate(templatePath, containerSelector, successFunction) {
     $.ajax({
         url: templatePath,
         method: 'GET',
         data: 'string',
         success: function (template) {
-            $(containerSelector).html(template)
+            $(containerSelector).html(template);
+
+            if(typeof successFunction === 'function'){
+                successFunction();
+            }
         },
         dataType: 'html'
     });
 }
 
-function loadDataTemplate(templatePath, containerSelector, dataObject) {
+function loadDataTemplate(templatePath, containerSelector, dataObject, successFunction) {
     $.ajax({
         url: templatePath,
         method: 'GET',
@@ -21,7 +25,11 @@ function loadDataTemplate(templatePath, containerSelector, dataObject) {
 
            // console.log(resultHtml)
 
-            $(containerSelector).html(resultHtml)
+            $(containerSelector).html(resultHtml);
+
+            if(typeof successFunction === 'function'){
+                successFunction();
+            }
         },
         dataType: 'html'
     });

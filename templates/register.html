@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <form class="form-horizontal">
+    <form class="form-horizontal" id="registration-form" action="#/register">
         <fieldset>
             <legend>BECOME NINJA BLOGGER</legend>
             <div class="form-group">
@@ -31,27 +31,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-lg-2 control-label">Ninja type</label>
-                <div class="col-lg-10">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="justNinja" value="justNinja" checked="">
-                            Just Ninja
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="sensei" value="sensei">
-                            Sensei
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox"> <a
+                            <input type="checkbox" id="termsAccepted"> <a
                                 href="https://answers.yahoo.com/question/index?qid=20080911132939AAvpWDN"
                                 target="_blank">Accept
                             terms of use</a>
@@ -61,8 +44,8 @@
             </div>
             <div class="form-group">
                 <div class="col-lg-10 col-lg-offset-2">
-                    <button type="reset" class="btn btn-default">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button  class="btn btn-default" id="btn-registration-cancel">Cancel</button>
+                    <button  class="btn btn-primary disabled" id="btn-registration-submit" disabled="disabled">Submit</button>
                 </div>
             </div>
         </fieldset>

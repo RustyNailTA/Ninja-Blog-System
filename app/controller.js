@@ -16,6 +16,7 @@ import {userTopController} from './controllers/userTopController.js';
 import {userAllController} from './controllers/userAllController.js';
 import {singlePostFullVIewController} from './controllers/singlePostFullVIewController.js';
 import {userSinglePostFullVIewCntroller} from './controllers/userSinglePostFullVIewCntroller.js';
+import {registrationSuccessfulControllers} from './controllers/registrationSuccessfulControllers.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -38,5 +39,6 @@ export var controller = {
     userTopController: userTopController,
     userAllController: userAllController,
     singlePostFullVIewController: singlePostFullVIewController,
-    userSinglePostFullVIewCntroller: userSinglePostFullVIewCntroller
+    userSinglePostFullVIewCntroller: userSinglePostFullVIewCntroller,
+    registrationSuccessfulControllers: registrationSuccessfulControllers
 };

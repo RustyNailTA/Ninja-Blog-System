@@ -17,14 +17,14 @@ function app() {
 
     db.init();
 
-    User.create('ivo', 'ivoivo', 'ivo@ivoivo.com');
+    //User.create('ivko', 'bivko', 'ivko@bivko.com');
 
-    var currentUser = User.current();
+   // var currentUser = User.current();
 
-    var post = Post.create('hello world', 'Hello guys. Some post here.',
-    ['tag1', 'tag2', 'tag3'], currentUser.get('username'));
+    //var post = Post.create('hello world I am ninja', 'Hello guys. Some post here.',
+    //['tag1', 'tag2', 'tag3'], currentUser.get('username'));
 
-    console.log(currentUser.getPostCount());
+    //console.log(currentUser.getPostCount());
 
     var app = $.sammy('#main-content', function () {
 
@@ -62,6 +62,10 @@ function app() {
 
         this.get('#/register', function () {
             controller.registerController();
+        });
+
+        this.get('#/register-successful', function () {
+            controller.registrationSuccessfulControllers();
         });
 
         this.get('#/:param', function () {
