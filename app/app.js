@@ -37,47 +37,75 @@ function app() {
 
 
         this.get('#/', function () {
+            controller.authenticationController();
+
             controller.homeController();
         });
 
         this.get('#/home', function () {
+            controller.authenticationController();
+
             controller.homeController();
+
         });
 
         this.get('#/top', function () {
            controller.topController();
+            controller.authenticationController();
+
         });
 
         this.get('#/all', function () {
            controller.allController();
+            controller.authenticationController();
+
         });
 
         this.get('#/about', function () {
            // alert('about')
            controller.aboutController();
+            controller.authenticationController();
+
+        });
+
+        this.get('#/login-error', function () {
+            // alert('about')
+            controller.aboutController();
+            controller.login();
+
         });
 
         this.get('#/login', function () {
             controller.loginController();
+            controller.authenticationController();
+
         });
 
         this.get('#/login-please', function () {
             controller.notLoggedController();
+            controller.authenticationController();
+
         });
 
         this.get('#/register', function () {
             controller.registerController();
+            controller.authenticationController();
+
         });
 
         this.get('#/register-successful', function () {
             controller.registrationSuccessfulControllers();
+            controller.authenticationController();
+
         });
 
         this.get('#/:param', function () {
            // alert('param')
            var selector = this.params['param'];
             controller.allocatorController(selector, this);
-           // console.log(selector)
+            controller.authenticationController();
+
+            // console.log(selector)
          // this.notFound();
 
             //this.partial('templates/item_detail.template');
@@ -85,17 +113,34 @@ function app() {
 
         this.get('#/:user/home', function () {
             var selector = this.params['user'];
+
            // console.log(selector)
            // alert(selector + this.params['home'])
 
             controller.userHomeController(selector, this);
+            controller.authenticationController();
+
         });
+
         this.get('#/:user/about', function () {
            // alert('About user')
 
             var userName = this.params['user']
             controller.userAboutController(userName, this);
+            controller.authenticationController();
+
         });
+
+        this.get('#/:user/logout', function () {
+           // alert('About user')
+
+            var userName = this.params['user']
+            controller.userAboutController(userName, this);
+            controller.logOutController();
+
+        });
+
+
 
         this.get('#/:user/top', function () {
             //alert('top')
@@ -111,19 +156,27 @@ function app() {
 
         this.get('#/:user/new-blog', function () {
             controller.userNewBlogController();
+            controller.authenticationController();
+
         });
 
         this.get('#/:user/settings', function () {
             var userName = this.params['user']
            controller.userSettingsController(userName, this);
+            controller.authenticationController();
+
         });
 
         this.get('#/:user/settings-blog', function () {
            controller.userSettingsBlogController();
+            controller.authenticationController();
+
         });
 
         this.get('#/:user/settings-personal', function () {
           controller.userSettingsPersonalController();
+            controller.authenticationController();
+
         });
 
         this.get('#/:user/:postId', function () {
@@ -133,6 +186,8 @@ function app() {
            // alert(selector + this.params['home'])
 
             controller.userSinglePostFullVIewCntroller(user, postID, this);
+            controller.authenticationController();
+
         });
     });
 

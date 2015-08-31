@@ -92,9 +92,11 @@ function registerController() {
                 password = $('#inputPassword').val();
 
             User.create(userName, password, email).then(function (user) {
-                console.log(user.get('username') + ' registered!');
+                //console.log(user.get('username') + ' registered!');
+                templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', data)
             }, function (error) {
-                console.log(error.message);
+                //console.log(error.message);
+                templateHandler.loadDataTemplate('templates/registration-error.html', '#template-container', error)
             });
 
             var data = {
@@ -102,7 +104,7 @@ function registerController() {
                 email: email
             };
 
-            templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', data)
+           // templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', data)
         })
     }
 

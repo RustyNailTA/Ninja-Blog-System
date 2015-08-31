@@ -18,6 +18,9 @@ import {singlePostFullVIewController} from './controllers/singlePostFullVIewCont
 import {userSinglePostFullVIewCntroller} from './controllers/userSinglePostFullVIewCntroller.js';
 import {registrationSuccessfulControllers} from './controllers/registrationSuccessfulControllers.js';
 import {notLoggedController} from './controllers/notLoggedController.js';
+import {authenticationController} from './controllers/authenticationController.js';
+import {logOutController} from './controllers/logOutController.js';
+import {loginErrorController} from './controllers/loginErrorController.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -42,5 +45,8 @@ export var controller = {
     singlePostFullVIewController: singlePostFullVIewController,
     userSinglePostFullVIewCntroller: userSinglePostFullVIewCntroller,
     registrationSuccessfulControllers: registrationSuccessfulControllers,
-    notLoggedController: notLoggedController
+    notLoggedController: notLoggedController,
+    authenticationController: authenticationController,
+    logOutController: logOutController,
+    loginErrorController: loginErrorController
 };
