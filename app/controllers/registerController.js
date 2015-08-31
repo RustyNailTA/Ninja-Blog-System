@@ -96,6 +96,7 @@ function registerController() {
                 templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', data)
             }, function (error) {
                 //console.log(error.message);
+                window.location.hash = '#/registration-error'
                 templateHandler.loadDataTemplate('templates/registration-error.html', '#template-container', error)
             });
 

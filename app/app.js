@@ -17,15 +17,6 @@ function app() {
 
     db.init();
 
-    //User.create('ivko', 'bivko', 'ivko@bivko.com');
-
-   // var currentUser = User.current();
-
-    //var post = Post.create('hello world I am ninja', 'Hello guys. Some post here.',
-    //['tag1', 'tag2', 'tag3'], currentUser.get('username'));
-
-    //console.log(currentUser.getPostCount());
-
     var app = $.sammy('#main-content', function () {
 
         //console.log('After Sammy');
@@ -44,7 +35,6 @@ function app() {
 
         this.get('#/home', function () {
             controller.authenticationController();
-
             controller.homeController();
 
         });
@@ -57,6 +47,17 @@ function app() {
 
         this.get('#/all', function () {
            controller.allController();
+            controller.authenticationController();
+
+        });
+
+        this.get('#/all-posts', function () {
+           controller.allController();
+            controller.authenticationController();
+
+        });
+        this.get('#/all-users', function () {
+           controller.allUsersController();
             controller.authenticationController();
 
         });
@@ -140,8 +141,6 @@ function app() {
 
         });
 
-
-
         this.get('#/:user/top', function () {
             //alert('top')
             $('#template-container').load('templates/top.html');
@@ -154,7 +153,7 @@ function app() {
             // TODO: create page controller
         });
 
-        this.get('#/:user/new-blog', function () {
+        this.get('#/:user/new-post', function () {
             controller.userNewBlogController();
             controller.authenticationController();
 

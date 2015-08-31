@@ -33,7 +33,23 @@ var User = Parse.User.extend({
                 reject(error);
             });
         });
+    },
+    getAllUsers: function () {
+        var queryObject = new Parse.Query(User);
+        return new Promise(function (resolve, reject) {
+            queryObject.find().then(function (results) {
+                var users = results.map(function (user) {
+                    return user.attributes;
+                });
+
+                resolve(users);
+            }, function (error) {
+                reject(error);
+            });
+        });
     }
+
+
 });
 
 export default User;

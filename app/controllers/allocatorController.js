@@ -1,6 +1,8 @@
 import {templateHandler} from 'templateHandler'
 import {testDB} from 'testDB'
 import {controller} from 'controller';
+import Post from 'post'
+import User from 'user'
 
 
 function allocatorController(selector, app) {
@@ -15,7 +17,7 @@ function allocatorController(selector, app) {
 
     var selectedPost = _.find(testDB.posts, function (post) {
         return post.id == selector
-    })
+    });
 
     if (selectedUser) {
         var userPosts = {

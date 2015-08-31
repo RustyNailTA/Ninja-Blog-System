@@ -21,6 +21,7 @@ import {notLoggedController} from './controllers/notLoggedController.js';
 import {authenticationController} from './controllers/authenticationController.js';
 import {logOutController} from './controllers/logOutController.js';
 import {loginErrorController} from './controllers/loginErrorController.js';
+import {allUsersController} from './controllers/allUsersController.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -48,5 +49,6 @@ export var controller = {
     notLoggedController: notLoggedController,
     authenticationController: authenticationController,
     logOutController: logOutController,
-    loginErrorController: loginErrorController
+    loginErrorController: loginErrorController,
+    allUsersController:allUsersController
 };

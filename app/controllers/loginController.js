@@ -4,6 +4,8 @@ import User from 'user'
 import Post from 'post'
 import {CONSTRAINTS} from 'CONSTRAINTS'
 import {validator} from 'validator'
+import {controller} from 'controller';
+
 
 function loginController(){
 
@@ -74,11 +76,11 @@ function loginController(){
 
             User.logIn(userName, password).then(function (user) {
                // console.log(user.get('username') + ' logged in!');
-                templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', user.attributes)
+                templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', user.attributes, controller.authenticationController)
             }, function (error) {
                 //console.log(error.message + ' ' +  userName +  ' ' + password);
                 window.location.hash = '#/login-error'
-                templateHandler.loadDataTemplate('templates/login-error.html', '#template-container', error)
+                templateHandler.loadDataTemplate('templates/login-error.html', '#template-container', error )
             });
         })
     }
