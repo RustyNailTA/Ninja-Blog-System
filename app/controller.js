@@ -5,7 +5,7 @@ import {allController} from './controllers/allController.js';
 import {loginController} from './controllers/loginController.js';
 import {aboutController} from './controllers/aboutController.js';
 import {userAboutController} from './controllers/userAboutController.js';
-import {userNewBlogController} from './controllers/userNewBlogController.js';
+import {userNewPostController} from './controllers/userNewPostController.js';
 import {userSettingsController} from './controllers/userSettingsController.js';
 import {userSettingsPersonalController} from './controllers/userSettingsPersonalController.js';
 import {userSettingsBlogController} from './controllers/userSettingsBlogController.js';
@@ -22,6 +22,7 @@ import {authenticationController} from './controllers/authenticationController.j
 import {logOutController} from './controllers/logOutController.js';
 import {loginErrorController} from './controllers/loginErrorController.js';
 import {allUsersController} from './controllers/allUsersController.js';
+import {userNewPostSubmitController} from './controllers/userNewPostSubmitController.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -34,7 +35,7 @@ export var controller = {
     loginController: loginController,
     aboutController: aboutController,
     userAboutController: userAboutController,
-    userNewBlogController: userNewBlogController,
+    userNewPostController: userNewPostController,
     userSettingsController: userSettingsController,
     userSettingsPersonalController: userSettingsPersonalController,
     userSettingsBlogController: userSettingsBlogController,
@@ -50,5 +51,6 @@ export var controller = {
     authenticationController: authenticationController,
     logOutController: logOutController,
     loginErrorController: loginErrorController,
-    allUsersController:allUsersController
+    allUsersController:allUsersController,
+    userNewPostSubmitController: userNewPostSubmitController
 };
