@@ -12,7 +12,7 @@ function userHomeController(userName, app) {
 
             localStorage.setItem('blog', userName);
             controller.navbarController();
-            //console.log(posts)
+           // console.log(posts[0])
             posts[0].active = true;
 
             templateHandler.loadDataTemplate('templates/home.html', '#template-container', {posts: posts})

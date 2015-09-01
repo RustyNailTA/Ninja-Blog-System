@@ -3,8 +3,6 @@ import {testDB} from 'testDB'
 import {controller} from 'controller'
 import Post from 'post'
 
-
-
 function homeController() {
     Post.getLatestNPosts(5).then(function (posts) {
         posts[0].active = true;
