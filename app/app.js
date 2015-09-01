@@ -1,9 +1,10 @@
 import {controller} from 'controller';
 import {templateHandler} from 'templateHandler'
-import db from 'db'
+import fbApi from 'fbApi'
 import User from 'user'
 import Post from 'post'
 import {utilities} from 'utilities'
+import {Parse as Parse} from 'parse'
 
 //import 'handlebars';
 //import 'sammy';
@@ -17,14 +18,17 @@ function app() {
     //console.log('Enter app');
     //console.log(Sammy);
 
-    db.init();
+    (function (Parse) {
+        Parse.initialize("by6R7kv1sgAk4lRHRQHZkSGogK9ow8JdZAcLNk55",
+            "uJcZm7i4Xvc11Zs9R8mEAHBxS3zVwdATQnEtSbuB");
+    })(Parse);
 
     var app = $.sammy('#main-content', function () {
 
         //console.log('After Sammy');
 
-        this.notFound = function(){
-           // console.log('not found')
+        this.notFound = function () {
+            // console.log('not found')
             controller.notFoundController();
         };
 
@@ -46,33 +50,33 @@ function app() {
         });
 
         this.get('#/top', function () {
-           controller.topController();
+            controller.topController();
             controller.authenticationController();
 
         });
 
         this.get('#/all', function () {
-           controller.allController();
+            controller.allController();
             controller.authenticationController();
 
         });
 
         this.get('#/all-posts', function () {
-           controller.allController();
+            controller.allController();
 
             controller.authenticationController();
             controller.shareController();
 
         });
         this.get('#/all-users', function () {
-           controller.allUsersController();
+            controller.allUsersController();
             controller.authenticationController();
 
         });
 
         this.get('#/about', function () {
-           // alert('about')
-           controller.aboutController();
+            // alert('about')
+            controller.aboutController();
             controller.authenticationController();
 
         });
@@ -80,7 +84,7 @@ function app() {
         this.get('#/login-error', function () {
             // alert('about')
             controller.aboutController();
-           // controller.login();
+            // controller.login();
 
         });
 
@@ -118,13 +122,13 @@ function app() {
         });
 
         this.get('#/:param', function () {
-           // alert('param')
-           var selector = this.params['param'];
+            // alert('param')
+            var selector = this.params['param'];
             controller.allocatorController(selector, this);
             controller.authenticationController();
 
             // console.log(selector)
-         // this.notFound();
+            // this.notFound();
 
             //this.partial('templates/item_detail.template');
         });
@@ -132,8 +136,8 @@ function app() {
         this.get('#/:user/home', function () {
             var selector = this.params['user'];
 
-           // console.log(selector)
-           // alert(selector + this.params['home'])
+            // console.log(selector)
+            // alert(selector + this.params['home'])
 
             controller.userHomeController(selector, this);
             controller.authenticationController();
@@ -141,7 +145,7 @@ function app() {
         });
 
         this.get('#/:user/about', function () {
-           // alert('About user')
+            // alert('About user')
 
             var userName = this.params['user']
             controller.userAboutController(userName, this);
@@ -150,7 +154,7 @@ function app() {
         });
 
         this.get('#/:user/logout', function () {
-           // alert('About user')
+            // alert('About user')
 
             var userName = this.params['user']
             //controller.userAboutController(userName, this);
@@ -177,33 +181,34 @@ function app() {
             controller.authenticationController();
         })
 
-        ;this.get('#/:user/new-post-submit', function () {
+        ;
+        this.get('#/:user/new-post-submit', function () {
             var title = this.params.title,
                 content = this.params.content,
                 tags = this.params.tags,
                 author = this.params.user;
 
-            console.log(title + ' ' + content + ' ' + tags  +' ' + author)
+            console.log(title + ' ' + content + ' ' + tags + ' ' + author)
 
-            controller.userNewPostSubmitController( author, title, content, tags, this);
+            controller.userNewPostSubmitController(author, title, content, tags, this);
             controller.authenticationController();
         });
 
         this.get('#/:user/settings', function () {
             var userName = this.params['user']
-           controller.userSettingsController(userName, this);
+            controller.userSettingsController(userName, this);
             controller.authenticationController();
 
         });
 
         this.get('#/:user/settings-blog', function () {
-           controller.userSettingsBlogController();
+            controller.userSettingsBlogController();
             controller.authenticationController();
 
         });
 
         this.get('#/:user/settings-personal', function () {
-          controller.userSettingsPersonalController();
+            controller.userSettingsPersonalController();
             controller.authenticationController();
 
         });
@@ -212,7 +217,7 @@ function app() {
             var user = this.params['user'],
                 postID = this.params['postId'];
             // console.log(selector)
-           // alert(selector + this.params['home'])
+            // alert(selector + this.params['home'])
 
             controller.userSinglePostFullVIewCntroller(user, postID, this);
             controller.authenticationController();
@@ -225,7 +230,11 @@ function app() {
     return app;
 }
 
-export {app};
+export
+{
+    app
+}
+;
 
 
 

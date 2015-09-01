@@ -9,7 +9,7 @@ System.config({
 		sammy: 'bower_components/sammy/lib/sammy.js',
 		handlebars: 'bower_components/handlebars/handlebars.js',
 		bootstrap: 'bower_components/bootstrap/dist/js/bootstrap.js',
-		db: 'scripts/db.js',
+		fbApi: 'scripts/facebookApi.js',
 		user: 'scripts/user.js',
 		post: 'scripts/post.js',
 		app: 'app/app.js',

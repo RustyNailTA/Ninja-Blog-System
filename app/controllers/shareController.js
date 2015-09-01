@@ -1,5 +1,5 @@
 import {templateHandler} from 'templateHandler'
-import db from 'db'
+import fbApi from 'fbApi'
 import User from 'user'
 import Post from 'post'
 import {CONSTRAINTS} from 'CONSTRAINTS'
@@ -11,6 +11,8 @@ import {Parse as Parse} from 'parse'
 function shareController() {
 
     function shareHandler() {
+
+        fbApi.init();
 
         $(document).on('click','.blog-main', function(ev) {
             var $target = $(ev.target);

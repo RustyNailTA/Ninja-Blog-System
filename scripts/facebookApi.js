@@ -1,9 +1,10 @@
 import { Parse as Parse } from 'parse';
 
-var db = (function (Parse) {
+var fbApi = (function (Parse) {
     function init() {
+
         Parse.initialize("by6R7kv1sgAk4lRHRQHZkSGogK9ow8JdZAcLNk55",
-        "uJcZm7i4Xvc11Zs9R8mEAHBxS3zVwdATQnEtSbuB");
+            "uJcZm7i4Xvc11Zs9R8mEAHBxS3zVwdATQnEtSbuB");
 
         window.fbAsyncInit = function() {
             Parse.FacebookUtils.init({
@@ -14,8 +15,6 @@ var db = (function (Parse) {
                 version    : 'v2.4'
             });
         };
-
-
 
         (function(d, s, id){
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -32,4 +31,4 @@ var db = (function (Parse) {
 
 }) (Parse);
 
-export default db;
+export default fbApi;

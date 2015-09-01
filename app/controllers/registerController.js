@@ -1,5 +1,5 @@
 import {templateHandler} from 'templateHandler'
-import db from 'db'
+import fbApi from 'fbApi'
 import User from 'user'
 import Post from 'post'
 import {CONSTRAINTS} from 'CONSTRAINTS'
