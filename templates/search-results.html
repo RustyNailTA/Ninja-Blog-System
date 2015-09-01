@@ -1,0 +1,53 @@
+<div class=" container-fluid">
+    <h2>Search results for: {{request}}</h2>
+    <div class="col-sm-8 blog-main">
+        {{#posts}}
+        <article class="blog-post">
+            <h2 class="blog-post-title">{{this.title}}</h2>
+
+            <p class="blog-post-meta">{{this.createdAt}} by: <a href="#/{{author}}/about">{{this.author}}</a></p>
+
+            <div>
+                {{{this.content}}}
+            </div>
+
+        </article>
+        <div class="col-xs-4 col-lg-2 col-md-3 col-sm-3 col-xs-offset-8">
+            <button class="btn btn-block btn-social btn-facebook btn-xs" id="btn-fb-share-{{@index}}">
+                <i class="fa fa-facebook"></i>Share
+            </button>
+        </div>
+        <br/>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <span>Tags:&nbsp;&nbsp;</span>
+                {{#tags}}
+                <small>
+                    <strong>
+                        <a target="_blank" href="#/search-results?request={{this}}">
+                            {{this}}
+                        </a>
+                        <span>&nbsp;</span>
+                    </strong>
+                </small>
+                {{/tags}}
+
+            </div>
+        </div>
+        <hr/>
+        <br/>
+
+        {{/posts}}<!-- /.blog-post -->
+
+        <!--<nav>-->
+        <!--<ul class="pager">-->
+        <!--<li><a href="#">Previous</a></li>-->
+        <!--<li><a href="#">Next</a></li>-->
+        <!--</ul>-->
+        <!--</nav>-->
+
+    </div>
+</div>
+

@@ -143,11 +143,10 @@ function app() {
         });
 
         this.get('#/search-results', function () {
-            var value = this.params['request']
+            var request = this.params['request'];
 
-            console.log(value + 'rrrr')
-            //controller.registrationSuccessfulControllers();
-            //controller.authenticationController();
+            controller.searchResultsController(request, this);
+            controller.authenticationController();
 
         });
 
