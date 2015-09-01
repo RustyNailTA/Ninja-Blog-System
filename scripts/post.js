@@ -29,7 +29,7 @@ var Post = Parse.Object.extend('Post', {}, {
                 var posts = results.map(function (post) {
                   var currPost = post.attributes;
                     currPost.id = post.id;
-                    currPost.createdAt = post.createdAt.toLocaleDateString()
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
                     return currPost;
                 });
 
@@ -49,6 +49,8 @@ var Post = Parse.Object.extend('Post', {}, {
                 var posts = results.map(function (post) {
                     var currPost = post.attributes;
                     currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
                     return currPost;
                 });
 
@@ -68,6 +70,8 @@ var Post = Parse.Object.extend('Post', {}, {
                 var posts = results.map(function (post) {
                     var currPost = post.attributes;
                     currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
                     return currPost;
                 });
 
@@ -88,6 +92,8 @@ var Post = Parse.Object.extend('Post', {}, {
                 var posts = results.map(function (post) {
                     var currPost = post.attributes;
                     currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
                     return currPost;
                 });
 
@@ -111,6 +117,8 @@ var Post = Parse.Object.extend('Post', {}, {
                 var posts = results.map(function (post) {
                     var currPost = post.attributes;
                     currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
                     return currPost;
                 });
 
@@ -131,6 +139,8 @@ var Post = Parse.Object.extend('Post', {}, {
                 var posts = results.map(function (post) {
                     var currPost = post.attributes;
                     currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
                     return currPost;
                 });
 
@@ -140,10 +150,14 @@ var Post = Parse.Object.extend('Post', {}, {
             });
         });
     },
-    getLatestNPosts: function (n) {
+    getLatestNPosts: function (n, author) {
         var query = new Parse.Query(Post);
 
-        query.ascending("createdAt");
+        if(author){
+            query.equalTo("author", author);
+        }
+
+        query.descending("createdAt");
         query.limit(n);
 
         return new Promise(function (resolve, reject) {
@@ -151,6 +165,8 @@ var Post = Parse.Object.extend('Post', {}, {
                 var posts = results.map(function (post) {
                     var currPost = post.attributes;
                     currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
                     return currPost;
                 });
 

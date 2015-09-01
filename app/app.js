@@ -302,7 +302,7 @@ function app() {
 
             var selector = this.params['user'];
 
-            localStorage.setItem('blog', selector)
+           // localStorage.setItem('blog', selector)
 
             var userName = this.params['user']
             controller.userSettingsController(userName, this);
@@ -314,7 +314,7 @@ function app() {
 
             var selector = this.params['user'];
 
-            localStorage.setItem('blog', selector)
+            //localStorage.setItem('blog', selector)
 
             controller.userSettingsBlogController();
             controller.authenticationController();
@@ -324,9 +324,9 @@ function app() {
         this.get('#/:user/settings-personal', function () {
             var selector = this.params['user'];
 
-            localStorage.setItem('blog', selector)
+            //localStorage.setItem('blog', selector)
 
-            controller.userSettingsPersonalController();
+            controller.userSettingsPersonalController(this);
             controller.authenticationController();
 
         });

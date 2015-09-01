@@ -6,21 +6,25 @@ import {controller} from 'controller'
 
 function userHomeController(userName, app) {
 
-    Post.getAllPostsByAuthor(userName).then(function (posts) {
+    Post.getLatestNPosts(3, userName).then(function (posts) {
+
+        console.log(posts)
+
         if (posts && posts.length > 0) {
 
 
             localStorage.setItem('blog', userName);
             controller.navbarController();
-           // console.log(posts[0])
+            console.log(posts[0])
             posts[0].active = true;
 
             templateHandler.loadDataTemplate('templates/home.html', '#template-container', {posts: posts})
         } else {
             templateHandler.loadDataTemplate('templates/user-about.html', '#template-container', {username: userName})
         }
-    }, function (error) {
-        app.notFound()
+
+    }, function (err) {
+        console.log(err);
     });
 }
 
