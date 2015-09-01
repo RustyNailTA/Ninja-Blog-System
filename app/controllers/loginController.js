@@ -87,13 +87,16 @@ function loginController() {
                 // console.log(user.get('username') + ' logged in!');
                 console.log('etoooo');
                 console.log(user.get('username'));
+                controller.navbarController()
+
+
                 templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', user.attributes, controller.authenticationController)
             }, function (error) {
                 //console.log(error.message + ' ' +  userName +  ' ' + password);
                 window.location.hash = '#/login-error'
                 templateHandler.loadDataTemplate('templates/login-error.html', '#template-container', error)
             });
-        })
+        });
 
         $fbLoginButton.on('click', function () {
             console.log('test');
@@ -108,6 +111,7 @@ function loginController() {
                             fbUser.attributes.user = user.attributes;
 
                             localStorage.setItem("user", JSON.stringify(fbUser))
+
                             if (!user.existed()) {
 
                                 templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', fbUser.attributes, controller.authenticationController)

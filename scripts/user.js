@@ -56,18 +56,16 @@ var User = Parse.User.extend({
 
         return new Promise(function (resolve, reject) {
             query.find().then(function (results) {
-                var posts = results.map(function (post) {
-                    return post.attributes;
+                var users = results.map(function (user) {
+                    return user.attributes;
                 });
 
-                resolve(posts[0]);
+                resolve(users[0]);
             }, function (error) {
                 reject(error);
             });
         });
-    },
-
-
+    }
 });
 
 export default User;

@@ -11,6 +11,9 @@ function logOutController(){
     var currentUser = User.current();
    // console.log(currentUser);
     User.logOut();
+    localStorage.setItem('blog', '')
+    controller.navbarController()
+
 
     if(localStorage.getItem('user')){
         currentUser = JSON.parse(localStorage.getItem('user'));

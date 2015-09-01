@@ -252,7 +252,7 @@ function app() {
 
         });
 
-        this.get('/:user/#all', function () {
+        this.get('#/:user/all', function () {
 
             var selector = this.params['user'];
 
