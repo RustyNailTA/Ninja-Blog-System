@@ -27,7 +27,10 @@ var Post = Parse.Object.extend('Post', {}, {
         return new Promise(function (resolve, reject) {
             query.find().then(function (results) {
                 var posts = results.map(function (post) {
-                    return post.attributes;
+                  var currPost =   post.attributes;
+                    currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString()
+                    return currPost;
                 });
 
                 resolve(posts);
@@ -44,7 +47,9 @@ var Post = Parse.Object.extend('Post', {}, {
         return new Promise(function (resolve, reject) {
             query.find().then(function (results) {
                 var posts = results.map(function (post) {
-                    return post.attributes;
+                    var currPost =   post.attributes;
+                    currPost.id = post.id;
+                    return currPost;
                 });
 
                 resolve(posts);
@@ -61,7 +66,9 @@ var Post = Parse.Object.extend('Post', {}, {
         return new Promise(function (resolve, reject) {
             query.find().then(function (results) {
                 var posts = results.map(function (post) {
-                    return post.attributes;
+                    var currPost =   post.attributes;
+                    currPost.id = post.id;
+                    return currPost;
                 });
 
                 resolve(posts);
@@ -79,7 +86,9 @@ var Post = Parse.Object.extend('Post', {}, {
         return new Promise(function (resolve, reject) {
             query.find().then(function (results) {
                 var posts = results.map(function (post) {
-                    return post.attributes;
+                    var currPost =   post.attributes;
+                    currPost.id = post.id;
+                    return currPost;
                 });
 
                 resolve(posts);
@@ -100,7 +109,9 @@ var Post = Parse.Object.extend('Post', {}, {
         return new Promise(function (resolve, reject) {
             tagAndAuthorQuery.find().then(function (results) {
                 var posts = results.map(function (post) {
-                    return post.attributes;
+                    var currPost =   post.attributes;
+                    currPost.id = post.id;
+                    return currPost;
                 });
 
                 resolve(posts);

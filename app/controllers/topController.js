@@ -9,7 +9,7 @@ function topController() {
 
     //TODO: GET ONLY TOP 10 POSTS (SOTRED BY RATING)
     Post.getAllPosts().then(function (posts) {
-        templateHandler.loadDataTemplate('templates/top .html', '#template-container', { posts: posts });
+        templateHandler.loadDataTemplate('templates/top.html', '#template-container', { posts: posts });
     }, function (err) {
         console.log(err);
     });
