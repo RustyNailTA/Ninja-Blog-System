@@ -17,6 +17,7 @@ System.config({
 		templateHandler: 'app/helpers/templateHandler.js',
 		testDB: 'app/helpers/testDB.js',
 		CONSTRAINTS: 'app/helpers/CONSTRAINTS.js',
-		validator: 'app/helpers/validator.js'
+		validator: 'app/helpers/validator.js',
+		utilities: 'app/helpers/utilities.js'
 	}
 });

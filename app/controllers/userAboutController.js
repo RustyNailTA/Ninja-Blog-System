@@ -8,6 +8,7 @@ function userAboutController(userName, app){
     User.getAllUsers().then(function (users) {
         // console.log(users)
 
+
         var selectedUser = _.find(users, function (user) {
             // console.log(user.posts);
             return user.username === userName;
@@ -28,6 +29,8 @@ function userAboutController(userName, app){
         app.notFound()
 
     })
+
+
 }
 
 export {userAboutController}

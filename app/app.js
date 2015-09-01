@@ -3,6 +3,7 @@ import {templateHandler} from 'templateHandler'
 import db from 'db'
 import User from 'user'
 import Post from 'post'
+import {utilities} from 'utilities'
 
 //import 'handlebars';
 //import 'sammy';
@@ -12,6 +13,7 @@ import Post from 'post'
 
 
 function app() {
+    utilities.hideDropdown();
     //console.log('Enter app');
     //console.log(Sammy);
 
@@ -136,7 +138,7 @@ function app() {
            // alert('About user')
 
             var userName = this.params['user']
-            controller.userAboutController(userName, this);
+            //controller.userAboutController(userName, this);
             controller.logOutController();
 
         });

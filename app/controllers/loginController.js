@@ -4,10 +4,11 @@ import User from 'user'
 import Post from 'post'
 import {CONSTRAINTS} from 'CONSTRAINTS'
 import {validator} from 'validator'
-import {controller} from 'controller';
+import {controller} from 'controller'
+import {Parse as Parse} from 'parse'
 
 
-function loginController(){
+function loginController() {
 
     function dataVerification() {
         var $userName = $('#inputUserName'),
@@ -53,8 +54,6 @@ function loginController(){
         });
 
 
-        $submitButton.prop('disabled', true);
-
         $submitTooltipContainer.attr({
             'data-toggle': 'tooltip',
             'data-original-title': 'All fields are required!'
@@ -66,26 +65,81 @@ function loginController(){
     function loginHandler() {
         var $submitButton = $('#btn-login-submit');
 
+        var $loginCredentials = $('#btn-login-credentials');
+
+        var $fbLoginButton = $('#btn-login-submit-fb');
+
+        $loginCredentials.on('click', function () {
+            console.log('test');
+            $('.login-form').toggle(500);
+        })
+
         dataVerification();
 
         $submitButton.on('click', function () {
             var userName = $('#inputUserName').val(),
                 password = $('#inputPassword').val();
 
-
-
             User.logIn(userName, password).then(function (user) {
-               // console.log(user.get('username') + ' logged in!');
+                // console.log(user.get('username') + ' logged in!');
+                console.log('etoooo');
+                console.log(user.get('username'));
                 templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', user.attributes, controller.authenticationController)
             }, function (error) {
                 //console.log(error.message + ' ' +  userName +  ' ' + password);
                 window.location.hash = '#/login-error'
-                templateHandler.loadDataTemplate('templates/login-error.html', '#template-container', error )
+                templateHandler.loadDataTemplate('templates/login-error.html', '#template-container', error)
             });
         })
+
+        $fbLoginButton.on('click', function () {
+            console.log('test');
+            Parse.FacebookUtils.logIn(null, {
+                success: function (user) {
+                    var fbUser = {attributes: {}};
+
+                    function makeCall() {
+                        FB.api('/me', function (response) {
+                            fbUser.attributes.username = response.name;
+                            fbUser.attributes.id = response.id;
+                            fbUser.attributes.user = user.attributes;
+
+                            localStorage.setItem("user", JSON.stringify(fbUser))
+                            if (!user.existed()) {
+
+                                templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', fbUser.attributes, controller.authenticationController)
+                            } else {
+
+                                templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', fbUser.attributes, controller.authenticationController)
+                            }
+                        });
+                    }
+
+                    makeCall();
+
+
+                },
+                error: function (user, error) {
+                    window.location.hash = '#/login-error'
+                    templateHandler.loadDataTemplate('templates/login-error.html', '#template-container', error)
+                }
+            });
+
+
+            FB.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+                    // user logged in and linked to app
+                    // handle this case HERE
+                }
+            });
+        })
+
     }
 
     templateHandler.loadStaticTemplate('templates/login.html', '#template-container', loginHandler)
 }
 
-export {loginController}
+export
+{
+    loginController
+}

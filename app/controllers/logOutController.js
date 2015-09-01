@@ -3,25 +3,35 @@ import {testDB} from 'testDB'
 import db from 'db'
 import User from 'user'
 import Post from 'post'
-import {controller} from 'controller';
+import {controller} from 'controller'
+import {Parse as Parse} from 'parse'
 
 function logOutController(){
     console.log('At log out')
     var currentUser = User.current();
    // console.log(currentUser);
-
     User.logOut();
-    //name = currentUser.get('username');
-    //console.log(currentUser.attributes);
-    //console.log(name)
 
-    if(currentUser){
-        templateHandler.loadDataTemplate('templates/logout-success.html', '#template-container', currentUser.attributes)
-    }else {
-        templateHandler.loadStaticTemplate('templates/login-panel.html', '#template-navigation-log')
+    if(localStorage.getItem('user')){
+        currentUser = JSON.parse(localStorage.getItem('user'));
+        localStorage.removeItem('user');
+
     }
 
 
+
+
+    //name = currentUser.get('username');
+    //console.log(currentUser.attributes);
+    //console.log(name)
+    if(currentUser){
+
+        templateHandler.loadDataTemplate('templates/logout-success.html', '#template-container', currentUser.attributes)
+        templateHandler.loadStaticTemplate('templates/login-panel.html', '#template-navigation-log')
+    }
+    //else {
+    //    templateHandler.loadStaticTemplate('templates/login-panel.html', '#template-navigation-log')
+    //}
 }
 
 export {logOutController}

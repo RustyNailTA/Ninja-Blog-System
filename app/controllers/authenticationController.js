@@ -8,6 +8,10 @@ import {controller} from 'controller';
 function authenticationController(){
     //console.log('At authentication')
   var currentUser = User.current();
+    //
+    if(localStorage.getItem('user')){
+        currentUser = JSON.parse(localStorage.getItem('user'));
+    }
       //name = currentUser.get('username');
 
     //console.log(currentUser.attributes)

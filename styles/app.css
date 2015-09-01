@@ -29,3 +29,8 @@
 .input-correct{
     background-color: rgba(180, 255, 214, 1);
 }
+
+.login-form{
+    display: none;
+    margin-top: 2%;
+}

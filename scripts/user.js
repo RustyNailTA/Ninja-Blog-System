@@ -34,6 +34,7 @@ var User = Parse.User.extend({
             });
         });
     },
+
     getAllUsers: function () {
         var queryObject = new Parse.Query(User);
         return new Promise(function (resolve, reject) {
