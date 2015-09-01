@@ -4,18 +4,6 @@ var User = Parse.User.extend({
     getPostCount: function () {
         // TODO: SELECT COUNT(*) FROM Posts WHERE username = User.get('username')
         return 42;
-    },
-    getPosts: function () {
-        // TODO: SELECT * FROM Posts WHERE username = User.get('username')
-        return [{
-            postId: 1,
-            title: 'foo',
-            content: 'bar',
-        }, {
-            postId: 2,
-            title: 'bar',
-            content: 'foo',
-        }];
     }
 }, {
     create: function (username, password, email) {
@@ -30,7 +18,7 @@ var User = Parse.User.extend({
         if (!email) {
             throw new Error('Invalid email provided.');
         }
-        
+
         var user = new User();
 
         user.set('username', username);
@@ -48,9 +36,9 @@ var User = Parse.User.extend({
     },
 
     getAllUsers: function () {
-        var queryObject = new Parse.Query(User);
+        var query = new Parse.Query(User);
         return new Promise(function (resolve, reject) {
-            queryObject.find().then(function (results) {
+            query.find().then(function (results) {
                 var users = results.map(function (user) {
                     return user.attributes;
                 });
