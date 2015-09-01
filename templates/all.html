@@ -9,10 +9,18 @@
             <div>
                 {{{this.content}}}
             </div>
+
         </article>
+        <div class="col-xs-4 col-lg-2 col-md-3 col-sm-3 col-xs-offset-8">
+            <button class="btn btn-block btn-social btn-facebook btn-xs" id="btn-fb-share-{{@index}}">
+                <i class="fa fa-facebook"></i>Share
+            </button>
+        </div>
         <br/>
+
         <div class="panel panel-default">
             <div class="panel-body">
+
                 <span>Tags:&nbsp;&nbsp;</span>
                 {{#tags}}
                 <small>
@@ -24,20 +32,23 @@
                     </strong>
                 </small>
                 {{/tags}}
+
             </div>
         </div>
         <hr/>
         <br/>
+
         {{/posts}}<!-- /.blog-post -->
 
         <!--<nav>-->
-            <!--<ul class="pager">-->
-                <!--<li><a href="#">Previous</a></li>-->
-                <!--<li><a href="#">Next</a></li>-->
-            <!--</ul>-->
+        <!--<ul class="pager">-->
+        <!--<li><a href="#">Previous</a></li>-->
+        <!--<li><a href="#">Next</a></li>-->
+        <!--</ul>-->
         <!--</nav>-->
 
-    </div><!-- /.blog-main -->
+    </div>
+    <!-- /.blog-main -->
 
     <!-- TODO: TO SEE HOW TO IMPLEMENT!!!-->
     <div class="col-sm-3 col-sm-offset-1 blog-sidebar container-fluid">
@@ -58,6 +69,7 @@
                 <li><a href="#">April 2013</a></li>
             </ol>
         </div>
-    </div><!-- /.blog-sidebar -->
+    </div>
+    <!-- /.blog-sidebar -->
 </div>
 

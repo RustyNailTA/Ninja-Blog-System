@@ -23,6 +23,7 @@ import {logOutController} from './controllers/logOutController.js';
 import {loginErrorController} from './controllers/loginErrorController.js';
 import {allUsersController} from './controllers/allUsersController.js';
 import {userNewPostSubmitController} from './controllers/userNewPostSubmitController.js';
+import {shareController} from './controllers/shareController.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -52,5 +53,7 @@ export var controller = {
     logOutController: logOutController,
     loginErrorController: loginErrorController,
     allUsersController:allUsersController,
-    userNewPostSubmitController: userNewPostSubmitController
+    userNewPostSubmitController: userNewPostSubmitController,
+    shareController: shareController
+
 };
