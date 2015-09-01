@@ -1,38 +1,62 @@
 function loadStaticTemplate(templatePath, containerSelector, successFunction) {
-    $.ajax({
-        url: templatePath,
-        method: 'GET',
-        data: 'string',
-        success: function (template) {
-            $(containerSelector).html(template);
+    var template = sessionStorage.getItem(templatePath);
 
-            if(typeof successFunction === 'function'){
-                successFunction();
-            }
-        },
-        dataType: 'html'
-    });
+    function loadStatic(template) {
+        $(containerSelector).html(template);
+
+        sessionStorage.setItem(templatePath, template);
+
+        if (typeof successFunction === 'function') {
+            successFunction();
+        }
+    }
+
+    if (template) {
+        loadStatic(template)
+    } else {
+
+        $.ajax({
+            url: templatePath,
+            method: 'GET',
+            data: 'string',
+            success: function (template) {
+                loadStatic(template)
+            },
+            dataType: 'html'
+        });
+    }
 }
 
 function loadDataTemplate(templatePath, containerSelector, dataObject, successFunction) {
-    $.ajax({
-        url: templatePath,
-        method: 'GET',
-        data: 'string',
-        success: function (template) {
-            var handlebarsTemplate = Handlebars.compile(template),
-                resultHtml = handlebarsTemplate(dataObject);
 
-           // console.log(resultHtml)
+    var template = sessionStorage.getItem(templatePath);
 
-            $(containerSelector).html(resultHtml);
+    function loadHandlebars(template, data) {
+        var handlebarsTemplate = Handlebars.compile(template),
+            resultHtml = handlebarsTemplate(dataObject);
 
-            if(typeof successFunction === 'function'){
-                successFunction();
-            }
-        },
-        dataType: 'html'
-    });
+        $(containerSelector).html(resultHtml);
+
+        sessionStorage.setItem(templatePath, template);
+
+        if (typeof successFunction === 'function') {
+            successFunction();
+        }
+    }
+
+    if (template) {
+        loadHandlebars(template, dataObject)
+    } else {
+        $.ajax({
+            url: templatePath,
+            method: 'GET',
+            data: 'string',
+            success: function (template) {
+                loadHandlebars(template, dataObject)
+            },
+            dataType: 'html'
+        });
+    }
 }
 
 export var templateHandler = {

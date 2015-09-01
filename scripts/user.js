@@ -19,6 +19,18 @@ var User = Parse.User.extend({
     }
 }, {
     create: function (username, password, email) {
+        if (!username) {
+            throw new Error('Invalid username provided.');
+        }
+
+        if (!password) {
+            throw new Error('Invalid password provided.');
+        }
+
+        if (!email) {
+            throw new Error('Invalid email provided.');
+        }
+        
         var user = new User();
 
         user.set('username', username);

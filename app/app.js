@@ -30,6 +30,10 @@ function app() {
 
 
         this.get('#/', function () {
+
+            //var selector = this.params['page'];
+            //console.log(selector)
+
             controller.authenticationController();
 
             controller.homeController();
@@ -74,7 +78,7 @@ function app() {
         this.get('#/login-error', function () {
             // alert('about')
             controller.aboutController();
-            controller.login();
+           // controller.login();
 
         });
 
@@ -99,6 +103,15 @@ function app() {
         this.get('#/register-successful', function () {
             controller.registrationSuccessfulControllers();
             controller.authenticationController();
+
+        });
+
+        this.get('#/search-results', function () {
+            var value = this.params['request']
+
+            console.log(value + 'rrrr')
+            //controller.registrationSuccessfulControllers();
+            //controller.authenticationController();
 
         });
 
@@ -139,6 +152,7 @@ function app() {
 
             var userName = this.params['user']
             //controller.userAboutController(userName, this);
+
             controller.logOutController();
 
         });
@@ -156,9 +170,20 @@ function app() {
         });
 
         this.get('#/:user/new-post', function () {
-            controller.userNewBlogController();
+            controller.userNewPostController();
             controller.authenticationController();
+        })
 
+        ;this.get('#/:user/new-post-submit', function () {
+            var title = this.params.title,
+                content = this.params.content,
+                tags = null,
+                author = this.params.user;
+
+            console.log(title + ' ' + content + ' ' + this.params.tags  +' ' + author)
+
+            controller.userNewPostSubmitController( author, title, content, tags, this);
+            controller.authenticationController();
         });
 
         this.get('#/:user/settings', function () {
@@ -198,3 +223,6 @@ function app() {
 }
 
 export {app};
+
+
+
