@@ -22,13 +22,20 @@
     margin: 20px 0;
 }
 
-.blog-main .btn-facebook{
-    margin: 10px 0px;
+.blog-post{
+    margin: 0px 0px 40px 0px;
+}
+
+.blog-post .btn-facebook{
+    margin: 20px 0px 0px 0px;
+}
+
+.blog-post .btn-holder{
+    padding: 0px;
 }
 
 .blog-main .tags{
     display: block;
-    margin-top: 10px;
 }
 
 

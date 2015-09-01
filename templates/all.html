@@ -10,28 +10,31 @@
                 {{{this.content}}}
             </div>
 
+            <div class="col-xs-4 col-lg-2 col-md-3 col-sm-3 btn-holder">
+                <button class="btn btn-block btn-social btn-facebook btn-xs" id="btn-fb-share-{{@index}}">
+                    <i class="fa fa-facebook"></i>Share
+                </button>
+            </div>
+
         </article>
-        <div class="col-xs-4 col-lg-2 col-md-3 col-sm-3 col-xs-offset-8">
-            <button class="btn btn-block btn-social btn-facebook btn-xs" id="btn-fb-share-{{@index}}">
-                <i class="fa fa-facebook"></i>Share
-            </button>
-        </div>
+
         <br/>
 
         <div class="panel panel-default">
             <div class="panel-body">
-
-                <span>Tags:&nbsp;&nbsp;</span>
-                {{#tags}}
-                <small>
-                    <strong>
-                        <a target="_blank" href="#/search-results?request={{this}}">
-                            {{this}}
-                        </a>
-                        <span>&nbsp;</span>
-                    </strong>
-                </small>
-                {{/tags}}
+                <div class="tags">
+                    <span>Tags:&nbsp;&nbsp;</span>
+                    {{#tags}}
+                    <small>
+                        <strong>
+                            <a target="_blank" href="#/search-results?request={{this}}">
+                                {{this}}
+                            </a>
+                            <span>&nbsp;</span>
+                        </strong>
+                    </small>
+                    {{/tags}}
+                </div>
 
             </div>
         </div>
