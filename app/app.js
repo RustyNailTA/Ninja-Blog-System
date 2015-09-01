@@ -89,7 +89,9 @@ function app() {
 
         this.get('#/all-posts', function () {
            controller.allController();
+
             controller.authenticationController();
+            controller.shareController();
 
         });
         this.get('#/all-users', function () {
@@ -196,6 +198,7 @@ function app() {
 
         this.get('/:user/#all', function () {
             $('#template-container').load('templates/all.html');
+            //controller.shareController();
             // TODO: create page controller
         });
 
