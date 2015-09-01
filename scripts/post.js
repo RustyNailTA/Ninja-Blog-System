@@ -108,6 +108,42 @@ var Post = Parse.Object.extend('Post', {}, {
                 reject(error);
             });
         });
+    },
+    getTopNPostsByViews: function (n) {
+        var query = new Parse.Query(Post);
+
+        query.descending("views");
+        query.limit(n);
+
+        return new Promise(function (resolve, reject) {
+            query.find().then(function (results) {
+                var posts = results.map(function (post) {
+                    return post.attributes;
+                });
+
+                resolve(posts);
+            }, function (error) {
+                reject(error);
+            });
+        });
+    },
+    getLatestNPosts: function (n) {
+        var query = new Parse.Query(Post);
+
+        query.ascending("createdAt");
+        query.limit(n);
+
+        return new Promise(function (resolve, reject) {
+            query.find().then(function (results) {
+                var posts = results.map(function (post) {
+                    return post.attributes;
+                });
+
+                resolve(posts);
+            }, function (error) {
+                reject(error);
+            });
+        });
     }
 });
 

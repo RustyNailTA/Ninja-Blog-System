@@ -5,11 +5,9 @@ import Post from 'post'
 
 
 
-function homeController(){
-
-    //TODO: GET ONLY LAST 5 POSTS
-    Post.getAllPosts().then(function (posts) {
-        posts[0].active=true;
+function homeController() {
+    Post.getLatestNPosts(5).then(function (posts) {
+        posts[0].active = true;
         templateHandler.loadDataTemplate('templates/home.html', '#template-container', { posts: posts });
     }, function (err) {
         console.log(err);
@@ -17,4 +15,3 @@ function homeController(){
 }
 
 export {homeController}
-
