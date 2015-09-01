@@ -3,8 +3,8 @@ import {testDB} from 'testDB'
 import User from 'user'
 import {controller} from 'controller'
 
-function userAboutController(userName, app) {
-    User.getUserByUserName(userName).then(function (user) {
+function userAboutController(username, app) {
+    User.getUserByUsername(username).then(function (user) {
         if (user) {
             localStorage.setItem('blog', user.username)
             controller.navbarController();
