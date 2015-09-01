@@ -7,8 +7,14 @@ function hideDropdown() {
     });
 };
 
+function tagsSplitter(tagsString){
+    var tags = tagsString.split(/[ ,]/).filter(Boolean);
+    return tags;
+}
+
 export var utilities = {
-    hideDropdown:hideDropdown
+    hideDropdown:hideDropdown,
+    tagsSplitter: tagsSplitter
 }
 
 

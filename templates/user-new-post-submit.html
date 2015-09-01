@@ -1,58 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Kendo UI Snippet</title>
-
-    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.2.805/styles/kendo.common.min.css">
-    <link rel="stylesheet" href="http://kendo.cdn.telerik.com/2015.2.805/styles/kendo.bootstrap.min.css">
-
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2015.2.805/js/kendo.all.min.js"></script>
-</head>
-<body>
-<div id="example" style="width:100%">
-    <div class="demo-section k-header">
-        <ul class="fieldlist">
-            <li>
-                <label for="simple-input">Title</label>
-                <input id="simple-input" type="text" class="k-textbox" style="width: 100%;" />
-            </li>
-            <li>
-                <label for="editor">Content</label>
-                <div id="example">
-                    <textarea id="editor" rows="10" cols="30" style="height:440px"></textarea>
-                    <script src='kendo-test.js'></script>
-                </div>
-            </li>
-            <li>
-            <li>
-                <button class="k-button">Submit</button>&nbsp;
-                <button class="k-button k-primary">Cancel</button>
-            </li>
-        </ul>
-        <style>
-            .fieldlist {
-                margin: 0 0 -2em;
-                padding: 0;
-            }
-
-            .fieldlist li {
-                list-style: none;
-                padding-bottom: 2em;
-            }
-
-            .fieldlist label {
-                display: block;
-                padding-bottom: 1em;
-                font-weight: bold;
-                text-transform: uppercase;
-                font-size: 12px;
-                color: #444;
-            }
-
-        </style>
+<section class="list-group">
+    <div class="list-group-item">
+        <h2 class="panel-title">Success!!</h2>
     </div>
-</div>
-</body>
-</html>
+    <div class="list-group-item">
+        <h4 class="panel-title">{{username}} you've got new post!</h4>
+    </div>
+    <div class="list-group-item">
+        <h3>{{title}}</h3>
+
+        <div>{{{content}}}</div>
+    </div>
+    <div class="list-group-item">
+        <p>Tags:
+            {{#tags}}
+            <a href="#/search-results?request={{this}}">{{this}}</a>
+            {{/tags}}
+        </p>
+    </div>
+    <br/>
+    <div class="container-fluid">
+        <a href="#/{{username}}/new-post"><span> &nbsp;Create new post</span></a>
+
+        <a href="#/{{username}}/settings"><span> &nbsp;Go to your settings</span></a>
+
+        <a href="#/{{username}}/logout"><span> &nbsp;Log out</span></a>
+    </div>
+</section>
