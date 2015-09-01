@@ -1,9 +1,9 @@
-userNewPostSubmitController
-
 import {templateHandler} from 'templateHandler'
 import {testDB} from 'testDB'
 import User from 'user'
 import Post from 'post'
+import {utilities} from 'utilities'
+
 
 
 function userNewPostSubmitController(userName, title, content, tags, app){
@@ -11,9 +11,12 @@ function userNewPostSubmitController(userName, title, content, tags, app){
     var selectedUser = User.current().attributes,
         author = selectedUser.username;
 
+    var tagsArray = utilities.tagsSplitter(tags);
+    console.log(tagsArray)
+
 
     function sendPost(){
-        Post.create(title, content, tags, author)
+        Post.create(title, content, tagsArray, author)
     }
 
 
@@ -23,7 +26,7 @@ function userNewPostSubmitController(userName, title, content, tags, app){
             {username: author,
             title: title,
             content: content,
-            tags: tags},
+            tags: tagsArray},
             sendPost)
 
 

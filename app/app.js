@@ -180,10 +180,10 @@ function app() {
         ;this.get('#/:user/new-post-submit', function () {
             var title = this.params.title,
                 content = this.params.content,
-                tags = null,
+                tags = this.params.tags,
                 author = this.params.user;
 
-            console.log(title + ' ' + content + ' ' + this.params.tags  +' ' + author)
+            console.log(title + ' ' + content + ' ' + tags  +' ' + author)
 
             controller.userNewPostSubmitController( author, title, content, tags, this);
             controller.authenticationController();
