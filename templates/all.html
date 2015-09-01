@@ -20,20 +20,19 @@
 
         <div class="panel panel-default">
             <div class="panel-body">
-                <div class="tags">
-                    <span>Tags:&nbsp;&nbsp;</span>
-                    {{#tags}}
-                    <small>
-                        <strong>
-                            <a target="_blank"
-                               href="https://www.google.bg/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#safe=off&q={{this}}">
-                                {{this}}
-                            </a>
-                            <span>&nbsp;</span>
-                        </strong>
-                    </small>
-                    {{/tags}}
-                </div>
+
+                <span>Tags:&nbsp;&nbsp;</span>
+                {{#tags}}
+                <small>
+                    <strong>
+                        <a target="_blank" href="#/search-results?request={{this}}">
+                            {{this}}
+                        </a>
+                        <span>&nbsp;</span>
+                    </strong>
+                </small>
+                {{/tags}}
+
             </div>
         </div>
         <hr/>
