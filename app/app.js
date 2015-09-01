@@ -180,6 +180,13 @@ function app() {
 
         });
 
+        this.get('#/registration-error', function () {
+
+           // controller.registrationSuccessfulControllers();
+            controller.authenticationController();
+
+        });
+
         this.get('#/search-results', function () {
             localStorage.setItem('blog', '')
             var request = this.params['request'];
