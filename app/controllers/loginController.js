@@ -8,6 +8,7 @@ import {controller} from 'controller'
 import {Parse as Parse} from 'parse'
 
 
+
 function loginController() {
 
     fbApi.init();

@@ -11,7 +11,6 @@ import {userSettingsPersonalController} from './controllers/userSettingsPersonal
 import {userSettingsBlogController} from './controllers/userSettingsBlogController.js';
 import {notFoundController} from './controllers/notFoundController.js';
 import {userHomeController} from './controllers/userHomeController.js';
-import {allocatorController} from './controllers/allocatorController.js';
 import {userTopController} from './controllers/userTopController.js';
 import {userAllController} from './controllers/userAllController.js';
 import {singlePostFullVIewController} from './controllers/singlePostFullVIewController.js';
@@ -25,6 +24,7 @@ import {allUsersController} from './controllers/allUsersController.js';
 import {userNewPostSubmitController} from './controllers/userNewPostSubmitController.js';
 import {shareController} from './controllers/shareController.js';
 import {searchResultsController} from './controllers/searchResultsController.js';
+import {navbarController} from './controllers/navbarController.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -43,7 +43,6 @@ export var controller = {
     userSettingsBlogController: userSettingsBlogController,
     notFoundController:notFoundController,
     userHomeController: userHomeController,
-    allocatorController:allocatorController,
     userTopController: userTopController,
     userAllController: userAllController,
     singlePostFullVIewController: singlePostFullVIewController,
@@ -56,6 +55,7 @@ export var controller = {
     allUsersController:allUsersController,
     userNewPostSubmitController: userNewPostSubmitController,
     shareController: shareController,
-    searchResultsController: searchResultsController
+    searchResultsController: searchResultsController,
+    navbarController:navbarController
 
 };

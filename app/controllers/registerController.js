@@ -4,6 +4,8 @@ import User from 'user'
 import Post from 'post'
 import {CONSTRAINTS} from 'CONSTRAINTS'
 import {validator} from 'validator'
+import {controller} from 'controller'
+
 
 function registerController() {
 
@@ -90,20 +92,26 @@ function registerController() {
             var userName = $('#inputUserName').val(),
                 email = $('#inputEmail').val(),
                 password = $('#inputPassword').val();
+            //
+            //var data = {
+            //    username: userName,
+            //    email: email
+            //};
+
+
 
             User.create(userName, password, email).then(function (user) {
                 //console.log(user.get('username') + ' registered!');
-                templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', data)
+
+                localStorage.setItem('blog',  user.attributes.username)
+                templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', user.attributes)
             }, function (error) {
                 //console.log(error.message);
                 window.location.hash = '#/registration-error'
                 templateHandler.loadDataTemplate('templates/registration-error.html', '#template-container', error)
             });
 
-            var data = {
-                username: userName,
-                email: email
-            };
+
 
            // templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', data)
         })

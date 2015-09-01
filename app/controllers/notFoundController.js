@@ -1,4 +1,6 @@
 import {templateHandler} from 'templateHandler'
+import {controller} from 'controller'
+
 
 function notFoundController(){
     //console.log();

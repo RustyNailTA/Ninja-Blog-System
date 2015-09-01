@@ -7,7 +7,7 @@ import {controller} from 'controller';
 
 function loginErrorController(){
     console.log('Login Error')
-    //var currentUser = User.current();
+    var currentUser = User.current();
 
         templateHandler.loadDataTemplate('templates/login-error.html', '#template-container', currentUser.attributes)
     //}else {

@@ -1,6 +1,8 @@
 import {templateHandler} from 'templateHandler'
 import {testDB} from 'testDB'
 import Post from 'post'
+import {controller} from 'controller'
+
 
 function allController() {
     Post.getAllPosts().then(function (posts) {

@@ -2,6 +2,8 @@ import {templateHandler} from 'templateHandler'
 import {testDB} from 'testDB'
 import Post from 'post'
 import User from 'user'
+import {controller} from 'controller'
+
 
 function allUsersController() {
     User.getAllUsers().then(function (users) {

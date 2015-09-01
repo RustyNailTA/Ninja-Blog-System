@@ -37,7 +37,6 @@ function loadDataTemplate(templatePath, containerSelector, dataObject, successFu
 
         $(containerSelector).html(resultHtml);
 
-        sessionStorage.setItem(templatePath, template);
 
         if (typeof successFunction === 'function') {
             successFunction();
@@ -53,6 +52,7 @@ function loadDataTemplate(templatePath, containerSelector, dataObject, successFu
             data: 'string',
             success: function (template) {
                 loadHandlebars(template, dataObject)
+                sessionStorage.setItem(templatePath, template);
             },
             dataType: 'html'
         });
