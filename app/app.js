@@ -19,6 +19,36 @@ function app() {
 
     db.init();
 
+    Post.getAllPostsByAuthor('klati').then(function (posts) {
+        console.log('By author (klati): ');
+        console.log(posts);
+    }, function (err) {
+        console.log(`Could not fetch posts: ${err.message}`);
+    });
+
+    Post.getAllPostsByTag('tag1').then(function (posts) {
+        console.log('By tag (tag1): ');
+        console.log(posts);
+    }, function (err) {
+        console.log(`Could not fetch posts: ${err.message}`);
+    });
+
+    Post.getAllPostsByTagOrAuthor('ivko').then(function (posts) {
+        console.log('By TagOrAuthor (ivko): ');
+        // there's a post with one author ivko, no tag matches but still one result
+        console.log(posts);
+    }, function (err) {
+        console.log(`Could not fetch posts: ${err.message}`);
+    });
+
+    Post.getAllPostsByTagAndAuthor('ivko').then(function (posts) {
+        console.log('By TagAndAuthor (ivko): ');
+        // no results, matches only one post but there is no ivko tag
+        console.log(posts);
+    }, function (err) {
+        console.log(`Could not fetch posts: ${err.message}`);
+    });
+
     var app = $.sammy('#main-content', function () {
 
         //console.log('After Sammy');
@@ -223,6 +253,3 @@ function app() {
 }
 
 export {app};
-
-
-

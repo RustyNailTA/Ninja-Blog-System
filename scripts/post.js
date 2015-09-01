@@ -13,25 +13,94 @@ var Post = Parse.Object.extend('Post', {}, {
         post.set('views', 0);
         post.set('likes', 0);
 
-        post.save(null, {
-            success: function () {
-                // TODO: remove that crap
-                console.log('Created post..');
-            },
-            error: function (post, error) {
-                throw new Error(`Could not create post: ${error.message}` +
-                ` (${error.code}).`);
-            }
+        return new Promise(function (resolve, reject) {
+            post.save().then(function (post) {
+                resolve(post);
+            }, function (error) {
+                reject(error);
+            });
         });
-
-        return post;
     },
     getAllPosts: function () {
-        var queryObject = new Parse.Query(Post);
+        var query = new Parse.Query(Post);
+
         return new Promise(function (resolve, reject) {
-            queryObject.find().then(function (results) {
-                var posts = results.map(function (item) {
-                    return item.attributes;
+            query.find().then(function (results) {
+                var posts = results.map(function (post) {
+                    return post.attributes;
+                });
+
+                resolve(posts);
+            }, function (error) {
+                reject(error);
+            });
+        });
+    },
+    getAllPostsByAuthor: function (authorName) {
+        var query = new Parse.Query(Post);
+
+        query.equalTo("author", authorName);
+
+        return new Promise(function (resolve, reject) {
+            query.find().then(function (results) {
+                var posts = results.map(function (post) {
+                    return post.attributes;
+                });
+
+                resolve(posts);
+            }, function (error) {
+                reject(error);
+            });
+        });
+    },
+    getAllPostsByTag: function (tagName) {
+        var query = new Parse.Query(Post);
+
+        query.equalTo("tags", tagName);
+
+        return new Promise(function (resolve, reject) {
+            query.find().then(function (results) {
+                var posts = results.map(function (post) {
+                    return post.attributes;
+                });
+
+                resolve(posts);
+            }, function (error) {
+                reject(error);
+            });
+        });
+    },
+    getAllPostsByTagAndAuthor: function (tagName, authorName) {
+        var query = new Parse.Query(Post);
+
+        query.equalTo("tags", tagName);
+        query.equalTo("author", authorName);
+
+        return new Promise(function (resolve, reject) {
+            query.find().then(function (results) {
+                var posts = results.map(function (post) {
+                    return post.attributes;
+                });
+
+                resolve(posts);
+            }, function (error) {
+                reject(error);
+            });
+        });
+    },
+    getAllPostsByTagOrAuthor: function (key) {
+        var tagQuery = new Parse.Query(Post);
+        tagQuery.equalTo("tags", key);
+
+        var authorQuery = new Parse.Query(Post);
+        authorQuery.equalTo("author", key);
+
+        var tagAndAuthorQuery = new Parse.Query.or(tagQuery, authorQuery);
+
+        return new Promise(function (resolve, reject) {
+            tagAndAuthorQuery.find().then(function (results) {
+                var posts = results.map(function (post) {
+                    return post.attributes;
                 });
 
                 resolve(posts);
