@@ -1,11 +1,15 @@
-<article class="blog-post">
+<article class="blog-post container-fluid">
     <h2 class="blog-post-title">{{this.title}}</h2>
 
-    <p class="blog-post-meta">{{this.createdAt}} by: <a href="#/{{author}}/about">{{this.author}}</a></p>
+    <p class="blog-post-meta">
+        <date>{{this.createdAt}}</date> by: <a href="#/{{authorName}}/about">{{author}}</a>
+        <span class="pull-right label label-success">views: {{views}}</span>
+    </p>
 
     <div>
         {{{this.content}}}
     </div>
+    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
 </article>
 <br/>
 <div class="panel panel-default">
@@ -14,7 +18,7 @@
         {{#tags}}
         <small>
             <strong>
-                <a target="_blank" href="https://www.google.bg/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#safe=off&q={{this}}">
+                <a href="#search-results?request={{this}}">
                     {{this}}
                 </a>
                 <span>&nbsp;</span>

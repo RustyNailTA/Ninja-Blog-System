@@ -1,0 +1,16 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 blog-main">
+            {{#users}}
+            <article class="blog-post">
+                <h2 class="blog-post-title">{{name}}</h2>
+
+                <p class="blog-post-meta">ninja name: <a href="#/{{username}}/about">{{name}}</a></p>
+
+            </article>
+            <br/>
+            {{/users}}
+        </div>
+        <br/>
+    </div>
+</div>
