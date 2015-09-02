@@ -10,7 +10,10 @@
         <div class="form-group">
             <label for="postContent" class="col-lg-2 control-label">Content:</label>
             <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="postContent" name="content"></textarea>
+                <script>
+                    $('#trumbowyg-demo').trumbowyg();
+                </script>
+                <div class="form-control" id="trumbowyg-demo" rows="3" id="postContent" name="content"></div>
                 <span class="help-block">Ninja, you are, with tags style your post.</span>
             </div>
         </div>

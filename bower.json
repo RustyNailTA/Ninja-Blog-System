@@ -18,6 +18,7 @@
     "jquery": "~2.1.4",
     "sammy": "~0.7.6",
     "system.js": "~0.18.14",
+    "trumbowyg": "~1.1.7",
     "underscore": "~1.8.3"
   }
 }
