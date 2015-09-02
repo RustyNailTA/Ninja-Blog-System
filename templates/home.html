@@ -19,9 +19,12 @@
                     <div class="carousel-caption">
 
                             <h2>{{title}}</h2>
-                        <p class="blog-post-meta">by: <a href="#/about/{{author}}">{{this.author}}</a></p>
+                        <p class="blog-post-meta">by: <a href="#/{{authorName}}/about">{{author}}</a></p>
+                        <div style="max-height: 70px; text-overflow: ellipsis; overflow:hidden; white-space: nowrap">
+                            {{{this.content}}}
+                        </div>
                         <div>
-                            <a href="/#{{#if author}}/{{author}}{{/if}}{{#if id}}/{{id}}{{/if}}" class="btn btn-link">Read more</a>
+                            <a href="#/{{authorName}}/{{id}}" class="btn btn-link">Read more</a>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,28 @@
+<section class="list-group">
+    <div class="list-group-item">
+        <h2 class="panel-title">Success!!</h2>
+    </div>
+    <div class="list-group-item">
+        <h4 class="panel-title">{{username}} you've got new post!</h4>
+    </div>
+    <div class="list-group-item">
+        <h3>{{title}}</h3>
+
+        <div>{{{content}}}</div>
+    </div>
+    <div class="list-group-item">
+        <p>Tags:
+            {{#tags}}
+            <a href="#/search-results?request={{this}}">{{this}}</a>
+            {{/tags}}
+        </p>
+    </div>
+    <br/>
+    <div class="container-fluid">
+        <a href="#/{{username}}/new-post"><span> &nbsp;Create new post</span></a>
+
+        <a href="#/{{username}}/settings"><span> &nbsp;Go to your settings</span></a>
+
+        <a href="#/{{username}}/logout"><span> &nbsp;Log out</span></a>
+    </div>
+</section>

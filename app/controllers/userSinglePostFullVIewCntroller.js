@@ -1,28 +1,31 @@
 import {templateHandler} from 'templateHandler'
-import {testDB} from 'testDB'
+import User from 'user'
+import Post from 'post'
+import {controller} from 'controller';
 
-function userSinglePostFullVIewCntroller(userName, postIdd, app) {
 
-    var selectedUser = _.find(testDB.users, function (user) {
-        // console.log(user.posts);
-        return user.username === userName;
+function userSinglePostFullVIewCntroller(authorName, postId, app) {
+
+    Post.getPostByAuthorAndId(authorName, postId).then(function (post) {
+
+        if(post){
+            var views = post.attributes.views + 1;
+
+            post.set('views', views);
+            post.save();
+
+            localStorage.setItem('blog',JSON.stringify({username: post.attributes.authorName, name: post.attributes.author}));
+            templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', post.attributes);
+            controller.navbarController()
+        }else{
+            app.notFound()
+        }
+
+
+
+    }, function (err) {
+        console.log(err);
     });
-
-    var selectedPost = _.find(testDB.posts, function (post) {
-        return post.id == postIdd
-    })
-
-
-    if (selectedUser && selectedPost) {
-        var userPosts = selectedPost;
-        templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', userPosts)
-
-    } else {
-        console.log('error')
-        app.notFound()
-    }
-
-    templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', post)
 }
 
 export {userSinglePostFullVIewCntroller}

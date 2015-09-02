@@ -1,26 +1,22 @@
 import {templateHandler} from 'templateHandler'
 import {testDB} from 'testDB'
+import User from 'user'
+import {controller} from 'controller'
 
-function userAboutController(userName, app){
+function userAboutController(username, app) {
+    User.getUserByUsername(username).then(function (user) {
+        if (user) {
 
-    console.log('userAboutController');
+            localStorage.setItem('blog',JSON.stringify({username: user.username, name: user.name}));
 
-    var selectedUser = _.find(testDB.users, function (user) {
-        // console.log(user.posts);
-        return user.username === userName;
-    });
-
-    console.log(selectedUser)
-
-    if (selectedUser) {
-
-        templateHandler.loadDataTemplate('templates/user-about.html', '#template-container', selectedUser)
-
-    } else {
-        console.log('error')
+            controller.navbarController();
+            templateHandler.loadDataTemplate('templates/user-about.html', '#template-container', user)
+        } else {
+            app.notFound();
+        }
+    }, function (error) {
         app.notFound()
-    }
-
+    });
 }
 
 export {userAboutController}

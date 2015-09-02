@@ -21,3 +21,33 @@
     max-width: 50%;
     margin: 20px 0;
 }
+
+.blog-post{
+    margin: 0px 0px 40px 0px;
+}
+
+.blog-post .btn-facebook{
+    margin: 20px 0px 0px 0px;
+}
+
+.blog-post .btn-holder{
+    padding: 0px;
+}
+
+.blog-main .tags{
+    display: block;
+}
+
+
+.input-incorrect{
+    background-color: rgba(255, 192, 192, 1);
+}
+
+.input-correct{
+    background-color: rgba(180, 255, 214, 1);
+}
+
+.login-form{
+    display: none;
+    margin-top: 2%;
+}
