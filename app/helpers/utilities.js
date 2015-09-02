@@ -10,7 +10,7 @@ function hideDropdown() {
 };
 
 function tagsSplitter(tagsString){
-    var tags = tagsString.split(/[ ,]/).filter(Boolean);
+    var tags = tagsString.split(/\W/).filter(Boolean);
     return tags;
 }
 
@@ -36,8 +36,3 @@ export var utilities = {
     tagsSplitter: tagsSplitter,
     fbShareHandler: fbShareHandler
 }
-
-
-
-
-

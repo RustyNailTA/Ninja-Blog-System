@@ -4,10 +4,16 @@ import User from 'user'
 import Post from 'post'
 import {utilities} from 'utilities'
 import {controller} from 'controller'
+import {validator} from 'validator'
+
 
 
 
 function userNewPostSubmitController(userName, title, content, tags, app) {
+
+    var secureTitle = title, //validator.textInputValidator.scriptTagValidator(title),
+        secureContent = validator.textInputValidator.scriptTagValidator(content),
+        secureTags = validator.textInputValidator.scriptTagValidator(tags);
 
     var selectedUser = User.current(),
 
@@ -18,12 +24,12 @@ function userNewPostSubmitController(userName, title, content, tags, app) {
     //console.log(selectedUser);
 
     console.log(selectedUser);
-    var tagsArray = utilities.tagsSplitter(tags);
+    var tagsArray = utilities.tagsSplitter(secureTags);
     //console.log(tagsArray)
 
 
     function sendPost() {
-        Post.create(title, content, tagsArray, author, authorName)
+        Post.create(secureTitle, secureContent, tagsArray, author, authorName)
     }
 
 
@@ -34,17 +40,21 @@ function userNewPostSubmitController(userName, title, content, tags, app) {
 
         controller.navbarController();
 
-        templateHandler.loadDataTemplate('templates/user-new-post-submit.html',
-            '#template-container',
-            {
-                authorName: authorName,
-                username: author,
-                title: title,
-                content: content,
-                tags: tagsArray
-            },
-            sendPost)
-
+        if(validator.textInputValidator.contentLengthValidator(content)){
+            templateHandler.loadDataTemplate('templates/user-new-post-submit.html',
+                '#template-container',
+                {
+                    authorName: authorName,
+                    username: author,
+                    title: secureTitle,
+                    content: secureContent,
+                    tags: tagsArray
+                },
+                sendPost)
+        } else {
+            alert('Post content must be at least 200 symbols! /n  (white spaces incl :P)');
+            window.history.back();
+        }
 
     } else {
         //console.log(window.location)
