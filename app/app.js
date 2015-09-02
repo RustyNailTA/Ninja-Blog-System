@@ -92,7 +92,7 @@ function app() {
         });
 
         this.get('#/top', function () {
-            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}));
             controller.navbarController()
 
             controller.topController();
@@ -101,7 +101,7 @@ function app() {
         });
 
         this.get('#/all', function () {
-            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}));
             controller.navbarController()
 
             controller.allController();
@@ -110,18 +110,33 @@ function app() {
         });
 
         this.get('#/all-posts', function () {
-            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
-            controller.navbarController()
+
+            var year = this.params['year'];
+            var month = this.params['month'];
+
+            if(month && year){
+                controller.postsByMonthController();
+                controller.navbarController()
+            }else{
+
+                localStorage.setItem('blog',JSON.stringify({username: "", name: ""}));
+                controller.navbarController()
+            }
+
+            //console.log(month + '' + year)
+
 
             controller.allController();
-
             controller.authenticationController();
-           // controller.shareController();
 
         });
+
+
         this.get('#/all-users', function () {
             localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             controller.navbarController()
+
+
 
             controller.allUsersController();
             controller.authenticationController();

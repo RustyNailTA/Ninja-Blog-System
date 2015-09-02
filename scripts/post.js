@@ -194,7 +194,7 @@ var Post = Parse.Object.extend('Post', {}, {
                 post.attributes.createdAt = result.createdAt.toLocaleDateString();
                 console.log(result.attributes)
 
-                resolve(post.attributes);
+                resolve(post);
             }, function (error) {
                 reject(error);
             });

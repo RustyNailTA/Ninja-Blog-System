@@ -25,6 +25,7 @@ import {userNewPostSubmitController} from './controllers/userNewPostSubmitContro
 import {shareController} from './controllers/shareController.js';
 import {searchResultsController} from './controllers/searchResultsController.js';
 import {navbarController} from './controllers/navbarController.js';
+import {postsByMonthController} from './controllers/postsByMonthController.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -56,6 +57,7 @@ export var controller = {
     userNewPostSubmitController: userNewPostSubmitController,
     shareController: shareController,
     searchResultsController: searchResultsController,
-    navbarController:navbarController
+    navbarController:navbarController,
+    postsByMonthController: postsByMonthController
 
 };

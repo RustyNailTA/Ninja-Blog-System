@@ -9,14 +9,16 @@ function userSinglePostFullVIewCntroller(authorName, postId, app) {
     Post.getPostByAuthorAndId(authorName, postId).then(function (post) {
 
         if(post){
-            localStorage.setItem('blog',JSON.stringify({username: post.authorName, name: post.author}));
-            //console.log(posts)
+            var views = post.attributes.views + 1;
 
+            post.set('views', views);
+            post.save();
+
+            localStorage.setItem('blog',JSON.stringify({username: post.attributes.authorName, name: post.attributes.author}));
         }
-
         controller.navbarController()
 
-        templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', post);
+        templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', post.attributes);
     }, function (err) {
         console.log(err);
     });

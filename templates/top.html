@@ -1,24 +1,40 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12 blog-main">
-            {{#posts}}
-            <article class="blog-post">
-                <h2 class="blog-post-title">{{this.title}}</h2>
+<div class=" container-fluid">
+    <div class="col-sm-12 blog-main">
+        {{#posts}}
+        <article class="blog-post">
+            <h2 class="blog-post-title">{{this.title}}</h2>
 
-                <p class="blog-post-meta">{{this.createdAt}} by: <a href="#/{{author}}/about">{{this.author}}</a></p>
+            <p class="blog-post-meta">
+                <date>{{this.createdAt}}</date> by: <a href="#/{{authorName}}/about">{{author}}</a>
+                <span class="pull-right label label-success">views: {{views}}</span>
+            </p>
 
-                <div style="text-overflow: ellipsis; height: 300px;   white-space: nowrap;   overflow: hidden;">
-                    {{{this.content}}}
-                </div>
-            </article>
-            <br/>
-            <div class="panel panel-default">
-                <div class="panel-body">
+
+            <div style="max-height: 200px; text-overflow: ellipsis; overflow:hidden; white-space: nowrap">
+                {{{this.content}}}
+            </div>
+            <div class="pull-left">
+                <a href="#/{{authorName}}/{{id}}" class="btn btn-link">Read more</a>
+            </div>
+
+            <div class="col-xs-4 col-lg-2 col-md-3 col-sm-3 btn-holder pull-right">
+                <button class="btn btn-block btn-social btn-facebook btn-xs" id="btn-fb-share-{{@index}}">
+                    <i class="fa fa-facebook"></i>Share
+                </button>
+            </div>
+
+        </article>
+
+        <br/>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="tags">
                     <span>Tags:&nbsp;&nbsp;</span>
                     {{#tags}}
                     <small>
                         <strong>
-                            <a target="_blank" href="https://www.google.bg/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#safe=off&q={{this}}">
+                            <a href="#/search-results?request={{this}}">
                                 {{this}}
                             </a>
                             <span>&nbsp;</span>
@@ -26,16 +42,17 @@
                     </small>
                     {{/tags}}
                 </div>
+
             </div>
-            <hr/>
-            <br/>
-            {{/posts}}
         </div>
+        <hr/>
         <br/>
-        <div class="container-fluid">
-            <a href="#/all" class="btn btn-success text-center">Discover more</a>
-        </div>
+
+        {{/posts}}<!-- /.blog-post -->
+
     </div>
+
 </div>
+
 
 

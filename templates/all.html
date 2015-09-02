@@ -1,60 +1,60 @@
 <div class=" container-fluid">
-    <div class="col-sm-8 blog-main">
-        {{#posts}}
-        <article class="blog-post">
-            <h2 class="blog-post-title">{{this.title}}</h2>
-            <h5 class="blog-post-title"><date>{{this.createdAt}}</date></h5>
+    <div class=" container-fluid">
+        <div class="col-sm-8 blog-main">
+            {{#posts}}
+            <article class="blog-post">
+                <h2 class="blog-post-title">{{this.title}}</h2>
+
+                <p class="blog-post-meta">
+                    <date>{{this.createdAt}}</date> by: <a href="#/{{authorName}}/about">{{author}}</a>
+                    <span class="pull-right label label-success">views: {{views}}</span>
+                </p>
 
 
-            <p class="blog-post-meta">{{this.createdAt}} by: <a href="#/{{authorName}}/about">{{author}}</a></p>
-
-
-            <div>
-                {{{this.content}}}
-            </div>
-
-            <div class="col-xs-4 col-lg-2 col-md-3 col-sm-3 btn-holder pull-right">
-                <button class="btn btn-block btn-social btn-facebook btn-xs" id="btn-fb-share-{{@index}}">
-                    <i class="fa fa-facebook"></i>Share
-                </button>
-            </div>
-
-        </article>
-
-        <br/>
-
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="tags">
-                    <span>Tags:&nbsp;&nbsp;</span>
-                    {{#tags}}
-                    <small>
-                        <strong>
-                            <a href="#/search-results?request={{this}}">
-                                {{this}}
-                            </a>
-                            <span>&nbsp;</span>
-                        </strong>
-                    </small>
-                    {{/tags}}
+                <div style="max-height: 200px; text-overflow: ellipsis; overflow:hidden; white-space: nowrap">
+                    {{{this.content}}}
+                </div>
+                <div class="pull-left">
+                    <a href="#/{{authorName}}/{{id}}" class="btn btn-link">Read more</a>
                 </div>
 
+                <div class="col-xs-4 col-lg-2 col-md-3 col-sm-3 btn-holder pull-right">
+                    <button class="btn btn-block btn-social btn-facebook btn-xs" id="btn-fb-share-{{@index}}">
+                        <i class="fa fa-facebook"></i>Share
+                    </button>
+                </div>
+
+            </article>
+
+            <br/>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="tags">
+                        <span>Tags:&nbsp;&nbsp;</span>
+                        {{#tags}}
+                        <small>
+                            <strong>
+                                <a href="#/search-results?request={{this}}">
+                                    {{this}}
+                                </a>
+                                <span>&nbsp;</span>
+                            </strong>
+                        </small>
+                        {{/tags}}
+                    </div>
+
+                </div>
             </div>
+            <hr/>
+            <br/>
+
+            {{/posts}}<!-- /.blog-post -->
+
         </div>
-        <hr/>
-        <br/>
-
-        {{/posts}}<!-- /.blog-post -->
-
-        <!--<nav>-->
-        <!--<ul class="pager">-->
-        <!--<li><a href="#">Previous</a></li>-->
-        <!--<li><a href="#">Next</a></li>-->
-        <!--</ul>-->
-        <!--</nav>-->
 
     </div>
-    <!-- /.blog-main -->
+
 
     <!-- TODO: TO SEE HOW TO IMPLEMENT!!!-->
     <div class="col-sm-3 col-sm-offset-1 blog-sidebar container-fluid">

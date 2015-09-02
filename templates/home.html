@@ -20,6 +20,9 @@
 
                             <h2>{{title}}</h2>
                         <p class="blog-post-meta">by: <a href="#/{{authorName}}/home">{{author}}</a></p>
+                        <div style="text-overflow: ellipsis; overflow:hidden; white-space: nowrap">
+                            {{{this.content}}}
+                        </div>
                         <div>
                             <a href="#/{{authorName}}/{{id}}" class="btn btn-link">Read more</a>
                         </div>
