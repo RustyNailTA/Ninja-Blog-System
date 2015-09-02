@@ -200,8 +200,9 @@ var Post = Parse.Object.extend('Post', {}, {
             query.first().then(function (result) {
 
                 var post = result;
-                post.attributes.createdAt = result.createdAt.toLocaleDateString();
-                console.log(result.attributes)
+                if(post){
+                    post.attributes.createdAt = result.createdAt.toLocaleDateString();
+                }
 
                 resolve(post);
             }, function (error) {

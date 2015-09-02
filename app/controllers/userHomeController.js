@@ -19,12 +19,25 @@ function userHomeController(userName, app) {
 
             localStorage.setItem('blog', JSON.stringify({username: posts[0].authorName, name: posts[0].author}));
             controller.navbarController();
-            console.log(posts[0]);
+           // console.log(posts[0]);
             posts[0].active = true;
 
             templateHandler.loadDataTemplate('templates/home.html', '#template-container', {posts: posts})
         } else {
-            templateHandler.loadDataTemplate('templates/user-about.html', '#template-container', {username: userName})
+            User.getUserByUsername(userName).then(function (user) {
+                if (user) {
+
+                    localStorage.setItem('blog',JSON.stringify({username: user.username, name: user.name}));
+
+                    controller.navbarController();
+                    templateHandler.loadDataTemplate('templates/home.html', '#template-container', {posts: [{title: 'No post yet!', active: true}]})
+                } else {
+                    app.notFound();
+                }
+            }, function (error) {
+                app.notFound()
+            });
+
         }
 
     }, function (err) {

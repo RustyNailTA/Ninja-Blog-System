@@ -15,10 +15,14 @@ function userSinglePostFullVIewCntroller(authorName, postId, app) {
             post.save();
 
             localStorage.setItem('blog',JSON.stringify({username: post.attributes.authorName, name: post.attributes.author}));
+            templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', post.attributes);
+            controller.navbarController()
+        }else{
+            app.notFound()
         }
-        controller.navbarController()
 
-        templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', post.attributes);
+
+
     }, function (err) {
         console.log(err);
     });
