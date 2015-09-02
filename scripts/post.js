@@ -5,6 +5,15 @@ var Post = Parse.Object.extend('Post', {}, {
         tags = tags || [];
 
         var post = new Post();
+        content = content.trim();
+
+        if (!title) {
+            throw new Error('Invalid title provided.');
+        }
+
+        if (content.length < 200) {
+            throw new Error('Post content must be at least 200 symbols.');
+        }
 
         post.set('title', title);
         post.set('content', content);
