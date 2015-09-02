@@ -1,7 +1,7 @@
 import { Parse as Parse } from 'parse';
 
 var Post = Parse.Object.extend('Post', {}, {
-    create: function (title, content, tags, author) {
+    create: function (title, content, tags, author, authorName) {
         tags = tags || [];
 
         var post = new Post();
@@ -12,6 +12,7 @@ var Post = Parse.Object.extend('Post', {}, {
         post.set('author', author);
         post.set('views', 0);
         post.set('likes', 0);
+        post.set('authorName', authorName);
 
         return new Promise(function (resolve, reject) {
             post.save().then(function (post) {

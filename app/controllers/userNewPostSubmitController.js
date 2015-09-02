@@ -5,28 +5,36 @@ import Post from 'post'
 import {utilities} from 'utilities'
 
 
+function userNewPostSubmitController(userName, title, content, tags, app) {
 
-function userNewPostSubmitController(userName, title, content, tags, app){
+    var selectedUser = User.current(),
 
-    var selectedUser = User.current().attributes,
-        author = selectedUser.username;
+        author = selectedUser.attributes.name,
+        authorName = userName;
+    //console.log('NEW POST');
+    //console.log(author);
+    //console.log(selectedUser);
 
+    console.log(selectedUser);
     var tagsArray = utilities.tagsSplitter(tags);
-    console.log(tagsArray)
+    //console.log(tagsArray)
 
 
-    function sendPost(){
-        Post.create(title, content, tagsArray, author)
+    function sendPost() {
+        Post.create(title, content, tagsArray, author, authorName)
     }
 
 
     if (selectedUser) {
         templateHandler.loadDataTemplate('templates/user-new-post-submit.html',
             '#template-container',
-            {username: author,
-            title: title,
-            content: content,
-            tags: tagsArray},
+            {
+                authorName: authorName,
+                username: author,
+                title: title,
+                content: content,
+                tags: tagsArray
+            },
             sendPost)
 
 
@@ -36,4 +44,7 @@ function userNewPostSubmitController(userName, title, content, tags, app){
     }
 }
 
-export {userNewPostSubmitController}
+export
+{
+    userNewPostSubmitController
+}

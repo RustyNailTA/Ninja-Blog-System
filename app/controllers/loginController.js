@@ -23,7 +23,7 @@ function loginController() {
             var correctUserName = $userName.hasClass('input-correct'),
                 correctPassword = $password.hasClass('input-correct');
 
-            console.log('form')
+            //console.log('form')
 
             if (correctUserName && correctPassword) {
                 $submitButton.removeClass('disabled')
@@ -72,7 +72,7 @@ function loginController() {
         var $fbLoginButton = $('#btn-login-submit-fb');
 
         $loginCredentials.on('click', function () {
-            console.log('test');
+            //console.log('test');
             $('.login-form').toggle(500);
         })
 
@@ -95,31 +95,37 @@ function loginController() {
         })
 
         $fbLoginButton.on('click', function () {
-            console.log('test');
+            //console.log('test');
+            var name = '';
             Parse.FacebookUtils.logIn(null, {
                 success: function (user) {
-                    var fbUser = {attributes: {}};
+                    //var fbUser = {attributes: {}};
 
-                    function makeCall() {
+                    function getFbUser(user) {
                         FB.api('/me', function (response) {
-                            fbUser.attributes.username = response.name;
-                            fbUser.attributes.id = response.id;
-                            fbUser.attributes.user = user.attributes;
+                            //fbUser.attributes.username = response.name;
+                            //fbUser.attributes.id = response.id;
+                            //fbUser.attributes.user = user.attributes;
 
-                            localStorage.setItem("user", JSON.stringify(fbUser))
+                            user.set('name', response.name);
+                            user.save();
+
+                            //console.log(response.name);
+                            //localStorage.setItem("user", JSON.stringify(fbUser))
+
                             if (!user.existed()) {
 
-                                templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', fbUser.attributes, controller.authenticationController)
+                                templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', user.attributes, controller.authenticationController)
                             } else {
 
-                                templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', fbUser.attributes, controller.authenticationController)
+                                templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', user.attributes, controller.authenticationController)
                             }
                         });
                     }
 
-                    makeCall();
+                    //console.log($(user));
 
-
+                    getFbUser(user);
                 },
                 error: function (user, error) {
                     window.location.hash = '#/login-error'
@@ -135,7 +141,6 @@ function loginController() {
                 }
             });
         })
-
     }
 
     templateHandler.loadStaticTemplate('templates/login.html', '#template-container', loginHandler)

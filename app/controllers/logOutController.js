@@ -7,7 +7,7 @@ import {controller} from 'controller'
 import {Parse as Parse} from 'parse'
 
 function logOutController(){
-    console.log('At log out')
+    //console.log('At log out')
     var currentUser = User.current();
    // console.log(currentUser);
     User.logOut();

@@ -25,6 +25,7 @@ var User = Parse.User.extend({
         user.set('password', password)
         user.set('email', email);
         user.set('links', []);
+        user.set('name', username);
 
         return new Promise(function (resolve, reject) {
             user.signUp().then(function (user) {

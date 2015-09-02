@@ -92,6 +92,7 @@ function registerController() {
                 password = $('#inputPassword').val();
 
             User.create(userName, password, email).then(function (user) {
+                user.set('name', userName);
                 //console.log(user.get('username') + ' registered!');
                 templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', data)
             }, function (error) {
