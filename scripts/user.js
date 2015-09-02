@@ -48,13 +48,9 @@ var User = Parse.User.extend({}, {
         var query = new Parse.Query(User);
 
         query.equalTo("username", username);
-        console.log(username)
-
 
         return new Promise(function (resolve, reject) {
             query.first().then(function (results) {
-                console.log('results')
-              console.log(results)
 
                if(results){
                    resolve(results.attributes)

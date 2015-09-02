@@ -3,7 +3,7 @@ import {controller} from 'controller'
 
 
 function aboutController(){
-    localStorage.setItem('blog', "")
+    //localStorage.setItem('blog', "")
     controller.navbarController();
     templateHandler.loadStaticTemplate('templates/about.html', '#template-container')
 }

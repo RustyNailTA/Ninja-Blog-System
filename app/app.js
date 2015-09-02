@@ -54,7 +54,7 @@ function app() {
     //    console.log(`Could not fetch posts: ${err.message}`);
     //});
 
-    //localStorage.setItem('blog', '')
+    //localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
 
 
     var app = $.sammy('#main-content', function () {
@@ -73,7 +73,7 @@ function app() {
 
             //var selector = this.params['page'];
             //console.log(selector)
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             controller.navbarController()
 
 
@@ -83,7 +83,7 @@ function app() {
         });
 
         this.get('#/home', function () {
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             controller.navbarController()
 
             controller.authenticationController();
@@ -92,7 +92,7 @@ function app() {
         });
 
         this.get('#/top', function () {
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             controller.navbarController()
 
             controller.topController();
@@ -101,7 +101,7 @@ function app() {
         });
 
         this.get('#/all', function () {
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             controller.navbarController()
 
             controller.allController();
@@ -110,17 +110,17 @@ function app() {
         });
 
         this.get('#/all-posts', function () {
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             controller.navbarController()
 
             controller.allController();
 
             controller.authenticationController();
-            controller.shareController();
+           // controller.shareController();
 
         });
         this.get('#/all-users', function () {
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             controller.navbarController()
 
             controller.allUsersController();
@@ -129,7 +129,7 @@ function app() {
         });
 
         this.get('#/about', function () {
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             // alert('about')
             controller.navbarController()
 
@@ -139,7 +139,7 @@ function app() {
         });
 
         this.get('#/login-error', function () {
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             // alert('about')
             controller.navbarController()
 
@@ -149,7 +149,7 @@ function app() {
         });
 
         this.get('#/login', function () {
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             controller.navbarController()
 
             controller.loginController();
@@ -158,7 +158,7 @@ function app() {
         });
 
         this.get('#/login-please', function () {
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             controller.navbarController()
 
             controller.notLoggedController();
@@ -167,7 +167,7 @@ function app() {
         });
 
         this.get('#/register', function () {
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             controller.navbarController()
 
             controller.registerController();
@@ -190,7 +190,7 @@ function app() {
         });
 
         this.get('#/search-results', function () {
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
             var request = this.params['request'];
 
             controller.searchResultsController(request, this);
@@ -202,7 +202,7 @@ function app() {
             // alert('param')
             var selector = this.params['user'];
 
-            localStorage.setItem('blog', selector)
+           // localStorage.setItem('blog', selector)
 
 
             // console.log(selector)
@@ -243,7 +243,7 @@ function app() {
             var userName = this.params['user']
             //controller.userAboutController(userName, this);
 
-            localStorage.setItem('blog', '')
+            localStorage.setItem('blog',JSON.stringify({username: "", name: ""}));
 
 
             controller.logOutController();
@@ -253,11 +253,8 @@ function app() {
         this.get('#/:user/top', function () {
             var selector = this.params['user'];
 
-            localStorage.setItem('blog', selector)
-
-
-            $('#template-container').load('templates/top.html');
-            // TODO: create page controller
+            controller.userTopController( selector);
+            controller.authenticationController();
 
         });
 
@@ -265,11 +262,11 @@ function app() {
 
             var selector = this.params['user'];
 
-            localStorage.setItem('blog', selector)
 
-            $('#template-container').load('templates/all.html');
-            //controller.shareController();
-            // TODO: create page controller
+
+            controller.userAllController( selector);
+            controller.authenticationController();
+
         });
 
         this.get('#/:user/new-post', function () {
@@ -302,7 +299,7 @@ function app() {
 
         this.get('#/:user/settings', function () {
 
-            var selector = this.params['user'];
+           // var selector = this.params['user'];
 
            // localStorage.setItem('blog', selector)
 
@@ -338,7 +335,7 @@ function app() {
             var user = this.params['user'],
                 postID = this.params['postId'];
 
-            localStorage.setItem('blog', user)
+           // localStorage.setItem('blog', user)
             // console.log(selector)
             // alert(selector + this.params['home'])
 

@@ -101,10 +101,11 @@ function registerController() {
 
 
             User.create(userName, password, email).then(function (user) {
-                user.set('name', userName);
+               // user.set('name', userName);
                 //console.log(user.get('username') + ' registered!');
 
-                localStorage.setItem('blog',  user.attributes.username)
+                localStorage.setItem('blog',JSON.stringify({username: user.attributes.username, name: user.attributes.name}));
+                //localStorage.setItem('blog', JSON user.attributes.username)
                 templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', user.attributes)
             }, function (error) {
                 //console.log(error.message);

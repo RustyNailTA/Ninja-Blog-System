@@ -15,7 +15,7 @@ function userSettingsController(userName, app){
     }
 
     if (selectedUser) {
-        localStorage.setItem('blog', selectedUser.username);
+        localStorage.setItem('blog',JSON.stringify({username: selectedUser.username, name: selectedUser.name}));
         controller.navbarController();
 
         templateHandler.loadDataTemplate('templates/user-settings.html', '#template-container', selectedUser)

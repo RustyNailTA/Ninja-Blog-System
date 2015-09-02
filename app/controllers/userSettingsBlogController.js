@@ -8,7 +8,8 @@ function userSettingsBlogController(userName, app){
     var selectedUser = User.current()
 
     if (selectedUser) {
-        localStorage.setItem('blog', selectedUser.attributes.username)
+
+        localStorage.setItem('blog',JSON.stringify({username: selectedUser.attributes.username, name: selectedUser.attributes.name}));
 
         console.log(selectedUser)
 

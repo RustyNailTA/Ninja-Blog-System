@@ -29,7 +29,8 @@ function userNewPostSubmitController(userName, title, content, tags, app) {
 
     if (selectedUser) {
 
-        localStorage.setItem('blog', selectedUser.username)
+        localStorage.setItem('blog',JSON.stringify({username: selectedUser.attributes.username, name: selectedUser.attributes.name}));
+
 
         controller.navbarController();
 

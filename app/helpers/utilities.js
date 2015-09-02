@@ -1,3 +1,5 @@
+import fbApi from 'fbApi'
+
 function hideDropdown() {
     $(document).ready(function () {
         $('body').on('click', function () {
@@ -12,10 +14,29 @@ function tagsSplitter(tagsString){
     return tags;
 }
 
+function fbShareHandler(){
+    fbApi.init();
+
+    $(document).on('click','.blog-main', function(ev) {
+        var $target = $(ev.target);
+
+        if($target.is(":button")) {
+            console.log('test');
+            FB.ui({
+                method: 'share',
+                href: 'https://telerikacademy.com',
+            }, function (response) {
+            });
+        }
+    });
+}
+
 export var utilities = {
     hideDropdown:hideDropdown,
-    tagsSplitter: tagsSplitter
+    tagsSplitter: tagsSplitter,
+    fbShareHandler: fbShareHandler
 }
+
 
 
 

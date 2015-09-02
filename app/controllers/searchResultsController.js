@@ -11,6 +11,9 @@ function searchResultsController(data, app){
 
     var request = utilities.tagsSplitter(data)[0];
 
+    localStorage.setItem('blog',JSON.stringify({username: "", name: ""}))
+    controller.navbarController()
+
     Post.getAllPostsByTagOrAuthor(request).then(function (posts) {
         templateHandler.loadDataTemplate('templates/search-results.html', '#template-container',  {posts: posts, request: request})
 

@@ -85,8 +85,11 @@ function loginController() {
 
             User.logIn(userName, password).then(function (user) {
                 // console.log(user.get('username') + ' logged in!');
-                console.log('etoooo');
-                console.log(user.get('username'));
+                //console.log('etoooo');
+                //console.log(user.get('username'));
+
+                localStorage.setItem('blog',JSON.stringify({username: user.attributes.username, name: user.attributes.name}));
+
                 controller.navbarController()
 
 

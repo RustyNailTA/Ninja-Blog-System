@@ -6,16 +6,20 @@ import {controller} from 'controller'
 
 function userHomeController(userName, app) {
 
+
+
     Post.getLatestNPosts(3, userName).then(function (posts) {
 
         console.log(posts)
 
+
+
         if (posts && posts.length > 0) {
 
 
-            localStorage.setItem('blog', userName);
+            localStorage.setItem('blog', JSON.stringify({username: posts[0].authorName, name: posts[0].author}));
             controller.navbarController();
-            console.log(posts[0])
+            console.log(posts[0]);
             posts[0].active = true;
 
             templateHandler.loadDataTemplate('templates/home.html', '#template-container', {posts: posts})

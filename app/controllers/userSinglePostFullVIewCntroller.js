@@ -4,24 +4,22 @@ import Post from 'post'
 import {controller} from 'controller';
 
 
-function userSinglePostFullVIewCntroller(userName, postIdd, app) {
+function userSinglePostFullVIewCntroller(authorName, postId, app) {
 
-    //var selectedUser = _.find(testDB.users, function (user) {
-    //    // console.log(user.posts);
-    //    return user.username === userName;
-    //});
-    //
-    //var selectedPost = _.find(testDB.posts, function (post) {
-    //    return post.id == postIdd
-    //})
-    //
-    //if (selectedUser && selectedPost) {
-    //    var userPosts = selectedPost;
-    //    templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', userPosts)
-    //} else {
-    //   // console.log('error')
-    //    app.notFound()
-    //}
+    Post.getPostByAuthorAndId(authorName, postId).then(function (post) {
+
+        if(post){
+            localStorage.setItem('blog',JSON.stringify({username: post.authorName, name: post.author}));
+            //console.log(posts)
+
+        }
+
+        controller.navbarController()
+
+        templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', post);
+    }, function (err) {
+        console.log(err);
+    });
 }
 
 export {userSinglePostFullVIewCntroller}

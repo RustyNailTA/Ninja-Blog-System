@@ -6,7 +6,9 @@ import {controller} from 'controller'
 function userAboutController(username, app) {
     User.getUserByUsername(username).then(function (user) {
         if (user) {
-            localStorage.setItem('blog', user.username)
+
+            localStorage.setItem('blog',JSON.stringify({username: user.username, name: user.name}));
+
             controller.navbarController();
             templateHandler.loadDataTemplate('templates/user-about.html', '#template-container', user)
         } else {
