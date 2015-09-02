@@ -23,35 +23,39 @@ function app() {
             "uJcZm7i4Xvc11Zs9R8mEAHBxS3zVwdATQnEtSbuB");
     })(Parse);
 
-    Post.getAllPostsByAuthor('klati').then(function (posts) {
-        //console.log('By author (klati): ');
-        //console.log(posts);
-    }, function (err) {
-        console.log(`Could not fetch posts: ${err.message}`);
-    });
 
-    Post.getAllPostsByTag('tag1').then(function (posts) {
-        //console.log('By tag (tag1): ');
-        //console.log(posts);
-    }, function (err) {
-        console.log(`Could not fetch posts: ${err.message}`);
-    });
+    //Post.getAllPostsByAuthor('klati').then(function (posts) {
+    //    console.log('By author (klati): ');
+    //    console.log(posts);
+    //}, function (err) {
+    //    console.log(`Could not fetch posts: ${err.message}`);
+    //});
+    //
+    //Post.getAllPostsByTag('tag1').then(function (posts) {
+    //    console.log('By tag (tag1): ');
+    //    console.log(posts);
+    //}, function (err) {
+    //    console.log(`Could not fetch posts: ${err.message}`);
+    //});
+    //
+    //Post.getAllPostsByTagOrAuthor('ivko').then(function (posts) {
+    //    console.log('By TagOrAuthor (ivko): ');
+    //    // there's a post with one author ivko, no tag matches but still one result
+    //    console.log(posts);
+    //}, function (err) {
+    //    console.log(`Could not fetch posts: ${err.message}`);
+    //});
+    //
+    //Post.getAllPostsByTagAndAuthor('ivko').then(function (posts) {
+    //    console.log('By TagAndAuthor (ivko): ');
+    //    // no results, matches only one post but there is no ivko tag
+    //    console.log(posts);
+    //}, function (err) {
+    //    console.log(`Could not fetch posts: ${err.message}`);
+    //});
 
-    Post.getAllPostsByTagOrAuthor('ivko').then(function (posts) {
-        //console.log('By TagOrAuthor (ivko): ');
-        // there's a post with one author ivko, no tag matches but still one result
-        //console.log(posts);
-    }, function (err) {
-        console.log(`Could not fetch posts: ${err.message}`);
-    });
+    //localStorage.setItem('blog', '')
 
-    Post.getAllPostsByTagAndAuthor('ivko').then(function (posts) {
-        //console.log('By TagAndAuthor (ivko): ');
-        // no results, matches only one post but there is no ivko tag
-        //console.log(posts);
-    }, function (err) {
-        console.log(`Could not fetch posts: ${err.message}`);
-    });
 
     var app = $.sammy('#main-content', function () {
 
@@ -60,6 +64,8 @@ function app() {
         this.notFound = function () {
             // console.log('not found')
             controller.notFoundController();
+            controller.navbarController()
+
         };
 
 
@@ -67,6 +73,9 @@ function app() {
 
             //var selector = this.params['page'];
             //console.log(selector)
+            localStorage.setItem('blog', '')
+            controller.navbarController()
+
 
             controller.authenticationController();
 
@@ -74,24 +83,36 @@ function app() {
         });
 
         this.get('#/home', function () {
+            localStorage.setItem('blog', '')
+            controller.navbarController()
+
             controller.authenticationController();
             controller.homeController();
 
         });
 
         this.get('#/top', function () {
+            localStorage.setItem('blog', '')
+            controller.navbarController()
+
             controller.topController();
             controller.authenticationController();
 
         });
 
         this.get('#/all', function () {
+            localStorage.setItem('blog', '')
+            controller.navbarController()
+
             controller.allController();
             controller.authenticationController();
 
         });
 
         this.get('#/all-posts', function () {
+            localStorage.setItem('blog', '')
+            controller.navbarController()
+
             controller.allController();
 
             controller.authenticationController();
@@ -99,50 +120,77 @@ function app() {
 
         });
         this.get('#/all-users', function () {
+            localStorage.setItem('blog', '')
+            controller.navbarController()
+
             controller.allUsersController();
             controller.authenticationController();
 
         });
 
         this.get('#/about', function () {
+            localStorage.setItem('blog', '')
             // alert('about')
+            controller.navbarController()
+
             controller.aboutController();
             controller.authenticationController();
 
         });
 
         this.get('#/login-error', function () {
+            localStorage.setItem('blog', '')
             // alert('about')
+            controller.navbarController()
+
             controller.aboutController();
             // controller.login();
 
         });
 
         this.get('#/login', function () {
+            localStorage.setItem('blog', '')
+            controller.navbarController()
+
             controller.loginController();
             controller.authenticationController();
 
         });
 
         this.get('#/login-please', function () {
+            localStorage.setItem('blog', '')
+            controller.navbarController()
+
             controller.notLoggedController();
             controller.authenticationController();
 
         });
 
         this.get('#/register', function () {
+            localStorage.setItem('blog', '')
+            controller.navbarController()
+
             controller.registerController();
             controller.authenticationController();
 
         });
 
         this.get('#/register-successful', function () {
+
             controller.registrationSuccessfulControllers();
             controller.authenticationController();
 
         });
 
+        this.get('#/registration-error', function () {
+
+           // controller.registrationSuccessfulControllers();
+            controller.authenticationController();
+
+        });
+
         this.get('#/search-results', function () {
+            localStorage.setItem('blog', '')
             var request = this.params['request'];
 
             controller.searchResultsController(request, this);
@@ -150,20 +198,24 @@ function app() {
 
         });
 
-        this.get('#/:param', function () {
+        this.get('#/:user', function () {
             // alert('param')
-            var selector = this.params['param'];
-            controller.allocatorController(selector, this);
-            controller.authenticationController();
+            var selector = this.params['user'];
+
+            localStorage.setItem('blog', selector)
+
 
             // console.log(selector)
-            // this.notFound();
+            // alert(selector + this.params['home'])
 
-            //this.partial('templates/item_detail.template');
+            controller.userHomeController(selector, this);
+            controller.authenticationController();
         });
 
         this.get('#/:user/home', function () {
             var selector = this.params['user'];
+
+
 
             // console.log(selector)
             // alert(selector + this.params['home'])
@@ -177,8 +229,11 @@ function app() {
             // alert('About user')
 
             var userName = this.params['user']
-            controller.userAboutController(userName, this);
+           // localStorage.setItem('blog', userName)
+
             controller.authenticationController();
+            controller.userAboutController(userName, this);
+
 
         });
 
@@ -188,30 +243,52 @@ function app() {
             var userName = this.params['user']
             //controller.userAboutController(userName, this);
 
+            localStorage.setItem('blog', '')
+
+
             controller.logOutController();
 
         });
 
         this.get('#/:user/top', function () {
-            //alert('top')
+            var selector = this.params['user'];
+
+            localStorage.setItem('blog', selector)
+
+
             $('#template-container').load('templates/top.html');
             // TODO: create page controller
 
         });
 
-        this.get('/:user/#all', function () {
+        this.get('#/:user/all', function () {
+
+            var selector = this.params['user'];
+
+            localStorage.setItem('blog', selector)
+
             $('#template-container').load('templates/all.html');
             //controller.shareController();
             // TODO: create page controller
         });
 
         this.get('#/:user/new-post', function () {
+
+            var selector = this.params['user'];
+
+
+
             controller.userNewPostController();
             controller.authenticationController();
         })
 
         ;
         this.get('#/:user/new-post-submit', function () {
+
+            var selector = this.params['user'];
+
+
+
             var title = this.params.title,
                 content = this.params.content,
                 tags = this.params.tags,
@@ -224,6 +301,11 @@ function app() {
         });
 
         this.get('#/:user/settings', function () {
+
+            var selector = this.params['user'];
+
+           // localStorage.setItem('blog', selector)
+
             var userName = this.params['user']
             controller.userSettingsController(userName, this);
             controller.authenticationController();
@@ -231,20 +313,32 @@ function app() {
         });
 
         this.get('#/:user/settings-blog', function () {
+
+            var selector = this.params['user'];
+
+            //localStorage.setItem('blog', selector)
+
             controller.userSettingsBlogController();
             controller.authenticationController();
 
         });
 
         this.get('#/:user/settings-personal', function () {
-            controller.userSettingsPersonalController();
+            var selector = this.params['user'];
+
+            //localStorage.setItem('blog', selector)
+
+            controller.userSettingsPersonalController(this);
             controller.authenticationController();
 
         });
 
         this.get('#/:user/:postId', function () {
+
             var user = this.params['user'],
                 postID = this.params['postId'];
+
+            localStorage.setItem('blog', user)
             // console.log(selector)
             // alert(selector + this.params['home'])
 

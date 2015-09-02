@@ -29,6 +29,8 @@ function loadStaticTemplate(templatePath, containerSelector, successFunction) {
 
 function loadDataTemplate(templatePath, containerSelector, dataObject, successFunction) {
 
+    $(containerSelector).html('');
+
     var template = sessionStorage.getItem(templatePath);
 
     function loadHandlebars(template, data) {
@@ -37,7 +39,6 @@ function loadDataTemplate(templatePath, containerSelector, dataObject, successFu
 
         $(containerSelector).html(resultHtml);
 
-        sessionStorage.setItem(templatePath, template);
 
         if (typeof successFunction === 'function') {
             successFunction();
@@ -52,6 +53,7 @@ function loadDataTemplate(templatePath, containerSelector, dataObject, successFu
             method: 'GET',
             data: 'string',
             success: function (template) {
+                sessionStorage.setItem(templatePath, template);
                 loadHandlebars(template, dataObject)
             },
             dataType: 'html'

@@ -1,28 +1,31 @@
 import {templateHandler} from 'templateHandler'
-import {testDB} from 'testDB'
+import User from 'user'
+import Post from 'post'
+import {controller} from 'controller'
 
 
-function userHomeController(userName, app){
+function userHomeController(userName, app) {
 
-    //console.log('userHomeController');
+    Post.getLatestNPosts(3, userName).then(function (posts) {
 
-    var selectedUser = _.find(testDB.users, function (user) {
-        // console.log(user.posts);
-        return user.username === userName;
+        console.log(posts)
+
+        if (posts && posts.length > 0) {
+
+
+            localStorage.setItem('blog', userName);
+            controller.navbarController();
+            console.log(posts[0])
+            posts[0].active = true;
+
+            templateHandler.loadDataTemplate('templates/home.html', '#template-container', {posts: posts})
+        } else {
+            templateHandler.loadDataTemplate('templates/user-about.html', '#template-container', {username: userName})
+        }
+
+    }, function (err) {
+        console.log(err);
     });
-
-   // console.log(selectedUser)
-
-    if (selectedUser) {
-
-        templateHandler.loadDataTemplate('templates/home.html', '#template-container', selectedUser)
-
-    } else {
-       // console.log('error')
-        app.notFound()
-    }
-
-    //templateHandler.loadDataTemplate('templates/home.html', '#template-container', posts)
 }
 
 export {userHomeController}

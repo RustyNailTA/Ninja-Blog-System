@@ -28,7 +28,10 @@ var Post = Parse.Object.extend('Post', {}, {
         return new Promise(function (resolve, reject) {
             query.find().then(function (results) {
                 var posts = results.map(function (post) {
-                    return post.attributes;
+                  var currPost = post.attributes;
+                    currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+                    return currPost;
                 });
 
                 resolve(posts);
@@ -45,7 +48,11 @@ var Post = Parse.Object.extend('Post', {}, {
         return new Promise(function (resolve, reject) {
             query.find().then(function (results) {
                 var posts = results.map(function (post) {
-                    return post.attributes;
+                    var currPost = post.attributes;
+                    currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
+                    return currPost;
                 });
 
                 resolve(posts);
@@ -62,7 +69,11 @@ var Post = Parse.Object.extend('Post', {}, {
         return new Promise(function (resolve, reject) {
             query.find().then(function (results) {
                 var posts = results.map(function (post) {
-                    return post.attributes;
+                    var currPost = post.attributes;
+                    currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
+                    return currPost;
                 });
 
                 resolve(posts);
@@ -80,7 +91,11 @@ var Post = Parse.Object.extend('Post', {}, {
         return new Promise(function (resolve, reject) {
             query.find().then(function (results) {
                 var posts = results.map(function (post) {
-                    return post.attributes;
+                    var currPost = post.attributes;
+                    currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
+                    return currPost;
                 });
 
                 resolve(posts);
@@ -101,7 +116,59 @@ var Post = Parse.Object.extend('Post', {}, {
         return new Promise(function (resolve, reject) {
             tagAndAuthorQuery.find().then(function (results) {
                 var posts = results.map(function (post) {
-                    return post.attributes;
+                    var currPost = post.attributes;
+                    currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
+                    return currPost;
+                });
+
+                resolve(posts);
+            }, function (error) {
+                reject(error);
+            });
+        });
+    },
+    getTopNPostsByViews: function (n) {
+        var query = new Parse.Query(Post);
+
+        query.descending("views");
+        query.limit(n);
+
+        return new Promise(function (resolve, reject) {
+            query.find().then(function (results) {
+                var posts = results.map(function (post) {
+                    var currPost = post.attributes;
+                    currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
+                    return currPost;
+                });
+
+                resolve(posts);
+            }, function (error) {
+                reject(error);
+            });
+        });
+    },
+    getLatestNPosts: function (n, author) {
+        var query = new Parse.Query(Post);
+
+        if(author){
+            query.equalTo("author", author);
+        }
+
+        query.descending("createdAt");
+        query.limit(n);
+
+        return new Promise(function (resolve, reject) {
+            query.find().then(function (results) {
+                var posts = results.map(function (post) {
+                    var currPost = post.attributes;
+                    currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+
+                    return currPost;
                 });
 
                 resolve(posts);

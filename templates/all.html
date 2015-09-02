@@ -3,14 +3,17 @@
         {{#posts}}
         <article class="blog-post">
             <h2 class="blog-post-title">{{this.title}}</h2>
+            <h5 class="blog-post-title"><date>{{this.createdAt}}</date></h5>
+
 
             <p class="blog-post-meta">{{this.createdAt}} by: <a href="#/{{authorName}}/about">{{this.author}}</a></p>
+
 
             <div>
                 {{{this.content}}}
             </div>
 
-            <div class="col-xs-4 col-lg-2 col-md-3 col-sm-3 btn-holder">
+            <div class="col-xs-4 col-lg-2 col-md-3 col-sm-3 btn-holder pull-right">
                 <button class="btn btn-block btn-social btn-facebook btn-xs" id="btn-fb-share-{{@index}}">
                     <i class="fa fa-facebook"></i>Share
                 </button>
@@ -27,7 +30,7 @@
                     {{#tags}}
                     <small>
                         <strong>
-                            <a target="_blank" href="#/search-results?request={{this}}">
+                            <a href="#/search-results?request={{this}}">
                                 {{this}}
                             </a>
                             <span>&nbsp;</span>

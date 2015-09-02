@@ -1,11 +1,6 @@
 import { Parse as Parse } from 'parse';
 
-var User = Parse.User.extend({
-    getPostCount: function () {
-        // TODO: SELECT COUNT(*) FROM Posts WHERE username = User.get('username')
-        return 42;
-    }
-}, {
+var User = Parse.User.extend({}, {
     create: function (username, password, email) {
         if (!username) {
             throw new Error('Invalid username provided.');
@@ -35,7 +30,6 @@ var User = Parse.User.extend({
             });
         });
     },
-
     getAllUsers: function () {
         var query = new Parse.Query(User);
         return new Promise(function (resolve, reject) {
@@ -49,9 +43,29 @@ var User = Parse.User.extend({
                 reject(error);
             });
         });
+    },
+    getUserByUsername: function (username) {
+        var query = new Parse.Query(User);
+
+        query.equalTo("username", username);
+        console.log(username)
+
+
+        return new Promise(function (resolve, reject) {
+            query.first().then(function (results) {
+                console.log('results')
+              console.log(results)
+
+               if(results){
+                   resolve(results.attributes)
+               }else{
+                   reject();
+               }
+            }, function (error) {
+                reject(error);
+            });
+        });
     }
-
-
 });
 
 export default User;

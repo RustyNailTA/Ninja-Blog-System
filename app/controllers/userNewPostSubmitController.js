@@ -3,6 +3,8 @@ import {testDB} from 'testDB'
 import User from 'user'
 import Post from 'post'
 import {utilities} from 'utilities'
+import {controller} from 'controller'
+
 
 
 function userNewPostSubmitController(userName, title, content, tags, app) {
@@ -26,6 +28,11 @@ function userNewPostSubmitController(userName, title, content, tags, app) {
 
 
     if (selectedUser) {
+
+        localStorage.setItem('blog', selectedUser.username)
+
+        controller.navbarController();
+
         templateHandler.loadDataTemplate('templates/user-new-post-submit.html',
             '#template-container',
             {
