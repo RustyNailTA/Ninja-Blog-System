@@ -5,6 +5,7 @@ import User from 'user'
 import Post from 'post'
 import {utilities} from 'utilities'
 import {Parse as Parse} from 'parse'
+import {CONSTRAINTS} from 'CONSTRAINTS'
 
 //import 'handlebars';
 //import 'sammy';
@@ -123,11 +124,11 @@ function app() {
                 localStorage.setItem('blog',JSON.stringify({username: "", name: ""}));
                 controller.navbarController()
             }
-
+            var     page = 1;
             //console.log(month + '' + year)
 
 
-            controller.allController();
+            controller.allController(CONSTRAINTS.POSTS_PER_PAGE,page);
             controller.authenticationController();
 
         });
@@ -137,7 +138,7 @@ function app() {
             var page = parseInt(this.params['page']);
 
 
-            controller.allController(5,page);
+            controller.allController(CONSTRAINTS.POSTS_PER_PAGE,page);
 
             controller.authenticationController();
 
