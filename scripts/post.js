@@ -176,6 +176,102 @@ var Post = Parse.Object.extend('Post', {}, {
             });
         });
     },
+    getAllPostsPagingAuthorOrTag: function (key, postsPerPage, pageNumber) {
+        pageNumber = pageNumber-1;
+
+        var tagQuery = new Parse.Query(Post);
+        tagQuery.equalTo("tags", key);
+
+        var authorQuery = new Parse.Query(Post);
+        authorQuery.equalTo("authorName", key);
+
+        var query = new Parse.Query.or(tagQuery, authorQuery);
+        var count;
+
+        query.descending("createdAt");
+        query.skip(postsPerPage * (pageNumber));
+        query.limit(postsPerPage);
+
+        return new Promise(function (resolve, reject) {
+            query.count().then(function (results) {
+                count = Math.ceil(results / postsPerPage);
+
+                query.find().then(function (results) {
+                    var posts = results.map(function (post) {
+                        var currPost = post.attributes;
+                        currPost.id = post.id;
+                        currPost.createdAt = post.createdAt.toLocaleDateString();
+
+                        return currPost;
+                    });
+                    posts.pagesCount = count;
+
+                    if(pageNumber<=1) {
+                        posts.prevPage = 1;
+                    }else{
+                        posts.prevPage = pageNumber;
+                    }
+
+                    if(pageNumber>=count-1) {
+                        posts.nextPage = count;
+                    }else{
+                        posts.nextPage = pageNumber+2;
+                    }
+
+                    resolve(posts)
+                }, function (error) {
+                    reject(error);
+                });
+            });
+        });
+    },
+    getAllPostsPagingAuthorAndTag: function (author, key, postsPerPage, pageNumber) {
+
+        pageNumber = pageNumber-1;
+
+        var query = new Parse.Query(Post);
+        query.equalTo("tags", key);
+        query.equalTo("authorName", author);
+
+        var count;
+
+        query.descending("createdAt");
+        query.skip(postsPerPage * (pageNumber));
+        query.limit(postsPerPage);
+
+        return new Promise(function (resolve, reject) {
+            query.count().then(function (results) {
+                count = Math.ceil(results / postsPerPage);
+
+                query.find().then(function (results) {
+                    var posts = results.map(function (post) {
+                        var currPost = post.attributes;
+                        currPost.id = post.id;
+                        currPost.createdAt = post.createdAt.toLocaleDateString();
+
+                        return currPost;
+                    });
+                    posts.pagesCount = count;
+
+                    if(pageNumber<=1) {
+                        posts.prevPage = 1;
+                    }else{
+                        posts.prevPage = pageNumber;
+                    }
+
+                    if(pageNumber>=count-1) {
+                        posts.nextPage = count;
+                    }else{
+                        posts.nextPage = pageNumber+2;
+                    }
+
+                    resolve(posts)
+                }, function (error) {
+                    reject(error);
+                });
+            });
+        });
+    },
     //--------------------------------------
     getTopNPostsByViews: function (n, authorName) {
         var query = new Parse.Query(Post);

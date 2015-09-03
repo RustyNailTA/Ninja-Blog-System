@@ -6,70 +6,70 @@
         <div class="form-group">
             <label for="settings-about" class="col-lg-2 control-label">Say something about you:</label>
             <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="settings-about" name="about" placeholder="Something about you"></textarea>
+                <textarea class="form-control" rows="3" id="settings-about" name="about" placeholder="Something about you" {{#if about}}value="{{about}}"{{/if}}></textarea>
             </div>
         </div>
 
         <div class="form-group">
             <label for="settings-avatar" class="col-lg-2 control-label" >Avatar:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" rows="3" id="settings-avatar" name="avatar" placeholder="URL to your avatar"/>
+                <input type="text" class="form-control" rows="3" id="settings-avatar" name="avatar" placeholder="URL to your avatar" {{#if avatar}}value="{{avatar}}"{{/if}}/>
             </div>
         </div>
 
         <div class="form-group">
             <label for="settings-gitHub" class="col-lg-2 control-label" >Github:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" rows="3" id="settings-gitHub" name="gitHub" placeholder="Your github page URL"/>
+                <input type="text" class="form-control" rows="3" id="settings-gitHub" name="gitHub" placeholder="Your github page URL" {{#if links.gitHub}}value="{{links.gitHub}}"{{/if}}/>
             </div>
         </div>
 
         <div class="form-group">
             <label for="settings-telerikAcademy" class="col-lg-2 control-label" >Telerik Academy:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" rows="3" id="settings-telerikAcademy" name="telerikAcademy" placeholder="Your Telerik Academy page URL"/>
+                <input type="text" class="form-control" rows="3" id="settings-telerikAcademy" name="telerikAcademy" placeholder="Your Telerik Academy page URL" {{#if links.telerikAcademy}}value="{{links.telerikAcademy}}"{{/if}}/>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="settings-googlePlus" class="col-lg-2 control-label" >Telerik Academy:</label>
+            <label for="settings-googlePlus" class="col-lg-2 control-label" >Google+:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" rows="3" id="settings-googlePlus" name="googlePlus" placeholder="Your Google Plus page URL"/>
+                <input type="text" class="form-control" rows="3" id="settings-googlePlus" name="googlePlus" placeholder="Your Google Plus page URL" {{#if links.googlePlus}}value="{{links.googlePlus}}"{{/if}}/>
             </div>
         </div>
 
         <div class="form-group">
             <label for="settings-linkedIn" class="col-lg-2 control-label" >LinkedIn:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" rows="3" id="settings-linkedIn" name="linkedIn" placeholder="Your linkedIn page URL"/>
+                <input type="text" class="form-control" rows="3" id="settings-linkedIn" name="linkedIn" placeholder="Your linkedIn page URL" {{#if links.linkedIn}}value="{{links.linkedIn}}"{{/if}}/>
             </div>
         </div>
 
         <div class="form-group">
             <label for="settings-faceBook" class="col-lg-2 control-label" >Facebook:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" rows="3" id="settings-faceBook" name="faceBook" placeholder="Your Facebook page URL"/>
+                <input type="text" class="form-control" rows="3" id="settings-faceBook" name="faceBook" placeholder="Your Facebook page URL" {{#if links.faceBook}}value="{{links.faceBook}}"{{/if}}/>
             </div>
         </div>
 
         <div class="form-group">
             <label for="settings-flickr" class="col-lg-2 control-label" >Flickr:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" rows="3" id="settings-flickr" name="flickr" placeholder="Your Flickr page URL"/>
+                <input type="text" class="form-control" rows="3" id="settings-flickr" name="flickr" placeholder="Your Flickr page URL" {{#if links.flickr}}value="{{links.flickr}}"{{/if}}/>
             </div>
         </div>
 
         <div class="form-group">
             <label for="settings-twitter" class="col-lg-2 control-label" >Twitter:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" rows="3" id="settings-twitter" name="twitter" placeholder="Your Twitter page URL"/>
+                <input type="text" class="form-control" rows="3" id="settings-twitter" name="twitter" placeholder="Your Twitter page URL" {{#if links.twitter}}value="{{links.twitter}}"{{/if}}/>
             </div>
         </div>
 
         <div class="form-group">
             <label for="settings-skype" class="col-lg-2 control-label" >Skype:</label>
             <div class="col-lg-10">
-                <input type="text" class="form-control" rows="3" id="settings-skype" name="skype" placeholder="Your Skype ID"/>
+                <input type="text" class="form-control" rows="3" id="settings-skype" name="skype" placeholder="Your Skype ID" {{#if links.skype}}value="{{links.skype}}"{{/if}}/>
             </div>
         </div>
 
