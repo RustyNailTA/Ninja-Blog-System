@@ -345,6 +345,25 @@ function app() {
 
         });
 
+        this.get('#/:user/user-settings-personal-submit', function () {
+            var about = this.params.about,
+                avatar = this.params.avatar,
+                gitHub = this.params.gitHub,
+                telerikAcademy = this.params.telerikAcademy,
+                googlePlus = this.params.googlePlus,
+                linkedIn = this.params.linkedIn,
+                flickr = this.params.flickr,
+                twitter = this.params.twitter,
+                skype = this.params.skype;
+
+            //localStorage.setItem('blog', selector)
+
+            controller.userSettingsSubmitController(about, avatar, gitHub, telerikAcademy, googlePlus, linkedIn, flickr, twitter, skype, this);
+            controller.authenticationController();
+
+        });
+
+
         this.get('#/:user/:postId', function () {
 
             var user = this.params['user'],

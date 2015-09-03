@@ -1,16 +1,83 @@
-<div class="container-fluid">
-    <h2>Personal settings still to implement</h2>
-    <h5>... free means not easy ...</h5>
 
-    <p>... but ...  All you have to do is follow to <a href="http://telerikacademy.com/" target="_blank">this link</a>  and you'll be
-        able to do it all alone </p>
+<form class="form-horizontal" id="new-post-form" action="#/{{username}}/user-settings-personal-submit">
+    <fieldset>
+        <legend>Personal settingst:</legend>
 
-    <p>
-        <small>/after a year, maybe later .../</small>
-    </p>
-    <div>
-        <p>
-            <span>Or just keep this current look and </span><a href="#/{{username}}/settings">go back...</a>
-        </p>
-    </div>
-</div>
+        <div class="form-group">
+            <label for="settings-about" class="col-lg-2 control-label">Say something about you:</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="settings-about" name="about" placeholder="Something about you"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="settings-avatar" class="col-lg-2 control-label" >Avatar:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" rows="3" id="settings-avatar" name="avatar" placeholder="URL to your avatar"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="settings-gitHub" class="col-lg-2 control-label" >Github:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" rows="3" id="settings-gitHub" name="gitHub" placeholder="Your github page URL"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="settings-telerikAcademy" class="col-lg-2 control-label" >Telerik Academy:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" rows="3" id="settings-telerikAcademy" name="telerikAcademy" placeholder="Your Telerik Academy page URL"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="settings-googlePlus" class="col-lg-2 control-label" >Telerik Academy:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" rows="3" id="settings-googlePlus" name="googlePlus" placeholder="Your Google Plus page URL"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="settings-linkedIn" class="col-lg-2 control-label" >LinkedIn:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" rows="3" id="settings-linkedIn" name="linkedIn" placeholder="Your linkedIn page URL"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="settings-faceBook" class="col-lg-2 control-label" >Facebook:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" rows="3" id="settings-faceBook" name="faceBook" placeholder="Your Facebook page URL"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="settings-flickr" class="col-lg-2 control-label" >Flickr:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" rows="3" id="settings-flickr" name="flickr" placeholder="Your Flickr page URL"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="settings-twitter" class="col-lg-2 control-label" >Twitter:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" rows="3" id="settings-twitter" name="twitter" placeholder="Your Twitter page URL"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="settings-skype" class="col-lg-2 control-label" >Skype:</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" rows="3" id="settings-skype" name="skype" placeholder="Your Skype ID"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Update your info:</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

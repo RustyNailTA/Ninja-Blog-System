@@ -13,7 +13,7 @@ function userSettingsPersonalController(app){
         console.log(selectedUser)
 
         controller.navbarController();
-        templateHandler.loadDataTemplate('templates/user-settings-blog.html', '#template-container', selectedUser.attributes)
+        templateHandler.loadDataTemplate('templates/user-settings-personal.html', '#template-container', selectedUser.attributes)
 
     } else {
         // console.log('error')
