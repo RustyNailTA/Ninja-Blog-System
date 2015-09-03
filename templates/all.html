@@ -1,4 +1,5 @@
 <div class=" container-fluid">
+    <h2></h2>
     <div class="col-sm-8 blog-main">
         {{#posts}}
         <article class="blog-post">
@@ -34,7 +35,7 @@
                     {{#tags}}
                     <small>
                         <strong>
-                            <a href="#/search-results?request={{this}}">
+                            <a href="#{{#if blog.username}}/{{blog.username}}{{/if}}/search-results?request={{this}}">
                                 {{this}}
                             </a>
                             <span>&nbsp;</span>
@@ -57,15 +58,15 @@
 
     <ul class="pagination pagination-sm">
         <li class="prevnext" id="prev">
-            <a href="#/all-posts/{{posts.prevPage}}" aria-label="Previous">
+            <a href="#{{#if blog.username}}/{{blog.username}}{{/if}}/all-posts/{{posts.prevPage}}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
         {{#times posts.pagesCount}}
-        <li id="{{this}}" class="pages-li"><a href="#/all-posts/{{this}}">{{this}}</a></li>
+        <li id="{{this}}" class="pages-li"><a href="#{{#if blog.username}}/{{blog.username}}{{/if}}/all-posts/{{this}}">{{this}}</a></li>
         {{/times}}
         <li class="prevnext" id="next">
-            <a href="#/all-posts/{{posts.nextPage}}" aria-label="Next">
+            <a href="#{{#if blog.username}}/{{blog.username}}{{/if}}/all-posts/{{posts.nextPage}}" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
             </a>
         </li>

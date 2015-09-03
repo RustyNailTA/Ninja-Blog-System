@@ -272,6 +272,52 @@ var Post = Parse.Object.extend('Post', {}, {
             });
         });
     },
+    getAllPostsPagingAuthor: function (author, postsPerPage, pageNumber) {
+
+        pageNumber = pageNumber-1;
+
+        var query = new Parse.Query(Post);
+        query.equalTo("authorName", author);
+
+        var count;
+
+        query.descending("createdAt");
+        query.skip(postsPerPage * (pageNumber));
+        query.limit(postsPerPage);
+
+        return new Promise(function (resolve, reject) {
+            query.count().then(function (results) {
+                count = Math.ceil(results / postsPerPage);
+
+                query.find().then(function (results) {
+                    var posts = results.map(function (post) {
+                        var currPost = post.attributes;
+                        currPost.id = post.id;
+                        currPost.createdAt = post.createdAt.toLocaleDateString();
+
+                        return currPost;
+                    });
+                    posts.pagesCount = count;
+
+                    if(pageNumber<=1) {
+                        posts.prevPage = 1;
+                    }else{
+                        posts.prevPage = pageNumber;
+                    }
+
+                    if(pageNumber>=count-1) {
+                        posts.nextPage = count;
+                    }else{
+                        posts.nextPage = pageNumber+2;
+                    }
+
+                    resolve(posts)
+                }, function (error) {
+                    reject(error);
+                });
+            });
+        });
+    },
     //--------------------------------------
     getTopNPostsByViews: function (n, authorName) {
         var query = new Parse.Query(Post);

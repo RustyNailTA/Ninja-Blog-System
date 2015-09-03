@@ -36,7 +36,7 @@
                     {{#tags}}
                     <small>
                         <strong>
-                            <a href="#/search-results?request={{this}}">
+                            <a href="#{{#if blog.username}}/{{blog.username}}{{/if}}/search-results?request={{this}}">
                                 {{this}}
                             </a>
                             <span>&nbsp;</span>
@@ -57,15 +57,15 @@
 
     <ul class="pagination pagination-sm">
         <li class="prevnext" id="prev">
-            <a href="#/search-results/{{posts.prevPage}}" aria-label="Previous">
+            <a href="#{{#if blog.username}}/{{blog.username}}{{/if}}/search-results/{{posts.prevPage}}?request={{request}}" aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
             </a>
         </li>
         {{#times posts.pagesCount}}
-        <li id="{{this}}" class="pages-li"><a href="#/search-results/{{this}}">{{this}}</a></li>
+        <li id="{{this}}" class="pages-li"><a href="#{{#if blog.username}}/{{blog.username}}{{/if}}/search-results/{{this}}?request={{request}}">{{this}}</a></li>
         {{/times}}
         <li class="prevnext" id="next">
-            <a href="#/search-results/{{posts.nextPage}}" aria-label="Next">
+            <a href="#{{#if blog.username}}/{{blog.username}}{{/if}}/search-results/{{posts.nextPage}}?request={{request}}" aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
             </a>
         </li>

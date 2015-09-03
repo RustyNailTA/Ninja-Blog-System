@@ -176,6 +176,7 @@ function app() {
 
         });
 
+
         this.get('#/about', function () {
             localStorage.setItem('blog', JSON.stringify({username: "", name: ""}))
             // alert('about')
@@ -283,26 +284,38 @@ function app() {
 
         });
 
-        this.get('#/:user/all', function () {
+        this.get('#/:user/all-posts', function () {
+            var user = this.params['user'];
+            var year = this.params['year'];
+            var month = this.params['month'];
+            var page = 1;
 
-            var selector = this.params['user'];
+            if (month && year) {
+                controller.postsByMonthController(user, year, month);
+            } else {
+                controller.userAllController(user, CONSTRAINTS.POSTS_PER_PAGE, page, this);
+            }
 
-
-            controller.userAllController(selector);
+            controller.navbarController();
             controller.authenticationController();
+        });
 
+        this.get('#:user/all-posts/:page', function () {
+            var user = this.params['user'];
+            var page = parseInt(this.params['page']);
+
+            controller.userAllController(user, CONSTRAINTS.POSTS_PER_PAGE, page, this);
+            controller.navbarController();
+            controller.authenticationController();
         });
 
         this.get('#/:user/new-post', function () {
-
             var selector = this.params['user'];
-
 
             controller.userNewPostController();
             controller.authenticationController();
-        })
+        });
 
-        ;
         this.get('#/:user/new-post-submit', function () {
             var selector = this.params['user'],
                 title = this.params.title,
@@ -373,7 +386,7 @@ function app() {
 
             var page = 1;
 
-            controller.searchBlogResultsController(username,request, CONSTRAINTS.POSTS_PER_PAGE, page, this);
+            controller.searchBlogResultsController(username, request, CONSTRAINTS.POSTS_PER_PAGE, page, this);
             controller.authenticationController();
         });
 
@@ -382,7 +395,7 @@ function app() {
                 request = this.params['request'],
                 username = this.params['user'];
 
-            controller.searchBlogResultsController(username,request, CONSTRAINTS.POSTS_PER_PAGE, page, this);
+            controller.searchBlogResultsController(username, request, CONSTRAINTS.POSTS_PER_PAGE, page, this);
             controller.authenticationController();
         });
 
