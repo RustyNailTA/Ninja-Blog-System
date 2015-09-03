@@ -18,8 +18,18 @@ var User = Parse.User.extend({}, {
 
         user.set('username', username);
         user.set('password', password)
+        user.set('avatar', '');
+        user.set('about', '');
         user.set('email', email);
-        user.set('links', []);
+        user.set('links', {
+            gitHub: '',
+            telerikAcademy: '',
+            googlePlus: '',
+            linkedIn: '',
+            flickr: '',
+            twitter: '',
+            skype: ''
+        });
         user.set('name', username);
 
         return new Promise(function (resolve, reject) {
