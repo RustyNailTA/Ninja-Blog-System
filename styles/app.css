@@ -51,3 +51,12 @@
     display: none;
     margin-top: 2%;
 }
+
+.user-about-avatar{
+    width:300px;
+}
+
+.info-link, .glyphicon-envelope{
+    margin: 10px;
+    font-size: 2em;
+}
