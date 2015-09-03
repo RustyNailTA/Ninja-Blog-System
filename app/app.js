@@ -15,6 +15,7 @@ import {Parse as Parse} from 'parse'
 
 function app() {
     utilities.hideDropdown();
+    utilities.handlebarsRegisterHelpers();
     //console.log('Enter app');
     //console.log(Sammy);
 
@@ -128,6 +129,18 @@ function app() {
 
             controller.allController();
             controller.authenticationController();
+
+        });
+
+        this.get('#/all-posts/:page', function () {
+
+            var page = parseInt(this.params['page']);
+
+
+            controller.allController(5,page);
+
+            controller.authenticationController();
+
 
         });
 

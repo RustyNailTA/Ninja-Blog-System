@@ -9,6 +9,7 @@ import {utilities} from 'utilities'
 
 function userAllController(userName, app){
     //console.log(userName)
+
     Post.getAllPostsByAuthor(userName).then(function (posts) {
        // console.log(posts)
 

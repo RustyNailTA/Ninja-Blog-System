@@ -6,7 +6,8 @@
                 <h2 class="blog-post-title">{{this.title}}</h2>
 
                 <p class="blog-post-meta">
-                    <date>{{this.createdAt}}</date> by: <a href="#/{{authorName}}/about">{{author}}</a>
+                    <date>{{this.createdAt}}</date>
+                    by: <a href="#/{{authorName}}/about">{{author}}</a>
                     <span class="pull-right label label-success">views: {{views}}</span>
                 </p>
 
@@ -53,6 +54,22 @@
         </div>
 
     </div>
+
+    <ul class="pagination pagination-sm">
+        <li class="prevnext" id="prev">
+            <a href="#/all-posts/{{posts.prevPage}}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {{#times posts.pagesCount}}
+        <li id="{{this}}" class="pages-li"><a href="#/all-posts/{{this}}">{{this}}</a></li>
+        {{/times}}
+        <li class="prevnext" id="next">
+            <a href="#/all-posts/{{posts.nextPage}}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
 
 
     <!-- TODO: TO SEE HOW TO IMPLEMENT!!!-->

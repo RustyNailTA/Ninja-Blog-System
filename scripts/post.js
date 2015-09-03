@@ -33,7 +33,7 @@ var Post = Parse.Object.extend('Post', {}, {
         return new Promise(function (resolve, reject) {
             query.find().then(function (results) {
                 var posts = results.map(function (post) {
-                  var currPost = post.attributes;
+                    var currPost = post.attributes;
                     currPost.id = post.id;
                     currPost.createdAt = post.createdAt.toLocaleDateString();
                     return currPost;
@@ -134,10 +134,53 @@ var Post = Parse.Object.extend('Post', {}, {
             });
         });
     },
+    //-------------------------------------
+    getAllPostsPaging: function (postsPerPage, pageNumber) {
+        pageNumber = pageNumber-1;
+        var query = new Parse.Query(Post);
+        var count;
+        query.descending("createdAt");
+        query.skip(postsPerPage * (pageNumber));
+        query.limit(postsPerPage);
+
+        return new Promise(function (resolve, reject) {
+            query.count().then(function (results) {
+                count = Math.ceil(results / postsPerPage);
+
+                query.find().then(function (results) {
+                    var posts = results.map(function (post) {
+                        var currPost = post.attributes;
+                        currPost.id = post.id;
+                        currPost.createdAt = post.createdAt.toLocaleDateString();
+
+                        return currPost;
+                    });
+                    posts.pagesCount = count;
+
+                    if(pageNumber<=1) {
+                        posts.prevPage = 1;
+                    }else{
+                        posts.prevPage = pageNumber;
+                    }
+
+                    if(pageNumber>=count-1) {
+                        posts.nextPage = count;
+                    }else{
+                        posts.nextPage = pageNumber+2;
+                    }
+
+                    resolve(posts)
+                }, function (error) {
+                    reject(error);
+                });
+            });
+        });
+    },
+    //--------------------------------------
     getTopNPostsByViews: function (n, authorName) {
         var query = new Parse.Query(Post);
 
-        if(authorName){
+        if (authorName) {
             query.equalTo("authorName", authorName);
         }
 
@@ -163,7 +206,7 @@ var Post = Parse.Object.extend('Post', {}, {
     getLatestNPosts: function (n, author) {
         var query = new Parse.Query(Post);
 
-        if(author){
+        if (author) {
             query.equalTo("authorName", author);
         }
 
@@ -189,14 +232,14 @@ var Post = Parse.Object.extend('Post', {}, {
     getPostByAuthorAndId: function (postAuthor, postId) {
         var query = new Parse.Query(Post);
 
-            query.equalTo("authorName", postAuthor);
-            query.equalTo("objectId", postId);
+        query.equalTo("authorName", postAuthor);
+        query.equalTo("objectId", postId);
 
         return new Promise(function (resolve, reject) {
             query.first().then(function (result) {
 
                 var post = result;
-                if(post){
+                if (post) {
                     post.attributes.createdAt = result.createdAt.toLocaleDateString();
                 }
 
@@ -209,4 +252,5 @@ var Post = Parse.Object.extend('Post', {}, {
 
 });
 
-export default Post;
+export default
+Post;
