@@ -2,7 +2,7 @@ import {templateHandler} from 'templateHandler'
 import {controller} from 'controller'
 import User from 'user'
 
-function userSettingsPersonalController(app) {
+function userSettingsPersonalController(selector, app) {
     var selectedUser = User.current();
 
     if (selectedUser) {

@@ -28,7 +28,8 @@ var User = Parse.User.extend({}, {
             linkedIn: '',
             flickr: '',
             twitter: '',
-            skype: ''
+            skype: '',
+            faceBook: ''
         });
         user.set('name', username);
 
