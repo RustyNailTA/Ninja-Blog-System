@@ -12,11 +12,14 @@ function userNewPostController(userName, app){
 
     if (selectedUser) {
 
+        function launchTrumbowyg(){
+            $('#content').trumbowyg();
+        }
+
         localStorage.setItem('blog',JSON.stringify({username: selectedUser.username, name: selectedUser.name}));
 
         controller.navbarController();
-        templateHandler.loadDataTemplate('templates/user-new-post.html', '#template-container', selectedUser)
-
+        templateHandler.loadDataTemplate('templates/user-new-post.html', '#template-container', selectedUser, launchTrumbowyg)
     } else {
         //console.log(window.location)
         window.location.hash = '#/login-please'
