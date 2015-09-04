@@ -1,5 +1,4 @@
 import {templateHandler} from 'templateHandler'
-import {testDB} from 'testDB'
 import fbApi from 'fbApi'
 import User from 'user'
 import Post from 'post'

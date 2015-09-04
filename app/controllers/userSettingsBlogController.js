@@ -1,5 +1,4 @@
 import {templateHandler} from 'templateHandler'
-import {testDB} from 'testDB'
 import {controller} from 'controller'
 import User from 'user'
 
