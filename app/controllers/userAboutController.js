@@ -7,12 +7,15 @@ function userAboutController(username, app) {
         if (user) {
             localStorage.setItem('blog', JSON.stringify({username: user.username, name: user.name}));
 
+            function userAboutEmailButtonController(){
+                $('#about-email-label').hide();
+                $('#about-email-info').on('click', function () {
+                    $('#about-email-label').toggle(500);
+                })
+            }
+
             controller.navbarController();
-            templateHandler.loadDataTemplate('templates/user-about.html', '#template-container', user);
-            $('#about-email-label').hide();
-            $('#about-email-info').on('click', function () {
-                $('#about-email-label').toggle(500);
-            })
+            templateHandler.loadDataTemplate('templates/user-about.html', '#template-container', user, userAboutEmailButtonController);
         } else {
             app.notFound();
         }
