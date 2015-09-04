@@ -97,18 +97,19 @@ function loginController() {
                 success: function (user) {
 
                     function getFbUser(user) {
-                        FB.api('/me', function (response) {
+                                FB.api('/me', function (response) {
 
-                            user.set('name', response.name);
-                            user.save();
-                            if (!user.existed()) {
-
-                                templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', user.attributes, controller.authenticationController)
-                            } else {
-
-                                templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', user.attributes, controller.authenticationController)
-                            }
-                        });
+                                    user.set('name', response.name);
+                                    user.set('avatar', 'https://graph.facebook.com/'+response.id+'/picture?type=large')
+                                    user.save();
+                                    if (!user.existed()) {
+        
+                                        templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', user.attributes, controller.authenticationController)
+                                    } else {
+        
+                                        templateHandler.loadDataTemplate('templates/login-success.html', '#template-container', user.attributes, controller.authenticationController)
+                                    }
+                                });
                     }
 
                     getFbUser(user);
