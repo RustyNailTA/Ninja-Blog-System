@@ -1,5 +1,16 @@
 import { Parse as Parse } from 'parse';
 
+Date.prototype.monthNames = [
+    'January', 'February', 'March',
+    'April', 'May', 'June',
+    'July', 'August', 'September',
+    'October', 'November', 'December'
+];
+
+Date.prototype.getMonthName = function() {
+    return this.monthNames[this.getMonth()];
+};
+
 var Post = Parse.Object.extend('Post', {}, {
     create: function (title, content, tags, author, authorName) {
         tags = tags || [];
@@ -136,7 +147,7 @@ var Post = Parse.Object.extend('Post', {}, {
     },
     //-------------------------------------
     getAllPostsPaging: function (postsPerPage, pageNumber) {
-        pageNumber = pageNumber-1;
+        pageNumber = pageNumber - 1;
         var query = new Parse.Query(Post);
         var count;
         query.descending("createdAt");
@@ -157,16 +168,16 @@ var Post = Parse.Object.extend('Post', {}, {
                     });
                     posts.pagesCount = count;
 
-                    if(pageNumber<=1) {
+                    if (pageNumber <= 1) {
                         posts.prevPage = 1;
-                    }else{
+                    } else {
                         posts.prevPage = pageNumber;
                     }
 
-                    if(pageNumber>=count-1) {
+                    if (pageNumber >= count - 1) {
                         posts.nextPage = count;
-                    }else{
-                        posts.nextPage = pageNumber+2;
+                    } else {
+                        posts.nextPage = pageNumber + 2;
                     }
 
                     resolve(posts)
@@ -177,7 +188,7 @@ var Post = Parse.Object.extend('Post', {}, {
         });
     },
     getAllPostsPagingAuthorOrTag: function (key, postsPerPage, pageNumber) {
-        pageNumber = pageNumber-1;
+        pageNumber = pageNumber - 1;
 
         var tagQuery = new Parse.Query(Post);
         tagQuery.equalTo("tags", key);
@@ -206,16 +217,16 @@ var Post = Parse.Object.extend('Post', {}, {
                     });
                     posts.pagesCount = count;
 
-                    if(pageNumber<=1) {
+                    if (pageNumber <= 1) {
                         posts.prevPage = 1;
-                    }else{
+                    } else {
                         posts.prevPage = pageNumber;
                     }
 
-                    if(pageNumber>=count-1) {
+                    if (pageNumber >= count - 1) {
                         posts.nextPage = count;
-                    }else{
-                        posts.nextPage = pageNumber+2;
+                    } else {
+                        posts.nextPage = pageNumber + 2;
                     }
 
                     resolve(posts)
@@ -227,7 +238,7 @@ var Post = Parse.Object.extend('Post', {}, {
     },
     getAllPostsPagingAuthorAndTag: function (author, key, postsPerPage, pageNumber) {
 
-        pageNumber = pageNumber-1;
+        pageNumber = pageNumber - 1;
 
         var query = new Parse.Query(Post);
         query.equalTo("tags", key);
@@ -253,16 +264,16 @@ var Post = Parse.Object.extend('Post', {}, {
                     });
                     posts.pagesCount = count;
 
-                    if(pageNumber<=1) {
+                    if (pageNumber <= 1) {
                         posts.prevPage = 1;
-                    }else{
+                    } else {
                         posts.prevPage = pageNumber;
                     }
 
-                    if(pageNumber>=count-1) {
+                    if (pageNumber >= count - 1) {
                         posts.nextPage = count;
-                    }else{
-                        posts.nextPage = pageNumber+2;
+                    } else {
+                        posts.nextPage = pageNumber + 2;
                     }
 
                     resolve(posts)
@@ -274,7 +285,7 @@ var Post = Parse.Object.extend('Post', {}, {
     },
     getAllPostsPagingAuthor: function (author, postsPerPage, pageNumber) {
 
-        pageNumber = pageNumber-1;
+        pageNumber = pageNumber - 1;
 
         var query = new Parse.Query(Post);
         query.equalTo("authorName", author);
@@ -299,16 +310,68 @@ var Post = Parse.Object.extend('Post', {}, {
                     });
                     posts.pagesCount = count;
 
-                    if(pageNumber<=1) {
+                    if (pageNumber <= 1) {
                         posts.prevPage = 1;
-                    }else{
+                    } else {
                         posts.prevPage = pageNumber;
                     }
 
-                    if(pageNumber>=count-1) {
+                    if (pageNumber >= count - 1) {
                         posts.nextPage = count;
-                    }else{
-                        posts.nextPage = pageNumber+2;
+                    } else {
+                        posts.nextPage = pageNumber + 2;
+                    }
+
+                    resolve(posts)
+                }, function (error) {
+                    reject(error);
+                });
+            });
+        });
+    },
+    getAllPostsPagingMontnAndYear: function (month, year, postsPerPage, pageNumber, author) {
+
+        pageNumber = pageNumber - 1;
+
+        var query = new Parse.Query(Post);
+
+        query.greaterThan('createdAt', new Date(year, month, 1, 0, 0, 0));
+        query.lessThan('createdAt', new Date(year, month + 1, 0, 23, 59, 59));
+
+        if(author){
+            query.equalTo("authorName", author);
+        }
+
+        var count;
+
+        query.descending("createdAt");
+        query.skip(postsPerPage * (pageNumber));
+        query.limit(postsPerPage);
+
+        return new Promise(function (resolve, reject) {
+            query.count().then(function (results) {
+                count = Math.ceil(results / postsPerPage);
+
+                query.find().then(function (results) {
+                    var posts = results.map(function (post) {
+                        var currPost = post.attributes;
+                        currPost.id = post.id;
+                        currPost.createdAt = post.createdAt.toLocaleDateString();
+
+                        return currPost;
+                    });
+                    posts.pagesCount = count;
+
+                    if (pageNumber <= 1) {
+                        posts.prevPage = 1;
+                    } else {
+                        posts.prevPage = pageNumber;
+                    }
+
+                    if (pageNumber >= count - 1) {
+                        posts.nextPage = count;
+                    } else {
+                        posts.nextPage = pageNumber + 2;
                     }
 
                     resolve(posts)
@@ -390,8 +453,62 @@ var Post = Parse.Object.extend('Post', {}, {
                 reject(error);
             });
         });
-    }
+    },
+    getPostsMonths: function (author) {
+        var query = new Parse.Query(Post);
+        if(author){
+            query.equalTo("authorName", author);
+        }
 
+        return new Promise(function (resolve, reject) {
+            query.find().then(function (results) {
+                var uniqueArchiveDates;
+
+                var archiveDates = results.map(function (post) {
+                    var postDate = new Date(post.createdAt),
+                        dateObject = {
+                            month: postDate.getMonth(),
+                            year: postDate.getFullYear(),
+                            monthName: postDate.getMonthName()
+                        };
+                    return dateObject
+                });
+
+                uniqueArchiveDates = _.uniq(archiveDates, function (item, key, a) {
+                    return item.a;
+                });
+
+                resolve(uniqueArchiveDates);
+            }, function (error) {
+                reject(error);
+            });
+        });
+    },
+    getAllPostsByMonthAndYear: function (month, year, author) {
+        var query = new Parse.Query(Post);
+
+        if(author){
+            query.equalTo("authorName", author);
+        }
+
+        query.greaterThan('createdAt', new Date(year, month, 1, 0, 0, 0));
+        query.lessThan('createdAt', new Date(year, month + 1, 0, 23, 59, 59));
+
+        return new Promise(function (resolve, reject) {
+            query.find().then(function (results) {
+                var posts = results.map(function (post) {
+                    var currPost = post.attributes;
+                    currPost.id = post.id;
+                    currPost.createdAt = post.createdAt.toLocaleDateString();
+                    return currPost;
+                });
+
+                resolve(posts);
+            }, function (error) {
+                reject(error);
+            });
+        });
+    }
 });
 
 export default

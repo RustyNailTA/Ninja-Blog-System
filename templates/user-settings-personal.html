@@ -1,12 +1,12 @@
 
 <form class="form-horizontal" id="new-post-form" action="#/{{username}}/user-settings-personal-submit">
     <fieldset>
-        <legend>Personal settingst:</legend>
+        <legend>Personal settings:</legend>
 
         <div class="form-group">
             <label for="settings-about" class="col-lg-2 control-label">Say something about you:</label>
             <div class="col-lg-10">
-                <textarea class="form-control" rows="3" id="settings-about" name="about" placeholder="Something about you" {{#if about}}value="{{about}}"{{/if}}></textarea>
+                <textarea class="form-control" rows="3" id="settings-about" name="about" placeholder="Something about you" {{#if about}}value="{{about}}"{{/if}}>{{#if about}}{{about}}{{/if}}</textarea>
             </div>
         </div>
 
@@ -76,7 +76,7 @@
         <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
                 <button type="reset" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-primary">Update your info:</button>
+                <button type="submit" class="btn btn-primary">Update your info</button>
             </div>
         </div>
     </fieldset>

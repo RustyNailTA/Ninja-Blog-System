@@ -121,7 +121,7 @@ function app() {
 
 
             if (month && year) {
-                controller.postsByMonthController();
+                controller.postsByMonthController(month, year, CONSTRAINTS.POSTS_PER_PAGE, page, this);
             } else {
 
                 controller.allController(CONSTRAINTS.POSTS_PER_PAGE, page, this);

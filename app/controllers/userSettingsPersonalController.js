@@ -10,6 +10,8 @@ function userSettingsPersonalController(app){
         localStorage.setItem('blog',JSON.stringify({username: selectedUser.attributes.username, name: selectedUser.attributes.name}));
         controller.navbarController();
 
+        console.log(selectedUser.attributes.about)
+
         templateHandler.loadDataTemplate('templates/user-settings-personal.html', '#template-container', selectedUser.attributes)
     } else {
         app.notFound()
