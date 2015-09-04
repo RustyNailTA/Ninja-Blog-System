@@ -4,8 +4,6 @@ A repository containing our teamwork project for the 'JavaScript Applications' c
 
 ## Live demo at:
 
-http://rustynailta.github.io/Ninja-Blog-System/#/
-
 [http://rustynailta.github.io/Ninja-Blog-System/#/](http://rustynailta.github.io/Ninja-Blog-System/#/)
 
 ## Installation and configuration
