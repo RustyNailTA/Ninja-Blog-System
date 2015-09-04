@@ -255,7 +255,7 @@ function app() {
         this.get('#/:user/settings-personal', function () {
             var selector = this.params['user'];
 
-            controller.userSettingsPersonalController(this);
+            controller.userSettingsPersonalController(selector, this);
             controller.authenticationController();
         });
 
@@ -267,11 +267,12 @@ function app() {
                 telerikAcademy = this.params.telerikAcademy,
                 googlePlus = this.params.googlePlus,
                 linkedIn = this.params.linkedIn,
+                faceBook = this.params.faceBook,
                 flickr = this.params.flickr,
                 twitter = this.params.twitter,
                 skype = this.params.skype;
 
-            controller.userSettingsSubmitController(name, about, avatar, gitHub, telerikAcademy, googlePlus, linkedIn, flickr, twitter, skype, this);
+            controller.userSettingsSubmitController(name, about, avatar, gitHub, telerikAcademy, googlePlus, linkedIn, faceBook, flickr, twitter, skype, this);
             controller.authenticationController();
         });
 

@@ -5,7 +5,7 @@ import {utilities} from 'utilities'
 import {controller} from 'controller'
 import {validator} from 'validator'
 
-function userSettingsSubmitController(name, about, avatar, gitHub, telerikAcademy, googlePlus, linkedIn, flickr, twitter, skype, app) {
+function userSettingsSubmitController(name, about, avatar, gitHub, telerikAcademy, googlePlus, linkedIn, faceBook, flickr, twitter, skype, app) {
 
     var ecureName = validator.textInputValidator.scriptTagValidator(name || ''),
         ecureAbout = validator.textInputValidator.scriptTagValidator(about || ''),
@@ -14,6 +14,7 @@ function userSettingsSubmitController(name, about, avatar, gitHub, telerikAcadem
         ecureTelerikAcademy = validator.textInputValidator.scriptTagValidator(telerikAcademy || ''),
         ecureGooglePlus = validator.textInputValidator.scriptTagValidator(googlePlus || ''),
         ecureLinkedIn = validator.textInputValidator.scriptTagValidator(linkedIn || ''),
+        ecurefaceBook = validator.textInputValidator.scriptTagValidator(faceBook || ''),
         ecureFlickr = validator.textInputValidator.scriptTagValidator(flickr || ''),
         ecureTwitter = validator.textInputValidator.scriptTagValidator(twitter || ''),
         ecureSkype = validator.textInputValidator.scriptTagValidator(skype || '');
@@ -21,7 +22,7 @@ function userSettingsSubmitController(name, about, avatar, gitHub, telerikAcadem
     var selectedUser = User.current();
 
     function updaeUserSettings(user) {
-        var links = user.get('links');
+        var links = user.get('links') || {};
 
         if (name) {
             user.set('name', ecureName)
@@ -43,6 +44,9 @@ function userSettingsSubmitController(name, about, avatar, gitHub, telerikAcadem
         }
         if (linkedIn) {
             links.linkedIn = ecureLinkedIn;
+        }
+        if (faceBook) {
+            links.faceBook = ecurefaceBook;
         }
         if (flickr) {
             links.flickr = ecureFlickr;
