@@ -5,9 +5,10 @@ import {utilities} from 'utilities'
 import {controller} from 'controller'
 import {validator} from 'validator'
 
-function userSettingsSubmitController(about, avatar, gitHub, telerikAcademy, googlePlus, linkedIn, flickr, twitter, skype, app) {
+function userSettingsSubmitController(name, about, avatar, gitHub, telerikAcademy, googlePlus, linkedIn, flickr, twitter, skype, app) {
 
-    var ecureAbout = validator.textInputValidator.scriptTagValidator(about || ''),
+    var ecureName = validator.textInputValidator.scriptTagValidator(name || ''),
+        ecureAbout = validator.textInputValidator.scriptTagValidator(about || ''),
         ecureAvatar = validator.textInputValidator.scriptTagValidator(avatar || ''),
         ecureGitHub = validator.textInputValidator.scriptTagValidator(gitHub || ''),
         ecureTelerikAcademy = validator.textInputValidator.scriptTagValidator(telerikAcademy || ''),
@@ -20,8 +21,11 @@ function userSettingsSubmitController(about, avatar, gitHub, telerikAcademy, goo
     var selectedUser = User.current();
 
     function updaeUserSettings(user) {
-        var links = user.get('links')
+        var links = user.get('links');
 
+        if (name) {
+            user.set('name', ecureName)
+        }
         if (about) {
             user.set('about', ecureAbout)
         }
