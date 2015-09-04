@@ -21,7 +21,6 @@ function searchBlogResultsController(author, data, postsPerPage, pageNumber, app
                     name,
                     pagesCount = posts.pagesCount;
 
-
                 if (posts && posts.length > 0) {
                     username = posts[0].authorName;
                     name = posts[0].author;

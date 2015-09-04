@@ -3,7 +3,6 @@ import User from 'user'
 import Post from 'post'
 import {controller} from 'controller';
 
-
 function userSinglePostFullVIewCntroller(authorName, postId, app) {
 
     Post.getPostByAuthorAndId(authorName, postId).then(function (post) {
@@ -21,10 +20,8 @@ function userSinglePostFullVIewCntroller(authorName, postId, app) {
             app.notFound()
         }
 
-
-
     }, function (err) {
-        console.log(err);
+        app.notFound()
     });
 }
 

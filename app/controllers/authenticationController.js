@@ -6,19 +6,13 @@ import Post from 'post'
 import {controller} from 'controller';
 
 function authenticationController() {
-    //console.log('At authentication')
-
     var currentUser;
-    //
+
     if (localStorage.getItem('user')) {
         currentUser = JSON.parse(localStorage.getItem('user'));
     } else {
         currentUser = User.current();
     }
-    //name = currentUser.get('username');
-
-    //console.log(currentUser.attributes)
-    //console.log(name)
 
     if (currentUser) {
 

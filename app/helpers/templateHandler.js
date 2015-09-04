@@ -28,17 +28,15 @@ function loadStaticTemplate(templatePath, containerSelector, successFunction) {
 }
 
 function loadDataTemplate(templatePath, containerSelector, dataObject, successFunction) {
+    var template = sessionStorage.getItem(templatePath);
 
     $(containerSelector).html('');
-
-    var template = sessionStorage.getItem(templatePath);
 
     function loadHandlebars(template, data) {
         var handlebarsTemplate = Handlebars.compile(template),
             resultHtml = handlebarsTemplate(dataObject);
 
         $(containerSelector).html(resultHtml);
-
 
         if (typeof successFunction === 'function') {
             successFunction();

@@ -6,7 +6,6 @@ import {CONSTRAINTS} from 'CONSTRAINTS'
 import {validator} from 'validator'
 import {controller} from 'controller'
 
-
 function registerController() {
 
     function dataVerification() {
@@ -92,31 +91,17 @@ function registerController() {
             var userName = $('#inputUserName').val(),
                 email = $('#inputEmail').val(),
                 password = $('#inputPassword').val();
-            //
-            //var data = {
-            //    username: userName,
-            //    email: email
-            //};
-
-
 
             User.create(userName, password, email).then(function (user) {
-               // user.set('name', userName);
-                //console.log(user.get('username') + ' registered!');
-
-                localStorage.setItem('blog',JSON.stringify({username: user.attributes.username, name: user.attributes.name}));
-                //localStorage.setItem('blog', JSON user.attributes.username)
-                templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', user.attributes)
+                localStorage.setItem('blog', JSON.stringify({
+                    username: user.attributes.username,
+                    name: user.attributes.name
+                }));
+                templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', user.attributes);
             }, function (error) {
-                //console.log(error.message);
-                templateHandler.loadDataTemplate('templates/registration-error.html', '#template-container', error)
+                templateHandler.loadDataTemplate('templates/registration-error.html', '#template-container', error);
                 window.location.hash = '#/registration-error'
-
             });
-
-
-
-           // templateHandler.loadDataTemplate('templates/registrationSuccessful.html', '#template-container', data)
         })
     }
 

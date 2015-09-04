@@ -51,12 +51,11 @@ function userSettingsSubmitController(about, avatar, gitHub, telerikAcademy, goo
             links.skype = ecureSkype;
         }
 
-        user.set('links', links)
+        user.set('links', links);
 
 
         return new Promise(function (resolve, reject) {
             user.save().then(function () {
-
 
                 resolve();
             }, function (error) {
@@ -64,7 +63,6 @@ function userSettingsSubmitController(about, avatar, gitHub, telerikAcademy, goo
             });
         });
     }
-
 
     if (selectedUser) {
 
@@ -76,19 +74,15 @@ function userSettingsSubmitController(about, avatar, gitHub, telerikAcademy, goo
         controller.navbarController();
 
         updaeUserSettings(selectedUser).then(function () {
-            templateHandler.loadDataTemplate('templates/user-settings-submit-success.html', '#template-container', selectedUser.attributes)
+            templateHandler.loadDataTemplate('templates/user-settings-submit-success.html', '#template-container', selectedUser.attributes);
 
         }, function (error) {
-            templateHandler.loadDataTemplate('templates/user-settings-submit-error.html', '#template-container', selectedUser)
+            templateHandler.loadDataTemplate('templates/user-settings-submit-error.html', '#template-container', selectedUser);
 
             alert(error)
         });
 
-        // templateHandler.loadDataTemplate('templates/user-settings.html', '#template-container', selectedUser)
-
-
     } else {
-        //console.log(window.location)
         window.location.hash = '#/login-please'
     }
 }

@@ -7,8 +7,6 @@ import {controller} from 'controller'
 import {validator} from 'validator'
 
 
-
-
 function userNewPostSubmitController(userName, title, content, tags, app) {
 
     var secureTitle = title, //validator.textInputValidator.scriptTagValidator(title),
@@ -19,28 +17,23 @@ function userNewPostSubmitController(userName, title, content, tags, app) {
 
         author = selectedUser.attributes.name,
         authorName = userName;
-    //console.log('NEW POST');
-    //console.log(author);
-    //console.log(selectedUser);
 
     console.log(selectedUser);
     var tagsArray = utilities.tagsSplitter(secureTags);
-    //console.log(tagsArray)
-
 
     function sendPost() {
         Post.create(secureTitle, secureContent, tagsArray, author, authorName)
     }
 
-
     if (selectedUser) {
 
-        localStorage.setItem('blog',JSON.stringify({username: selectedUser.attributes.username, name: selectedUser.attributes.name}));
-
-
+        localStorage.setItem('blog', JSON.stringify({
+            username: selectedUser.attributes.username,
+            name: selectedUser.attributes.name
+        }));
         controller.navbarController();
 
-        if(validator.textInputValidator.contentLengthValidator(content)){
+        if (validator.textInputValidator.contentLengthValidator(content)) {
             templateHandler.loadDataTemplate('templates/user-new-post-submit.html',
                 '#template-container',
                 {

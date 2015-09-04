@@ -30,8 +30,6 @@ import {userSettingsSubmitController} from './controllers/userSettingsSubmitCont
 import {searchBlogResultsController} from './controllers/searchBlogResultsController.js';
 import {templateHandler} from 'templateHandler'
 
-
-
 export var controller = {
     registerController: registerController,
     homeController: homeController,
@@ -63,5 +61,4 @@ export var controller = {
     postsByMonthController: postsByMonthController,
     userSettingsSubmitController: userSettingsSubmitController,
     searchBlogResultsController: searchBlogResultsController
-
 };
