@@ -2,6 +2,8 @@ import {templateHandler} from 'templateHandler'
 import User from 'user'
 import Post from 'post'
 import {controller} from 'controller';
+import {utilities} from 'utilities'
+
 
 function userSinglePostFullVIewCntroller(authorName, postId, app) {
 
@@ -14,7 +16,7 @@ function userSinglePostFullVIewCntroller(authorName, postId, app) {
             post.save();
 
             localStorage.setItem('blog',JSON.stringify({username: post.attributes.authorName, name: post.attributes.author}));
-            templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', post.attributes);
+            templateHandler.loadDataTemplate('templates/postFullView.html', '#template-container', post.attributes,  utilities.fbShareHandler);
             controller.navbarController()
         }else{
             app.notFound()
