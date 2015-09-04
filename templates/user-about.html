@@ -1,22 +1,28 @@
 <div class="container-fluid">
     <div class="pull-left">
         <p>This blog belongs to:</p>
+
         <h2>{{this.name}}</h2>
         <h4>a.k.a. : {{this.username}}</h4>
         <br/>
         {{#if about}}
         <div>
             <p>Something about me::</p>
+
             <p>{{about}}</p>
             <br/>
         </div>
         {{/if}}
         <div>
             <p>contact info:</p>
-
+            <br/>
             {{#if email}}
-            <a target="_blank" href="mailto:{{email}}"><i class="fa fa-envelope-o info-link"></i></a>
+            <a class="about-email-ancor">
+                <i class="fa fa-envelope-o info-link" data-email="{{email}}" id="about-email-info"></i>
+                <span class="label label-success" id="about-email-label">{{email}}</span>
+            </a>
             {{/if}}
+
             {{#if links.gitHub}}
             <a target="_blank" href="{{links.gitHub}}"><i class="fa fa-github info-link"></i></a>
             {{/if}}
@@ -51,6 +57,7 @@
         </div>
     </div>
     <div class="pull-right">
-        <img src="{{#if avatar}}{{avatar}}{{else}}assets/imgs/avatar-default.png{{/if}}" alt="user avatar picture" class="user-about-avatar"/>
+        <img src="{{#if avatar}}{{avatar}}{{else}}assets/imgs/avatar-default.png{{/if}}" alt="user avatar picture"
+             class="user-about-avatar"/>
     </div>
 </div>

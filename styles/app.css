@@ -65,3 +65,14 @@
 .post-content{
     word-wrap: break-word;
 }
+
+.about-email-ancor{
+    position: relative;
+}
+
+#about-email-label{
+    position: absolute;
+    left: 10px;
+    top: -40px;
+
+}
