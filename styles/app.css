@@ -1,5 +1,5 @@
 .navbar-default, .nav .navbar-nav, .panel-footer{
-    background-color: rgba(70, 69, 69, 0.9); /* semi transparent for testing purposes*/
+    background-color: rgba(70, 69, 69, 0.9);  semi transparent for testing purposes
 }
 
 .navbar-default .navbar-toggle {
@@ -7,7 +7,7 @@
 }
 
 .navbar-cleaner{
-    content: " rrrrrrrrr"; /* Older browser do not support empty content */
+    content: " rrrrrrrrr";  Older browser do not support empty content
     visibility: visible;
     display: block;
     height: 82px;
@@ -50,4 +50,13 @@
 .login-form{
     display: none;
     margin-top: 2%;
+}
+
+.user-about-avatar{
+    width:300px;
+}
+
+.info-link, .glyphicon-envelope{
+    margin: 10px;
+    font-size: 2em;
 }

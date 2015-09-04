@@ -5,13 +5,30 @@ import {controller} from 'controller'
 import {utilities} from 'utilities'
 
 
+function allController(postsPerPage, pageNumber, app) {
+    pageNumber = pageNumber || 1;
+    postsPerPage = postsPerPage || 5;
 
-function allController() {
     Post.getAllPosts().then(function (posts) {
-        templateHandler.loadDataTemplate('templates/all.html', '#template-container', { posts: posts }, utilities.fbShareHandler);
+        Post.getPostsMonths().then(function (results) {
+
+            Post.getAllPostsPaging(postsPerPage, pageNumber).then(function (posts) {
+
+                posts.archiveDates = results;
+
+                templateHandler.loadDataTemplate('templates/all.html', '#template-container', {posts: posts}, utilities.fbShareHandler);
+                var pagesCount = posts.pagesCount;
+                utilities.makeActivePageBtn(pageNumber, pagesCount)
+            }, function (err) {
+                app.notFound()
+            });
+        });
     }, function (err) {
         console.log(err);
-    })
+    });
 }
 
-export {allController}
+export
+{
+    allController
+}

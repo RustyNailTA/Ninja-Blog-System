@@ -26,6 +26,8 @@ import {shareController} from './controllers/shareController.js';
 import {searchResultsController} from './controllers/searchResultsController.js';
 import {navbarController} from './controllers/navbarController.js';
 import {postsByMonthController} from './controllers/postsByMonthController.js';
+import {userSettingsSubmitController} from './controllers/userSettingsSubmitController.js';
+import {searchBlogResultsController} from './controllers/searchBlogResultsController.js';
 import {templateHandler} from 'templateHandler'
 
 
@@ -58,6 +60,8 @@ export var controller = {
     shareController: shareController,
     searchResultsController: searchResultsController,
     navbarController:navbarController,
-    postsByMonthController: postsByMonthController
+    postsByMonthController: postsByMonthController,
+    userSettingsSubmitController: userSettingsSubmitController,
+    searchBlogResultsController: searchBlogResultsController
 
 };

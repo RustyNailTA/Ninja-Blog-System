@@ -1,14 +1,56 @@
 <div class="container-fluid">
-    <h2>{{this.name}}</h2>
-    <h4>a.k.a. : {{this.name}}</h4>
-    <div>
-        {{aboutText}}
-    </div>
-    {{#if avatar}}
-    <img src="{{avatar}}" alt=""/>
-    {{else}}
-    <img src="assets/imgs/avatar-default.png" alt=""/>
-    {{/if}}
-    <img src="" alt=""/>
+    <div class="pull-left">
+        <p>This blog belongs to:</p>
+        <h2>{{this.name}}</h2>
+        <h4>a.k.a. : {{this.username}}</h4>
+        <br/>
+        {{#if about}}
+        <div>
+            <p>Something about me::</p>
+            <p>{{about}}</p>
+            <br/>
+        </div>
+        {{/if}}
+        <div>
+            <p>contact info:</p>
 
+            {{#if email}}
+            <a target="_blank" href="mailto{{email}}"><i class="glyphicon glyphicon-envelope"></i></a>
+            {{/if}}
+            {{#if links.gitHub}}
+            <a target="_blank" href="{{links.gitHub}}"><i class="fa fa-github info-link"></i></a>
+            {{/if}}
+
+            {{#if links.telerikAcademy}}
+            <a target="_blank" href="{{links.telerikAcademy}}"><i class="fa fa-space-shuttle info-link"></i></a>
+            {{/if}}
+
+            {{#if links.googlePlus}}
+            <a target="_blank" href="{{links.googlePlus}}"><i class="fa fa-google-plus info-link"></i></a>
+            {{/if}}
+
+            {{#if links.linkedIn}}
+            <a target="_blank" href="{{links.linkedIn}}"><i class="fa fa-linkedin info-link"></i></a>
+            {{/if}}
+
+            {{#if links.faceBook}}
+            <a target="_blank" href="{{links.faceBook}}"><i class="fa fa-facebook info-link"></i></a>
+            {{/if}}
+
+            {{#if links.flickr}}
+            <a target="_blank" href="{{links.flickr}}"><i class="fa fa-flickr info-link"></i></a>
+            {{/if}}
+
+            {{#if links.twitter}}
+            <a target="_blank" href="{{links.twitter}}"><i class="fa fa-twitter info-link"></i></a>
+            {{/if}}
+
+            {{#if links.skype}}
+            <a target="_blank" href="skype:{{links.skype}}?add"><i class="fa fa-skype info-link"></i></a>
+            {{/if}}
+        </div>
+    </div>
+    <div class="pull-right user-about-avatar">
+        <img src="{{#if avatar}}{{avatar}}{{else}}assets/imgs/avatar-default.png{{/if}}" alt="user avatar picture" class="user-about-avatar"/>
+    </div>
 </div>
