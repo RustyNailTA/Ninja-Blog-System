@@ -9,7 +9,13 @@
     <div class="container-fluid post-content">
         {{{this.content}}}
     </div>
-    <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+    <!--<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>-->
+
+    <div class="col-xs-4 col-lg-2 col-md-3 col-sm-3 btn-holder pull-right">
+        <button class="btn btn-block btn-social btn-facebook btn-xs" id="btn-fb-share-{{@index}}">
+            <i class="fa fa-facebook"></i>Share
+        </button>
+    </div>
 </article>
 <br/>
 <div class="panel panel-default">

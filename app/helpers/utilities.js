@@ -14,17 +14,22 @@ function tagsSplitter(tagsString) {
     return tags;
 }
 
-function fbShareHandler() {
+function fbShareHandler(fullpage) {
     fbApi.init();
+    var href = null;
+        href = window.location.href;
+
+
+    console.log(href)
 
     $(document).on('click', '.blog-main', function (ev) {
         var $target = $(ev.target);
 
         if ($target.is(":button")) {
-            console.log('test');
+           // console.log('test');
             FB.ui({
                 method: 'share',
-                href: 'https://telerikacademy.com',
+                href: href || 'https://telerikacademy.com',
             }, function (response) {
             });
         }
