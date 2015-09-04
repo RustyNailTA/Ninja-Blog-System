@@ -1,5 +1,5 @@
 .navbar-default, .nav .navbar-nav, .panel-footer{
-    background-color: rgba(70, 69, 69, 0.9);  semi transparent for testing purposes
+    background-color: rgba(70, 69, 69, 1);  semi transparent for testing purposes
 }
 
 .navbar-default .navbar-toggle {
@@ -54,9 +54,14 @@
 
 .user-about-avatar{
     width:300px;
+    border: 2px solid #0ce3ac;
 }
 
 .info-link, .glyphicon-envelope{
     margin: 10px;
     font-size: 2em;
+}
+
+.post-content{
+    word-wrap: break-word;
 }
