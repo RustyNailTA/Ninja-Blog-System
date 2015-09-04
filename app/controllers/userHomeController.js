@@ -20,7 +20,7 @@ function userHomeController(userName, app) {
                     localStorage.setItem('blog',JSON.stringify({username: user.username, name: user.name}));
 
                     controller.navbarController();
-                    templateHandler.loadDataTemplate('templates/home.html', '#template-container', {posts: [{title: 'No post yet!', active: true}]})
+                    templateHandler.loadDataTemplate('templates/home.html', '#template-container', {posts: [{title: 'No posts yet!', active: true}]})
                 } else {
                     app.notFound();
                 }

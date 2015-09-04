@@ -4,13 +4,12 @@ import Post from 'post'
 
 function homeController(app) {
     Post.getLatestNPosts(5).then(function (posts) {
-       // console.log(posts)
 
-        if(posts && post.length > 0){
+        if(posts && posts.length > 0){
             posts[0].active = true;
             templateHandler.loadDataTemplate('templates/home.html', '#template-container', { posts: posts });
         } else{
-            templateHandler.loadDataTemplate('templates/home.html', '#template-container', {posts: [{title: 'No post yet!', active: true}]});
+            templateHandler.loadDataTemplate('templates/home.html', '#template-container', {posts: [{title: 'No posts yet!', active: true}]});
         }
     }, function (err) {
        app.notFound();
