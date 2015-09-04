@@ -5,9 +5,7 @@ import User from 'user'
 import {controller} from 'controller'
 import {utilities} from 'utilities'
 
-
 function userAllController(author, postsPerPage, pageNumber, app) {
-
     pageNumber = pageNumber || 1;
     postsPerPage = postsPerPage || 5;
 
@@ -36,7 +34,6 @@ function userAllController(author, postsPerPage, pageNumber, app) {
                         }
                     },
                     utilities.fbShareHandler);
-
 
                 utilities.makeActivePageBtn(pageNumber, pagesCount)
             }, function (err) {

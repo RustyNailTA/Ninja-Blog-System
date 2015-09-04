@@ -4,14 +4,10 @@ import User from 'user'
 import Post from 'post'
 import {controller} from 'controller'
 
-
-
 function userNewPostController(userName, app){
-
     var selectedUser = User.current().attributes;
 
     if (selectedUser) {
-
         function launchTrumbowyg(){
             $('#content').trumbowyg();
         }
@@ -21,7 +17,6 @@ function userNewPostController(userName, app){
         controller.navbarController();
         templateHandler.loadDataTemplate('templates/user-new-post.html', '#template-container', selectedUser, launchTrumbowyg)
     } else {
-        //console.log(window.location)
         window.location.hash = '#/login-please'
     }
 }

@@ -1,9 +1,7 @@
 import {templateHandler} from 'templateHandler'
 import {controller} from 'controller'
 
-
-function notFoundController(){
-    //console.log();
+function notFoundController() {
     templateHandler.loadStaticTemplate('templates/notFound.html', '#template-container')
 }
 

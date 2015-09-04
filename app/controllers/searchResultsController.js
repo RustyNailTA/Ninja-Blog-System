@@ -5,11 +5,7 @@ import User from 'user'
 import Post from 'post'
 import {utilities} from 'utilities'
 
-
-
-
 function searchResultsController(data, postsPerPage, pageNumber, app){
-
     pageNumber = pageNumber || 1;
     postsPerPage = postsPerPage || 5;
 
