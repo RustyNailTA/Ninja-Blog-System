@@ -1,5 +1,4 @@
 import {templateHandler} from 'templateHandler'
-import {testDB} from 'testDB'
 import Post from 'post'
 import {controller} from 'controller'
 import {utilities} from 'utilities'
