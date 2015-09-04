@@ -4,6 +4,13 @@
         <legend>Personal settings:</legend>
 
         <div class="form-group">
+            <label for="settings-name" class="col-lg-2 control-label">Enter your real name:</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="settings-name" name="name" placeholder="Something about you" {{#if name}}value="{{about}}"{{/if}}>{{#if name}}{{name}}{{/if}}</textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
             <label for="settings-about" class="col-lg-2 control-label">Say something about you:</label>
             <div class="col-lg-10">
                 <textarea class="form-control" rows="3" id="settings-about" name="about" placeholder="Something about you" {{#if about}}value="{{about}}"{{/if}}>{{#if about}}{{about}}{{/if}}</textarea>

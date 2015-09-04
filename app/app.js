@@ -260,7 +260,8 @@ function app() {
         });
 
         this.get('#/:user/user-settings-personal-submit', function () {
-            var about = this.params.about,
+            var name = this.params.name,
+                about = this.params.about,
                 avatar = this.params.avatar,
                 gitHub = this.params.gitHub,
                 telerikAcademy = this.params.telerikAcademy,
@@ -270,7 +271,7 @@ function app() {
                 twitter = this.params.twitter,
                 skype = this.params.skype;
 
-            controller.userSettingsSubmitController(about, avatar, gitHub, telerikAcademy, googlePlus, linkedIn, flickr, twitter, skype, this);
+            controller.userSettingsSubmitController(name, about, avatar, gitHub, telerikAcademy, googlePlus, linkedIn, flickr, twitter, skype, this);
             controller.authenticationController();
         });
 
