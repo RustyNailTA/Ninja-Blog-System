@@ -2,9 +2,19 @@ import fbApi from 'fbApi'
 
 function hideDropdown() {
     $(document).ready(function () {
-        $('body').on('click', function () {
+
+        $('body').on('click', function (ev) {
+            var $target = $(ev.target);
+
+            console.log($target)
             $('.dropdown.open .dropdown-toggle').dropdown('toggle');
             $('[data-toggle="dropdown"]').parent().removeClass('open');
+
+            if ($(".navbar-collapse").is(":visible") &&
+                $(".navbar-toggle").is(":visible") &&
+                $target.hasClass('navbar-not-auto-collapse') === false){
+                $('.navbar-collapse').collapse('toggle');
+            }
         })
     });
 }
@@ -17,7 +27,7 @@ function tagsSplitter(tagsString) {
 function fbShareHandler(fullpage) {
     fbApi.init();
     var href = null;
-        href = window.location.href;
+    href = window.location.href;
 
 
     console.log(href)
@@ -26,7 +36,7 @@ function fbShareHandler(fullpage) {
         var $target = $(ev.target);
 
         if ($target.is(":button")) {
-           // console.log('test');
+            // console.log('test');
             FB.ui({
                 method: 'share',
                 href: href || 'https://telerikacademy.com',
